@@ -1,0 +1,59 @@
+.city-select{
+width: 200px;
+
+@media (min-width: 320px) and (max-width: 440px) {
+width: 100px;
+
+}
+
+}
+
+.select__box {
+display:flex;
+flex-direction: row;
+align-items: center;
+gap: 8px;
+cursor:pointer;
+//  background-color: red;
+
+}
+
+.sort__filter {
+cursor:pointer;
+position: absolute;
+top: 100%;
+//left: 0;
+box-shadow: inset 0 0 20px green;
+
+  //color: white;
+  border: 2px solid rgb(16, 91, 16);
+border-radius: 24px;
+// background-color: white;
+background-color: rgb(246, 246, 117);
+z-index: 500;
+//width: 100%;
+margin-top: 2px;
+padding: 10px 10px;
+display: flex;
+flex-direction: column;
+}
+
+.city__option {
+
+font-size: 16px;
+color: rgb(16, 91, 16);
+font-weight: 500;
+padding-inline: 10px;
+padding-block: 2px;
+//height: 32px;
+cursor: pointer;
+
+}
+
+.selected__option{
+  color: orange;
+}
+
+.selected__city {
+  color: rgb(16, 91, 16);
+}

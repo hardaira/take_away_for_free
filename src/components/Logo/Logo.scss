@@ -1,0 +1,85 @@
+.logo {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  // padding-bottom: 10px;
+  transform: rotate(-10deg);
+
+   @media (max-width: 475px) {
+ font-size: 12px;
+ line-height: 16px;
+ padding-left: 4px;
+  padding-right: 4px;
+ }
+//   @media (min-width: 640px) and (max-width: 1199px) {
+// font-size: 16px;
+// }
+
+// @media (min-width: 1200px) {
+// font-size: 16px;
+// }
+
+}
+
+.logo__link {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background-color: rgb(4, 129, 56);
+  color: rgb(247, 255, 18);
+  border-radius:10px;
+  border: 2px solid rgb(247, 255, 18); 
+}
+
+.thank {
+ padding-bottom: 10px; 
+}
+
+.speaker-icon-wrapper {
+  position: relative;
+  display: inline-block;
+  transform: rotate(-30deg);
+  margin-left: 4px;
+  width: 20px; // Width of icon container
+  height: 20px;
+}
+
+.speaker-icon-wrapper svg {
+  position: relative;
+  z-index: 2; // Make sure icon stays above lines
+  font-size: 24px;
+}
+
+.sound-line {
+  position: absolute;
+  background: rgba( 177, 30, 230);
+  width: 10px;
+  height: 2px;
+  top: 50%;
+  left: 50%;
+  transform-origin: left center;
+  z-index: 1;
+  border-radius: 2px;
+  
+}
+
+.line1 {
+  transform: rotate(0deg) translateX(16px);
+}
+
+.line2 {
+  transform: rotate(20deg) translateX(16px);
+}
+
+.line3 {
+  transform: rotate(-20deg) translateX(16px);
+}
+
+.logo-word {
+  display: inline-block;
+  transform: translateY(4px); // or use margin-top
+}

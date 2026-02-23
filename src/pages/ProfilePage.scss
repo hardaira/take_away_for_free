@@ -1,0 +1,36 @@
+.profile_buttons{
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 40px;
+}
+.profileButton {
+  text-decoration: none;
+  display: flex;
+  width: 200px;
+  height: 40px;
+  padding: auto;
+  justify-content: center;
+  align-items: center;
+  background-color:orange;
+  border: 2px solid rgba(16, 91, 16);
+  color: rgba(16, 91, 16);
+  background-color:orange;
+  border: 2px solid rgba(16, 91, 16);
+  box-shadow: inset 0 0 20px rgb(16, 131, 58);
+  border-radius: 100px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.profileButton:hover{
+  background-color: rgba(16, 91, 16);
+  border: 2px solid orange;
+  color: orange;
+}
+
+.top-part{
+  display: flex;
+  justify-content: space-between;
+  // margin-top: 40px;
+}

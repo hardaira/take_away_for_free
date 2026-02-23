@@ -1,0 +1,174 @@
+// * {
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+// }
+
+
+//.navbar-item,
+
+
+// .navbar__link__container{
+// display: none;
+
+// @media (min-width: 640px) and (max-width: 1199px) {
+// display: flex;
+// justify-content: space-between;
+// gap: 32px;
+// }
+
+// @media (min-width: 1200px) {
+// margin-left: 24px;
+// display: flex;
+// justify-content: space-between;
+// gap: 64px;
+// }
+
+// }
+
+// .my__logo {
+
+//   display:flex;
+//   align-self: center;
+//   align-items: center;
+
+
+  // @media (min-width: 1200px) {
+  // padding-inline: 24px;
+//}
+// }
+
+.burger-menu {
+padding-inline: 16px;
+display:flex;
+align-items: center;
+align-self: center;
+
+ @media (min-width: 850px) {
+  display:none;
+}
+}
+
+.advertise {
+ @media (max-width: 850px) {
+  display:none;
+} 
+}
+
+.navbar {
+//font-size: 16px;
+// color: #252626;
+//font-weight: 500;
+z-index: 1000;
+display: flex;
+align-items: center;
+justify-content: space-between;
+align-items: center;
+padding-inline: 50px;
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+// background-color: #d57eeb;
+box-shadow: inset 0 0 20px rgb(16, 131, 58);
+//   color: white;
+  border: 2px solid rgb(16, 91, 16);
+  //color:rgb(177, 30, 230);
+  background-color: rgb(246, 246, 117);
+  //border: 1px solid rgb(177, 30, 230);
+border-radius: 0 0 200px 200px;
+height: 64px;
+
+@media (min-width: 320px) and (max-width: 465px) {
+// height: 100px;
+// border-radius: 0 0 200px 200px;
+padding-inline: 30px;
+//background-color: red;
+}
+
+
+@media (min-width: 1000px) and (max-width: 1199px) {
+height: 80px;
+padding-inline: 100px;
+//background-color: red;
+}
+
+@media (min-width: 1200px) {
+height: 80px;
+padding-inline: 100px;
+//background-color: yellow;
+}
+
+}
+
+// .navbar__logo__search,
+// .navbar__rest {
+// display: flex;
+
+// align-items: center;
+// width: 50%;
+// }
+
+// .navbar__rest {
+//   justify-content: space-between;
+// }
+
+// .navbar__logo__search{
+//  justify-content: space-between;
+// }
+
+svg:hover {
+  transform: scale(1.1);
+  transition-duration: 3ms;
+}
+
+
+
+.searchButton {
+ text-decoration: none;
+  display: flex;
+  width: 90px;
+  height: 40px;
+  padding: auto;
+  justify-content: center;
+  align-items: center;
+  background-color: #E0531F;
+  color: white;
+  border: 1px solid #E0531F;
+  border-radius: 100px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+
+input::placeholder {
+  font-family: 'Montserrat', sans-serif;
+  color: rgba(16, 91, 16);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.heart-favorite {
+  width: 20px;
+  height: 20px;
+  fill: orange;
+  stroke: rgb(16, 91, 16);
+  // filter: inset 2px 2px 4px rgba(16, 91, 16, 0.5);
+
+  @media (min-width: 640px) and (max-width: 1199px) {
+ width: 24px;
+  height: 24px;
+}
+
+@media (min-width: 1200px) {
+ width: 30px;
+  height: 30px;
+}
+
+}
+
+.advertise:hover {
+  color: orange;
+}
+
