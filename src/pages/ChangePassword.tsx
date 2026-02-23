@@ -17,7 +17,7 @@ export const ChangePassword: React.FC = () => {
 
   const [newPassword, setNewPassword] = useState('');
   const [oldPassword, setOldPassword] = useState('');
-  const [passwordError, setPasswordError] = useState('');
+  const [passwordError, _setPasswordError] = useState('');
   // const handleChangePassword = async (e: React.FormEvent) => {
   //   e.preventDefault();
   //   setPasswordError('');

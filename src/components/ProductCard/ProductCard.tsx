@@ -59,7 +59,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   };
   
   const navigate = useNavigate();
-  const [inProfile, setInProfile] = useState(false);
+  const [inProfile, _setInProfile] = useState(false);
   const [showDetails, setShowDetails] = useState(showFullDetails);
   const isInFavorites = useSelector((state: RootState) =>
     state.favorites.favoriteItems.some(item => item.title === product.title),

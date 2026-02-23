@@ -20,7 +20,7 @@ export const FormPage: React.FC = () => {
   const [success, setSuccess] = useState('');
   const [fail, setFail] = useState('');
   const [warning, setWarning] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [_loading, setLoading] = useState(false);
 
   const handleAddProduct = async (e: React.FormEvent) => {
     e.preventDefault();

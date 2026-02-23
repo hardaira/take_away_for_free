@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from '../../app/store';
-import { setActiveCategory, type Category } from '../../features/filterCategory';
+// import { setActiveCategory, type Category } from '../../features/filterCategory';
+import { setActiveCategory } from '../../features/filterCategory';
 // import { useSearchParams, useParams } from 'react-router-dom';
 import './CategorySelect.scss';
 // import { NavLink } from 'react-router-dom';
@@ -38,7 +39,7 @@ const CategorySelect: React.FC = () => {
     (state: RootState) => state.filterCategory.activeCategory,
   );
   const [searchParams, setSearchParams] = useSearchParams();
-  const chosenCity = searchParams.get('city');
+  // const chosenCity = searchParams.get('city');
   // Sync Redux with URL on component mount
   useEffect(() => {
     const current = searchParams.getAll('category') as Category[];

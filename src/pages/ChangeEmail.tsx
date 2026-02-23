@@ -1,10 +1,10 @@
 // import { useOutletContext } from 'react-router-dom';
 import { useState } from 'react';
 // import type { OutletContextType } from '../types/user';
-type User = {
-  id: number;
-  name: string;
-};
+// type User = {
+//   id: number;
+//   name: string;
+// };
 
 // type OutletContextType = {
 //   user: User;

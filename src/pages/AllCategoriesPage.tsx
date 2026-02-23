@@ -7,19 +7,19 @@ import { TopBackLink } from '../components/TopBackLink/TopBackLink';
 //import { useSelector } from 'react-redux';
 import type { RootState } from '../app/store';
 
-import { LuHouse } from 'react-icons/lu';
-import { Link } from 'react-router-dom';
+// import { LuHouse } from 'react-icons/lu';
+// import { Link } from 'react-router-dom';
 //import { Pagination } from '../components/Pagination/Pagination';
 //import { useSearchParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 export const AllCategoriesPage: React.FC = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const activeCity = useSelector(
     (state: RootState) => state.filterCity.activeCity,
   );
   const navigate = useNavigate();
 
-  const products = useSelector((state: RootState) => state.products.items);
+  // const products = useSelector((state: RootState) => state.products.items);
 
   // const phones = products.filter(product => product.category === 'phones');
 
