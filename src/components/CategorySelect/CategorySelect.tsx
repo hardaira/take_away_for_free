@@ -2,30 +2,16 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from '../../app/store';
 import { setActiveCategory, type Category } from '../../features/filterCategory';
-import { useSearchParams, useParams } from 'react-router-dom';
+// import { useSearchParams, useParams } from 'react-router-dom';
 import './CategorySelect.scss';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 
-const categories: Category[] = [
-  // 'Театр',
-  // 'Кіно',
-  'Їжа',
-  'Меблі',
-  'Товари для дітей',
-  'Одяг',
-'Товари для дому',
-  // 'Танці',
-  // 'Майстер клас',
-  // 'Навчання',
-  // 'Спорт',
-  // 'Медитація',
-  // 'Змагання',
-  // 'Для всієї сімї',
-  // 'Дегустація',
-  // 'На свіжому повітрі',
-  // 'Парк',
-  // 'Фестиваль',
-];
+export type Category =
+  | "Їжа"
+  | "Меблі"
+  | "Товари для дітей"
+  | "Одяг"
+  | "Товари для дому";
 
 // const categoryBackgrounds: Record<Category, string> = {
 //   // Театр: './category__images/theatre.jpg',

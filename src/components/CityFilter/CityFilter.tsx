@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
-import { RootState } from '../../app/store';
-import { searchedFilterStatus } from '../../features/filterCity';
+import type { RootState } from '../../app/store';
+import type { searchedFilterStatus } from '../../features/filterCity';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 // import './CityFilter.scss';
 
