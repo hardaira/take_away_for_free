@@ -3,11 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import type { RootState } from '../app/store'; // adjust if your root store path is different
 import { ProductCard } from '../components/ProductCard/ProductCard';
 import { getFavoritesQuantity } from '../features/favorites';
-import { IoIosArrowForward } from 'react-icons/io';
-import { LuHouse } from 'react-icons/lu';
-import { Link } from 'react-router-dom';
+// import { IoIosArrowForward } from 'react-icons/io';
+// import { LuHouse } from 'react-icons/lu';
+// import { Link } from 'react-router-dom';
 import TopBackLink from '../components/TopBackLink/TopBackLink';
-import { Footer } from '../components/Footer/Footer';
+// import { Footer } from '../components/Footer/Footer';
 import './FavoritesPage.scss';
 export const FavoritesPage: React.FC = () => {
   const dispatch = useDispatch();

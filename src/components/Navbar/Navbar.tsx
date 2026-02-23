@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import './Navbar.scss';
-import React, { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { LuHeart } from 'react-icons/lu';
 // import { LuShoppingBag } from 'react-icons/lu';
 import { LuMenu } from 'react-icons/lu';
@@ -20,8 +20,8 @@ import Logo from '../Logo/Logo';
 
 
 export const Navbar = () => {
-  const getLinkClass = ({ isActive }: { isActive: boolean }) =>
-    classNames('navbar-item', { 'has-underline': isActive });
+  // const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+  //   classNames('navbar-item', { 'has-underline': isActive });
   const favoriteTotalQuantity = useSelector(
     (state: RootState) => state.favorites.favoriteTotalQuantity,
   );

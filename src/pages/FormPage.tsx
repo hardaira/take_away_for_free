@@ -1,11 +1,11 @@
 import './FormPage.scss';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+// import { useSelector, useDispatch } from 'react-redux';
 // import { selectAllProducts, addProduct } from '../features/products';
 
 export const FormPage: React.FC = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [newTitle, setNewTitle] = useState('');
   const [newDescription, setNewDescription] = useState('');
   const [newContact, setNewContact] = useState('');
@@ -14,7 +14,7 @@ export const FormPage: React.FC = () => {
   const [newPhoto, setNewPhoto] = useState<File | null>(null);
 
   // const allProducts = useSelector(selectAllProducts);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   // import axios from 'axios';
 
   const [success, setSuccess] = useState('');
