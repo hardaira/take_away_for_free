@@ -43,7 +43,7 @@ export const FavoritesPage: React.FC = () => {
 
         ) : (
           <div className="cards__container">
-            {favoriteItems.map(product => (
+            {favoriteItems.map((product: Product) => (
               <ProductCard key={product.name} {...product} />
             ))}
           </div>
