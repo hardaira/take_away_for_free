@@ -4,7 +4,7 @@ import newProductsReducer from '../features/addProduct';
 //import productsAllReducer from '../features/productsAll';
 import filterCityReducer from '../features/filterCity';
 import filterCategoryReducer from '../features/filterCategory';
-import cartReducer from '../features/cart';
+// import cartReducer from '../features/cart';
 import favoritesReducer from '../features/favorites';
 //import paginationReducer from '../features/pagination';
 //import phonesReducer from '../features/phones';
@@ -17,7 +17,7 @@ export const store = configureStore({
     filterCity: filterCityReducer,
     filterCategory: filterCategoryReducer,
     //pagination: paginationReducer,
-    cart: cartReducer,
+    // cart: cartReducer,
     favorites: favoritesReducer,
     newProducts: newProductsReducer,
     //phones: phonesReducer,

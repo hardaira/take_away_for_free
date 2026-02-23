@@ -9,7 +9,7 @@ export const ResetPassword: React.FC = () => {
   // const [password, setPassword] = useState('');
   // const [loginError, setLoginError] = useState('');
   const [resetEmail, setResetEmail] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [loading, _setLoading] = useState(false);
   // const [resetMessage, setResetMessage] = useState('');
   return (
     <div className="section">

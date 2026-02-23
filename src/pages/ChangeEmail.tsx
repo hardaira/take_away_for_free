@@ -1,15 +1,15 @@
-import { useOutletContext } from 'react-router-dom';
-import React, { useState } from 'react';
+// import { useOutletContext } from 'react-router-dom';
+import { useState } from 'react';
 // import type { OutletContextType } from '../types/user';
 type User = {
   id: number;
   name: string;
 };
 
-type OutletContextType = {
-  user: User;
-  setUser: React.Dispatch<React.SetStateAction<User>>;
-};
+// type OutletContextType = {
+//   user: User;
+//   setUser: React.Dispatch<React.SetStateAction<User>>;
+// };
 
 export const ChangeEmail: React.FC = () => {
   // const { user, setUser } = useOutletContext<OutletContextType>();
@@ -19,8 +19,8 @@ export const ChangeEmail: React.FC = () => {
 
   const [password, setPassword] = useState('');
   const [newEmail, setNewEmail] = useState('');
-  const [message, setMessage] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [message, _setMessage] = useState('');
+  const [loading, _setLoading] = useState(false);
   // const handleChangeEmail = async (e: React.FormEvent) => {
   //   e.preventDefault();
   //   setMessage('');

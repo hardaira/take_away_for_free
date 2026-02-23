@@ -1,5 +1,5 @@
 import './LoginPage.scss';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // import { useSelector, useDispatch } from 'react-redux';
 // import { selectAllProducts, addProduct } from '../features/products';
@@ -8,7 +8,7 @@ export const LoginPage: React.FC = () => {
 const navigate = useNavigate();
 const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
-const [loginError, setLoginError] = useState('');
+// const [loginError, setLoginError] = useState('');
 
   return (
     <div className="section">
