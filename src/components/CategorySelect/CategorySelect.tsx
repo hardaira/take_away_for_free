@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from '../../app/store';
-// import { setActiveCategory, type Category } from '../../features/filterCategory';
-import { setActiveCategory } from '../../features/filterCategory';
+import { setActiveCategory, type Category } from '../../features/filterCategory';
+// import { setActiveCategory } from '../../features/filterCategory';
 // import { useSearchParams, useParams } from 'react-router-dom';
 import './CategorySelect.scss';
 // import { NavLink } from 'react-router-dom';

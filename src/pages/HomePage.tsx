@@ -16,11 +16,14 @@ export const HomePage: React.FC = () => (
       {/* <h1 id="heading1" className="invisible">
           Home Page
       </h1> */}
-      <CategorySelect />
+      {/* <CategorySelect /> */}
       {/* /<SliderTheNewest /> */}
       <div className="container">
         <ProductList />
       </div>
+      <h1>Home page</h1>
+      <h1>Home page</h1>
+      
       {/* <Form /> */}
       {/* <SliderTop />
       <SliderNewBrands />

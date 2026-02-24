@@ -137,7 +137,7 @@ export const FormPage: React.FC = () => {
 
         <div className="form-input-wrapper">
           <label className="form-label">
-            Натисніть <span className="here">тут</span>, щоб додати фото товарy
+           <span className="here">Додати фото товару</span>
             <input
               type="file"
               accept="image/*"

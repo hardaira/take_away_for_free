@@ -2,25 +2,79 @@
   display: flex;
   justify-content: space-evenly;
   margin-top: 40px;
+  flex-wrap: wrap;
+  // @media (min-width: 320px) and (max-width: 450px) {
+  //   flex-direction: column;
+  //   align-items: center;
+  // }
 }
 .profileButton {
   text-decoration: none;
   display: flex;
-  width: 200px;
+  // width: 150px;
   height: 40px;
+  // padding-left: 8px;
+  // padding-right: 8px;
   padding: auto;
   justify-content: center;
   align-items: center;
-  background-color:orange;
+  background-color:rgb(255, 255, 204);
   border: 2px solid rgba(16, 91, 16);
   color: rgba(16, 91, 16);
-  background-color:orange;
+  // background-color:orange;
   border: 2px solid rgba(16, 91, 16);
-  box-shadow: inset 0 0 20px rgb(16, 131, 58);
+  box-shadow: inset 0 0 10px rgb(16, 131, 58);
   border-radius: 100px;
   cursor: pointer;
   font-size: 16px;
   font-weight: 500;
+
+  @media (min-width: 320px) and (max-width: 355px) {
+    width: 130px;
+    margin-bottom: 8px;
+    height: 30px;
+    font-size: 12px;
+  }
+
+  @media (min-width: 356px) and (max-width: 379px) {
+    width: 150px;
+    margin-bottom: 8px;
+    height: 30px;
+    font-size: 14px;
+  }
+
+   @media (min-width: 380px) and (max-width: 419px) {
+    width: 160px;
+    margin-bottom: 8px;
+    height: 30px;
+  }
+   
+  @media (min-width: 420px) and (max-width: 578px) {
+    width: 180px;
+    margin-bottom: 8px;
+    height: 30px;
+  }
+
+  @media (min-width: 579px) and (max-width: 699px) {
+    padding-inline: 8px;
+    width: 220px;
+    margin-bottom: 8px;
+  }
+
+  @media (min-width: 700px) and (max-width: 775px) {
+    padding-inline: 3px;
+    width: 160px;
+  }
+
+  @media (min-width: 776px) and (max-width: 920px) {
+    padding-inline: 4px;
+    width: 170px;
+  }
+
+  @media (min-width: 921px) {
+    width: 200px;
+  }
+
 }
 
 .profileButton:hover{
