@@ -121,11 +121,11 @@ gap: 30px;
   // box-shadow: inset 0 0 10px rgba(177, 30, 230);
   // color: white;
   // border: 2px solid #AA5486;
-  background-color: rgba(16, 91, 16 );
-  box-shadow: inset 0 0 20px rgb(16, 131, 58);
-  border: 2px solid orange;
+  background-color: #4a6fa5;
+  color: #f7f7f7;
+  border: 2px solid #4a6fa5;
   // box-shadow: inset 0 0 10px rgba(177, 30, 230);
-  color: orange;
+  color: white;
    border-radius: 100px;
   cursor: pointer;
   font-size: 16px;
@@ -133,11 +133,12 @@ gap: 30px;
 }
 
 .addButton:hover{
-background-color:orange;
-border: 2px solid rgba(16, 91, 16);
-  // box-shadow: inset 0 0 10px rgba(177, 30, 230);
-  color: rgba(16, 91, 16);
+box-shadow: inset 0 0 20px rgb(136, 139, 137);
+  border: 2px solid darkgrey;
+  background-color: #f7f7f7;
+  color: #4a6fa5;
 }
+
 .icon__heart {
   border: 3px solid orange;
   border-radius: 100px;

@@ -35,7 +35,7 @@ export const FavoritesPage: React.FC = () => {
           </Link>
       </div> */}
         <TopBackLink />
-        <h1 className="heading-favorites">Favorites </h1>
+        <h1 className="heading-favorites">Вибране </h1>
         <p className="under__heading1">{favoriteTotalQuantity} items</p>
         {favoriteItems.length === 0 ? (
 

@@ -79,7 +79,7 @@ export const ChangePassword: React.FC = () => {
             placeholder="Введіть новий пароль"
           />
         </div>
-        <button type="submit" className="profileButton confirm">
+        <button type="submit" className="profileButton">
           Підтвердити
         </button>
       </form>

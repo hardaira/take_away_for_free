@@ -99,6 +99,7 @@ export const Navbar = () => {
             color="error"
             sx={{
               '& .MuiBadge-badge': {
+                backgroundColor: '#4a6fa5',
                 fontSize: '0.5rem',
                 width: '18px',
                 height: '18px',

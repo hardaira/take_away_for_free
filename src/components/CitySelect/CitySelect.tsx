@@ -40,10 +40,16 @@ const CitySelect = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const activeCity = searchParams.get("city") || "Вся Україна";
+  // const activeCity = searchParams.get("city") || "Вся Україна";
+  const storedCity = localStorage.getItem("activeCity");
+
+  const activeCity = searchParams.get("city") || storedCity || "Вся Україна";
 
   const handleSelect = (city: string) => {
     setIsOpen(false);
+
+    localStorage.setItem("activeCity", city);
+
 
     if (city === "Вся Україна") {
       setSearchParams({});
@@ -60,9 +66,9 @@ const CitySelect = () => {
       <div className="select__box" onClick={() => setIsOpen((prev) => !prev)}>
         <p className="selected__city">{activeCity}</p>
         {isOpen ? (
-          <IoIosArrowUp color="rgb(16, 91, 16)" />
+          <IoIosArrowUp color="#4a6fa5" />
         ) : (
-          <IoIosArrowDown color="rgb(16, 91, 16)" />
+          <IoIosArrowDown color="#4a6fa5" />
         )}
       </div>
 

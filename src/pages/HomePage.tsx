@@ -1,6 +1,7 @@
 import React from 'react';
 import CategorySelect from '../components/CategorySelect/CategorySelect';
 import ProductList from '../components/ProductList/ProductList';
+import QueryInput from "../components/QueryInput/QueryInput";
 // import Form from './FormPage';
 
 //import { setActiveCity, City } from '../../features/filter';
@@ -18,12 +19,10 @@ export const HomePage: React.FC = () => (
       </h1> */}
       {/* <CategorySelect /> */}
       {/* /<SliderTheNewest /> */}
-      <div className="container">
+      {/* <div className="container">
         <ProductList />
-      </div>
-      <h1>Home page</h1>
-      <h1>Home page</h1>
-      
+      </div> */}
+      <QueryInput />
       {/* <Form /> */}
       {/* <SliderTop />
       <SliderNewBrands />

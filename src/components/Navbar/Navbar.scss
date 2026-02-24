@@ -69,13 +69,9 @@ position: fixed;
 top: 0;
 left: 0;
 right: 0;
-// background-color: #d57eeb;
-box-shadow: inset 0 0 20px rgb(16, 131, 58);
-//   color: white;
-  border: 2px solid rgb(16, 91, 16);
-  //color:rgb(177, 30, 230);
-  background-color: rgb(246, 246, 117);
-  //border: 1px solid rgb(177, 30, 230);
+box-shadow: inset 0 0 20px rgb(136, 139, 137);
+border: 2px solid darkgrey;
+background-color: #f7f7f7;
 border-radius: 0 0 200px 200px;
 height: 64px;
 
@@ -144,7 +140,7 @@ svg:hover {
 
 input::placeholder {
   font-family: 'Montserrat', sans-serif;
-  color: rgba(16, 91, 16);
+  color: #4a6fa5;
   font-size: 16px;
   font-weight: 500;
 }
@@ -152,8 +148,8 @@ input::placeholder {
 .heart-favorite {
   width: 20px;
   height: 20px;
-  fill: orange;
-  stroke: rgb(16, 91, 16);
+  fill: white;
+  stroke: #4a6fa5;
   // filter: inset 2px 2px 4px rgba(16, 91, 16, 0.5);
 
   @media (min-width: 640px) and (max-width: 1199px) {
@@ -169,6 +165,6 @@ input::placeholder {
 }
 
 .advertise:hover {
-  color: orange;
+  color: #333333;  
 }
 

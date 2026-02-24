@@ -1,31 +1,3 @@
-// add styles here
-.cards__container {
-//   display: grid;
-//   grid-template-columns: repeat(auto-fill, minmax(229px, 272px));
-//   gap: 20px;
-
-// margin-top: 40px;
-
-  display: grid;
-  //grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  justify-content: center;
-  margin-top: 40px;
-  width: 100%;
-
-  @media (min-width: 766px) and (max-width: 1199px) {
-    grid-template-columns: repeat(3, 1fr);
-}
-@media (min-width: 640px) and (max-width: 766px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-@media (min-width: 320px) and (max-width: 639px) {
-    grid-template-columns: 1fr;
-}
-}
-
 .list__heading {
 display: flex;
 // justify-content: space-between;
@@ -37,11 +9,11 @@ flex-direction: row;
 justify-content: space-between;
  }
 }
-    
+
 
  .list__top {
 font-size: 32px;
-color: black;
+color: 333333;
 }
 
 // .navbar__query {
@@ -101,9 +73,9 @@ color: black;
   color: #4a6fa5;
 }
 
-.input-wrapper:focus {
-  border: 2px solid #333333;
-}
+// .input-wrapper:focus {
+//   border: 2px solid orange;
+// }
 
 .input-icon {
   font-size: 18px;

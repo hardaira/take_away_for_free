@@ -16,11 +16,21 @@ html, body {
   min-height: 100vh;
 }
 
+body {
+  background: repeating-linear-gradient(
+    45deg,
+    #f7f7f7,
+    #f7f7f7 3px,
+    #eeeeee 3px,
+    #eeeeee 5px
+  );
+}
+
 .page {
 
   // background: linear-gradient(to bottom, light-yellow,rgb(109, 124, 193));
   // background: rgb(248, 248, 170);
-  background: white;
+  // background: rgb(173, 250, 239);
   min-height: 100vh;
   font-family: 'Montserrat', sans-serif;
   overflow-x: hidden;
@@ -45,6 +55,8 @@ html, body {
   }
 }
 
-
+h1 {
+  color: #333333;
+}
 
 
