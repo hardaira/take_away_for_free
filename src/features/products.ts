@@ -6,9 +6,12 @@ export interface Product {
   title: string;
   category: string;
   description: string;
-  location_city: string;
+  city: string;
   contact: string;
   image: string;
+  author: string;
+  userId: number;
+
 }
 
 interface ProductsState {

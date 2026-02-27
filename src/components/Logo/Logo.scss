@@ -33,6 +33,11 @@
   color: white;
   border-radius:10px;
   border: 2px solid white; 
+
+  &:hover {
+  transform: scale(1.025);
+  transition-duration: 500ms;
+  }
 }
 
 .thank {

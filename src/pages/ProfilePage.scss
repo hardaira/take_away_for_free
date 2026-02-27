@@ -9,6 +9,7 @@
   // }
 }
 .profileButton {
+  -webkit-tap-highlight-color: transparent;
   text-decoration: none;
   display: flex;
   // width: 150px;
@@ -84,6 +85,9 @@
   border: 2px solid darkgrey;
   background-color: #f7f7f7;
   color: #4a6fa5;
+  transform: scale(1.05);
+  transition-duration: 500ms;
+
 }
 
 .top-part{

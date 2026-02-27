@@ -45,19 +45,8 @@ createRoot(document.getElementById("root") as HTMLDivElement).render(
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
           <Route path="home" element={<Navigate to="/" replace />} />
-          {/* <Route path="home" element={<HomePage />} /> */}
-          {/* <Route path="/events/:city" element={<AllCategoriesPage />} /> */}
-          {/* <Route path="home" element={<Navigate to="/" replace />} /> */}
           {/* <Route path="phones">
             <Route index element={<PhonesPage />} />
-            <Route path=":itemId" element={<ProductInformationPage />} />
-          </Route> */}
-          {/* <Route path="tablets">
-            <Route index element={<TabletsPage />} />
-            <Route path=":itemId" element={<ProductInformationPage />} />
-          </Route> */}
-          {/* <Route path="accessories">
-            <Route index element={<AccessoriesPage />} />
             <Route path=":itemId" element={<ProductInformationPage />} />
           </Route> */}
           {/* <Route path="add-post" element={<InformationPage />} /> */}

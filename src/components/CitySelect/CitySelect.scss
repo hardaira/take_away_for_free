@@ -44,6 +44,11 @@ padding-block: 2px;
 //height: 32px;
 cursor: pointer;
 
+
+  &:hover {
+    color:darkgrey;
+  }
+
 }
 
 .selected__option{
@@ -52,4 +57,8 @@ cursor: pointer;
 
 .selected__city {
   color: #4a6fa5;
+}
+
+.selected__city:hover {
+  color: #333333;
 }
