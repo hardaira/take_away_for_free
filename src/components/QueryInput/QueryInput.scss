@@ -71,6 +71,8 @@ color: 333333;
   padding-left: 16px;
   font-family: 'Montserrat', sans-serif;
   color: #4a6fa5;
+
+  
 }
 
 // .input-wrapper:focus {
@@ -91,6 +93,12 @@ color: 333333;
   font-size: 16px;
   font-weight: 500;
   font-family: 'Montserrat', sans-serif;
-  color: #313237;
+  // color: #313237;
+  color: #2b4061;
   background: transparent;
+  
+}
+
+.input-wrapper:focus-within {
+  border-color: #2b4061;
 }
