@@ -60,7 +60,7 @@ export const LogInPage: React.FC = () => {
       navigate(`/${data.user.id}`);
     } catch (err) {
       console.error(err);
-      setLoginError("Server error. Please try again.");
+      setLoginError("Сервер не відповідає.");
     }
   };
 
@@ -100,7 +100,7 @@ export const LogInPage: React.FC = () => {
               </button>
             </form>
 
-            {/* {loginError && <p style={{ color: 'red' }}>{loginError}</p>} */}
+            {loginError && <p style={{ color: 'red' }}>{loginError}</p>} 
 
             <p>Немає облікового запису?</p>
             <p className="login_link" onClick={() => navigate("/registration")}>
