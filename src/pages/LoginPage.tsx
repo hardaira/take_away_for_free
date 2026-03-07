@@ -55,6 +55,8 @@ export const LoginPage: React.FC = () => {
       //   name: data.name,
       //   email: data.email,
       // });
+
+      console.log(data);
       setUser(data.user);
 
       navigate(`profile/${data.user.id}`);
