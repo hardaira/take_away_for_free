@@ -40,10 +40,10 @@ export const LoginPage: React.FC = () => {
 
       const data = await res.json();
 
-      if (!res.ok) {
-        setLoginError(data.message || "Login failed");
-        return;
-      }
+      // if (!res.ok) {
+      //   setLoginError(data.message || "Login failed");
+      //   return;
+      // }
 
       // ✅ store token
       // localStorage.setItem("accessToken", data.accessToken);
