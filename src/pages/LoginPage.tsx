@@ -70,7 +70,7 @@ export const LogInPage: React.FC = () => {
         <div className="centered">
           <div className="form__box__login">
             {/* <form onSubmit={handleLogin}> */}
-            <form className="registration__box">
+            <form className="registration__box" onSubmit={handleLogin}>
               {/* <label htmlFor="email">Email</label> */}
               <div className="input-wrapper">
                 <input
