@@ -53,7 +53,7 @@ createRoot(document.getElementById("root") as HTMLDivElement).render(
 
           <Route path="form" element={<InformationPage />} />
           <Route path="favorites" element={<FavoritesPage />} />
-          <Route path="profile" element={<ProfilePage />}>
+          <Route path="profile/:userId" element={<ProfilePage />}>
             <Route path="change-password" element={<ChangePassword />} />
             <Route path="change-email" element={<ChangeEmail />} />
             <Route path="add-post" element={<FormPage />} />
