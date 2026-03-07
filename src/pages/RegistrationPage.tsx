@@ -21,7 +21,7 @@ export const RegistrationPage: React.FC = () => {
 
     try {
       const res = await fetch(
-        "http://team-project-backend-production.up.railway.app/auth/registration",
+        "https://team-project-backend-production.up.railway.app/auth/registration",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
