@@ -13,7 +13,7 @@ type OutletContextType = {
   setUser: React.Dispatch<React.SetStateAction<User | null>>;
 };
 
-export const LogInPage: React.FC = () => {
+export const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState("");
