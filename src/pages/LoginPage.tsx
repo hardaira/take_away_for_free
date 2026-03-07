@@ -57,7 +57,8 @@ export const LoginPage: React.FC = () => {
       // });
       setUser(data.user);
 
-      navigate(`/${data.user.id}`);
+      //navigate(`/${data.user.id}`);
+      navigate(`/registration`);
     } catch (err) {
       console.error(err);
       setLoginError("Сервер не відповідає.");
