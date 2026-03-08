@@ -3,14 +3,16 @@ import { NavLink, Outlet } from 'react-router-dom';
 import TopBackLink from '../components/TopBackLink/TopBackLink';
 import cn from "classnames";
 import './ProfilePage.scss';
+import { useOutletContext } from "react-router-dom";
 export const ProfilePage: React.FC = () => {
   const [ pressed, setPressed ] = useState(false);
+  const { user, setUser } = useOutletContext<any>();
   return (
     <div className="section">
       <div className="container">
         {/* <h1>Hello, {user.name}</h1> */}
         <TopBackLink />
-        <h1>, вітаємо на сторінці профілю!</h1>
+        <h1>{user.name}, вітаємо на сторінці профілю!</h1>
         {/* <button>Вийти</button> */}
 
         <div className="profile_buttons">

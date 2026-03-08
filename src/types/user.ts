@@ -2,7 +2,7 @@ export type User = {
   id: number;
   name: string;
   email: string;
-  activated: boolean;
+  // activated: boolean;
 };
 
 export type OutletContextType = {
