@@ -28,7 +28,7 @@ export const ProfilePage: React.FC = () => {
         setUser(data);
         setLoading(false);
       });
-  }, [userId, accessToken]);
+  }, [userId, token]);
   return (
     <div className="section">
       <div className="container">
