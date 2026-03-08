@@ -12,7 +12,7 @@ export const ProfilePage: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const token = localStorage.getItem("token");
 
-  console.log(`user is ${userId}`);
+  console.log(`user is ${id}`);
   useEffect(() => {
     if (!id || !token) return;
     console.log(`accessToken is ${token}`);
