@@ -39,7 +39,7 @@ import { TestPage } from './pages/TestPage';
 
 createRoot(document.getElementById('root') as HTMLDivElement).render(
   <Provider store={store}>
-    <Router basename="/take_away_for_free">
+    <Router>
       {/* <ScrollToTop /> */}
       <Routes>
         <Route path="/" element={<App />}>
@@ -70,7 +70,7 @@ createRoot(document.getElementById('root') as HTMLDivElement).render(
             <Route path="my-posts" element={<PostsPage />} />
           </Route>
           <Route path="menu" element={<MenuPage />} />
-          <Route path="/registration" element={<RegistrationPage />} />
+          <Route path="registration" element={<RegistrationPage />} />
           <Route path="activation" element={<ActivationPage />} />
           <Route path="activation-failed" element={<ActivationFailed />} />
           <Route path="reset-password" element={<ResetPassword />} />
