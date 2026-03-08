@@ -1,12 +1,34 @@
-import React, {useState} from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import { NavLink, Outlet, useParams } from 'react-router-dom';
 import TopBackLink from '../components/TopBackLink/TopBackLink';
 import cn from "classnames";
 import './ProfilePage.scss';
 import { useOutletContext } from "react-router-dom";
 export const ProfilePage: React.FC = () => {
-  const [ pressed, setPressed ] = useState(false);
+  const { userId } = useParams<{ userId: number }>();
+  // const navigate = useNavigate();
   const { user, setUser } = useOutletContext<any>();
+
+  const [loading, setLoading] = useState(true);
+  const token = localStorage.getItem("token");
+
+  console.log(`user is ${userId}`);
+  useEffect(() => {
+    if (!userId || !token) return;
+    console.log(`accessToken is ${token}`);
+    fetch(`http://localhost:5000/users/${userId}`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      credentials: "include", // optional (only needed if cookies involved)
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setUser(data);
+        setLoading(false);
+      });
+  }, [userId, accessToken]);
   return (
     <div className="section">
       <div className="container">
