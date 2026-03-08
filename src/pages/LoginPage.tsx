@@ -72,6 +72,7 @@ export const LoginPage: React.FC = () => {
       <div className="container">
         <div className="centered">
           <div className="form__box__login">
+            <h2>Вхід</h2>
             {/* <form onSubmit={handleLogin}> */}
             <form className="registration__box" onSubmit={handleLogin}>
               {/* <label htmlFor="email">Email</label> */}
