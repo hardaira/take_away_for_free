@@ -39,7 +39,7 @@ import { TestPage } from './pages/TestPage';
 
 createRoot(document.getElementById('root') as HTMLDivElement).render(
   <Provider store={store}>
-    <Router>
+    <Router basename="/take_away_for_free">
       {/* <ScrollToTop /> */}
       <Routes>
         <Route path="/" element={<App />}>
