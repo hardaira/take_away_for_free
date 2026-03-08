@@ -57,9 +57,9 @@ export const LoginPage: React.FC = () => {
       // });
 
       console.log(data);
-      setUser(data.user);
+      setUser(data);
 
-      // navigate(`profile/${data.user.id}`);
+      navigate(`profile/${data.id}`);
       
     } catch (err) {
       console.error(err);
