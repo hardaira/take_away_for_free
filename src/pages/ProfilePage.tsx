@@ -5,7 +5,7 @@ import cn from "classnames";
 import './ProfilePage.scss';
 import { useOutletContext } from "react-router-dom";
 export const ProfilePage: React.FC = () => {
-  const { userId } = useParams<{ userId: number }>();
+  const { id } = useParams();
   // const navigate = useNavigate();
   const { user, setUser } = useOutletContext<any>();
 
@@ -14,21 +14,21 @@ export const ProfilePage: React.FC = () => {
 
   console.log(`user is ${userId}`);
   useEffect(() => {
-    if (!userId || !token) return;
+    if (!id || !token) return;
     console.log(`accessToken is ${token}`);
-    fetch(`http://localhost:5000/users/${userId}`, {
+    fetch(`https://team-project-backend-production.up.railway.app/users/${id}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
       },
-      credentials: "include", // optional (only needed if cookies involved)
+      //credentials: "include", // optional (only needed if cookies involved)
     })
       .then((res) => res.json())
       .then((data) => {
         setUser(data);
         setLoading(false);
       });
-  }, [userId, token]);
+  }, [id, token]);
   return (
     <div className="section">
       <div className="container">
