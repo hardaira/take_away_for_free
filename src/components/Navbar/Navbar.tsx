@@ -67,7 +67,7 @@ export const Navbar = () => {
         </div> */}
         {/* </div>
 <div className="navbar__rest"> */}
-        <CitySelect />
+        <CitySelect activeCity={activeCity} setActiveCity={setActiveCity} />
 
         {/* <div className="navbar__link__container">
 
@@ -98,17 +98,17 @@ export const Navbar = () => {
             badgeContent={favoriteTotalQuantity || 0}
             color="error"
             sx={{
-              '& .MuiBadge-badge': {
-                backgroundColor: '#4a6fa5',
-                fontSize: '0.5rem',
-                width: '18px',
-                height: '18px',
-                minWidth: '18px', // ensures consistency
-                borderRadius: '50%',
+              "& .MuiBadge-badge": {
+                backgroundColor: "#4a6fa5",
+                fontSize: "0.5rem",
+                width: "18px",
+                height: "18px",
+                minWidth: "18px", // ensures consistency
+                borderRadius: "50%",
                 padding: 0,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
               },
             }}
           >

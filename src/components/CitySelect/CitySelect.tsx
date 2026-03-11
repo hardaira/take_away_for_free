@@ -39,10 +39,13 @@ const cities: City[] = [
   "Чернівці",
   "Чернігів",
 ];
-
-const CitySelect = () => {
+type Props = {
+  activeCity: string;
+  setActiveCity: (city: string) => void;
+};
+const CitySelect: React.FC<Props> = ({ activeCity, setActiveCity }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const { activeCity, setActiveCity } = useOutletContext<AppContext>();
+  // const { activeCity, setActiveCity } = useOutletContext<AppContext>();
   //const [searchParams, setSearchParams] = useSearchParams();
 
   //const activeCity = searchParams.get("city") || "Вся Україна";
