@@ -43,11 +43,14 @@ const cities: City[] = [
 const CitySelect: React.FC<Props> = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
-
+  const [activeCity, setActiveCity] = useState("Вся Україна");
+  const selectedCity = localStorage.getItem("activeCity") || "Вся Україна";
+ 
+  // const activeCity = localStorage.getItem("activeCity") || "Вся Україна";
   return (
     <div className="city-select">
       <div className="select__box" onClick={() => setIsOpen((prev) => !prev)}>
-        <p className="selected__city">{activeCity}</p>
+        <p className="selected__city">{selectedCity}</p>
 
         {isOpen ? (
           <IoIosArrowUp color="#4a6fa5" />
@@ -67,8 +70,9 @@ const CitySelect: React.FC<Props> = () => {
               onClick={() => {
                 setActiveCity(city);
                 setIsOpen(false);
-                localStorage.setItem("activeCity", city);
+                
                 setSearchParams({ city });
+                localStorage.setItem("activeCity", city);
               }}
             >
               {city}

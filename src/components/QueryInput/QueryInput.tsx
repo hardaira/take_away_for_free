@@ -7,12 +7,12 @@ import './QueryInput.scss';
 export const QueryInput: React.FC = () => {
   const [query, setQuery] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
-  const activeCity = searchParams.get("city") || "Вся Україна";
+  // const activeCity = searchParams.get("city") || "Вся Україна";
   // const inputRef = useRef<HTMLInputElement>(null);
 
-  // const storedCity = localStorage.getItem("activeCity");
+  const storedCity = localStorage.getItem("activeCity");
 
-  // const activeCity = searchParams.get("city") || storedCity || "Вся Україна";
+  const activeCity = searchParams.get("city") || storedCity || "Вся Україна";
 
   // useEffect(() => {
   //   inputRef.current?.focus();
