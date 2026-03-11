@@ -22,7 +22,7 @@ import { useOutletContext } from "react-router-dom";
 export const ProductList: React.FC = () => {
   const [query, setQuery] = useState("");
   const [products, setProducts] = useState([]);
-const selectedCity = localStorage.getItem("activeCity") || "Вся Україна";
+  const selectedCity = localStorage.getItem("activeCity") || "Вся Україна";
   // const { products, setProducts, activeCity } = useOutletContext<AppContext>();
 
   useEffect(() => {
@@ -32,7 +32,12 @@ const selectedCity = localStorage.getItem("activeCity") || "Вся Україн�
           "https://team-project-backend-production.up.railway.app/products"
         );
 
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+
         const data = await res.json();
+        console.log(data);
         setProducts(data);
       } catch (err) {
         console.error(err);
@@ -40,7 +45,7 @@ const selectedCity = localStorage.getItem("activeCity") || "Вся Україн�
     };
 
     loadProducts();
-  }, [products]);
+  }, []); // <- empty array, runs once
 
   if (!products.length) {
     return <p>No products found.</p>;
