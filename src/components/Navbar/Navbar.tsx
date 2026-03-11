@@ -19,7 +19,7 @@ import { getFavoritesQuantity } from '../../features/favorites';
 import Logo from '../Logo/Logo';
 
 
-export const Navbar = ({ activeCity, setActiveCity }) => {
+export const Navbar = () => {
   // const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   //   classNames('navbar-item', { 'has-underline': isActive });
   const favoriteTotalQuantity = useSelector(
@@ -66,7 +66,7 @@ export const Navbar = ({ activeCity, setActiveCity }) => {
         </div> */}
         {/* </div>
 <div className="navbar__rest"> */}
-        <CitySelect activeCity={activeCity} setActiveCity={setActiveCity} />
+       <CitySelect activeCity={activeCity} setActiveCity={setActiveCity} />
 
         {/* <div className="navbar__link__container">
 
