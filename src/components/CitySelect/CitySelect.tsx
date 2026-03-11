@@ -1,48 +1,52 @@
-import React, { useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import type { RootState } from '../../app/store';
-// import { setActiveCity, type City } from '../../features/filterCity';
-import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
-import { useSearchParams, useParams } from 'react-router-dom';
-import { setActiveCity } from '../../features/filterCity';
-import './CitySelect.scss';
+import React, { useState } from "react";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { useOutletContext } from "react-router-dom";
+import "./CitySelect.scss";
+
+type City = string;
+
+type AppContext = {
+  activeCity: string;
+  setActiveCity: (city: string) => void;
+};
 
 const cities: City[] = [
-  'Вся Україна',
-  'Біла Церква',
-  'Бровари',
-  'Вінниця',
-  'Дніпро',
-  'Житомир',
-  'Запоріжжя',
-  'Івано-Франківськ',
-  'Кам’янець-Подільський',
-  'Київ',
-  'Краматорськ',
-  'Кривий Ріг',
-  'Луцьк',
-  'Львів',
-  'Миколаїв',
-  'Одеса',
-  'Полтава',
-  'Рівне',
-  'Суми',
-  'Тернопіль',
-  'Ужгород',
-  'Харків',
-  'Херсон',
-  'Хмельницький',
-  'Черкаси',
-  'Чернівці',
-  'Чернігів',
+  "Вся Україна",
+  "Біла Церква",
+  "Бровари",
+  "Вінниця",
+  "Дніпро",
+  "Житомир",
+  "Запоріжжя",
+  "Івано-Франківськ",
+  "Кам’янець-Подільський",
+  "Київ",
+  "Краматорськ",
+  "Кривий Ріг",
+  "Луцьк",
+  "Львів",
+  "Миколаїв",
+  "Одеса",
+  "Полтава",
+  "Рівне",
+  "Суми",
+  "Тернопіль",
+  "Ужгород",
+  "Харків",
+  "Херсон",
+  "Хмельницький",
+  "Черкаси",
+  "Чернівці",
+  "Чернігів",
 ];
 
 const CitySelect = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { activeCity, setActiveCity } = useOutletContext<AppContext>();
   //const [searchParams, setSearchParams] = useSearchParams();
 
   //const activeCity = searchParams.get("city") || "Вся Україна";
-  const activeCity = useParams();
+  // const activeCity = useParams();
   // const storedCity = localStorage.getItem("activeCity");
 
   // const activeCity = searchParams.get("city") || storedCity || "Вся Україна";
@@ -51,7 +55,6 @@ const CitySelect = () => {
   //   setIsOpen(false);
 
   //   localStorage.setItem("activeCity", city);
-
 
   //   if (city === "Вся Україна") {
   //     setSearchParams({});
@@ -83,7 +86,10 @@ const CitySelect = () => {
               className={`city__option ${
                 activeCity === city ? "selected__option" : ""
               }`}
-              onClick={() => setActiveCity(city)}
+              onClick={() => {
+                setActiveCity(city);
+                setIsOpen(false);
+              }}
             >
               {city}
             </div>

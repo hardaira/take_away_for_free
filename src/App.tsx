@@ -15,7 +15,7 @@ export const App = () => {
         <Navbar />
         <div>
           {/* <Outlet context={{ user, setUser, products, setProducts, activeCity, setActiveCity }} /> */}
-        <Outlet context={{ user, setUser }} />
+          <Outlet context={{ user, setUser, activeCity, setActiveCity }} />
         </div>
         <Footer />
       </div>
