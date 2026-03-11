@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-import { useOutletContext } from "react-router-dom";
 import "./CitySelect.scss";
 
 type City = string;
 
-type AppContext = {
+type Props = {
   activeCity: string;
   setActiveCity: (city: string) => void;
 };
@@ -39,40 +38,15 @@ const cities: City[] = [
   "Чернівці",
   "Чернігів",
 ];
-type Props = {
-  activeCity: string;
-  setActiveCity: (city: string) => void;
-};
+
 const CitySelect: React.FC<Props> = ({ activeCity, setActiveCity }) => {
   const [isOpen, setIsOpen] = useState(false);
-  // const { activeCity, setActiveCity } = useOutletContext<AppContext>();
-  //const [searchParams, setSearchParams] = useSearchParams();
-
-  //const activeCity = searchParams.get("city") || "Вся Україна";
-  // const activeCity = useParams();
-  // const storedCity = localStorage.getItem("activeCity");
-
-  // const activeCity = searchParams.get("city") || storedCity || "Вся Україна";
-
-  // const handleSelect = (city: string) => {
-  //   setIsOpen(false);
-
-  //   localStorage.setItem("activeCity", city);
-
-  //   if (city === "Вся Україна") {
-  //     setSearchParams({});
-  //   } else {
-  //     setSearchParams({ city });
-  //   }
-  // };
 
   return (
     <div className="city-select">
-      {/* <div className="select__box" onClick={() => setIsOpen((prev) => !prev)}>
-        {activeCity}
-      </div> */}
       <div className="select__box" onClick={() => setIsOpen((prev) => !prev)}>
         <p className="selected__city">{activeCity}</p>
+
         {isOpen ? (
           <IoIosArrowUp color="#4a6fa5" />
         ) : (
@@ -84,7 +58,6 @@ const CitySelect: React.FC<Props> = ({ activeCity, setActiveCity }) => {
         <div className="cities__list">
           {cities.map((city) => (
             <div
-              // className="sort__filter"
               key={city}
               className={`city__option ${
                 activeCity === city ? "selected__option" : ""
@@ -102,6 +75,8 @@ const CitySelect: React.FC<Props> = ({ activeCity, setActiveCity }) => {
     </div>
   );
 };
+
+export default CitySelect;
 
 // const CitySelect: React.FC = () => {
 //   const dispatch = useDispatch();
@@ -164,4 +139,4 @@ const CitySelect: React.FC<Props> = ({ activeCity, setActiveCity }) => {
 //   );
 // };
 
-export default CitySelect;
+//export default CitySelect;

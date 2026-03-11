@@ -19,11 +19,11 @@ import { getFavoritesQuantity } from '../../features/favorites';
 import Logo from '../Logo/Logo';
 
 
-export const Navbar = () => {
+export const Navbar = ({ activeCity, setActiveCity }) => {
   // const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   //   classNames('navbar-item', { 'has-underline': isActive });
   const favoriteTotalQuantity = useSelector(
-    (state: RootState) => state.favorites.favoriteTotalQuantity,
+    (state: RootState) => state.favorites.favoriteTotalQuantity
   );
 
   // const cartTotalQuantity = useSelector(
@@ -33,14 +33,13 @@ export const Navbar = () => {
 
   //const cartItems = useSelector((state: RootState) => state.cart.cartItems);
   const favoriteItems = useSelector(
-    (state: RootState) => state.favorites.favoriteItems,
+    (state: RootState) => state.favorites.favoriteItems
   );
   //const [isMenuOpen, setIsMenuOpen] = useState(false);
- //const [activeCity, setActiveCity] = useState('Ukraine');
+  //const [activeCity, setActiveCity] = useState('Ukraine');
   // useEffect(() => {
   //   dispatch(getTotals());
   // }, [dispatch, cartItems]);
-
 
   useEffect(() => {
     dispatch(getFavoritesQuantity());
