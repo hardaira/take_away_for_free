@@ -22,7 +22,7 @@ export const HomePage: React.FC = () => (
       {/* <div className="container">
         <ProductList />
       </div> */}
-      <QueryInput activeCity={activeCity} setActiveCity={setActiveCity} />
+      {/* <QueryInput activeCity={activeCity} setActiveCity={setActiveCity} /> */}
       {/* <div className="container">
         <ProductList />
       </div> */}
