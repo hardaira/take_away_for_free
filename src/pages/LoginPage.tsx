@@ -58,7 +58,8 @@ export const LoginPage: React.FC = () => {
 
       console.log(data);
       setUser(data);
-
+      localStorage.setItem("user", JSON.stringify(data));
+      
       navigate(`/profile/${data.id}`);
       
     } catch (err) {
