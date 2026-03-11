@@ -22,13 +22,11 @@ export const ProductList: React.FC = () => {
   useEffect(() => {
     const loadProducts = async () => {
       try {
-        const res = await fetch(
-          "https://team-project-backend-production.up.railway.app/products"
-        );
+        const res = await fetch("https://team-project-backend-production.up.railway.app/products");
 
         const data = await res.json();
 
-        setProducts(data);
+        setProducts(data.content);
         setLoading(false);
       } catch (err) {
         console.error(err);
