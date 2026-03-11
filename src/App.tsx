@@ -6,7 +6,7 @@ import { useState } from 'react';
 import type { User } from './types/user';
 export const App = () => {
   const [user, setUser] = useState<User | null>(null);
-  const [products, setProducts] = useState(null);
+  const [products, setProducts] = useState([]);
   const [activeCity, setActiveCity] = useState('Вся Україна');
 
   return (
