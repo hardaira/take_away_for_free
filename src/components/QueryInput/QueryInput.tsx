@@ -6,9 +6,8 @@ import { useSearchParams } from "react-router-dom";
 import './QueryInput.scss';
 export const QueryInput: React.FC = () => {
   const [query, setQuery] = useState('');
-  // const [searchParams, setSearchParams] = useSearchParams();
-  const [searchParams] = useSearchParams();
-  // const activeCity = searchParams.get("city") || "Вся Україна";
+  const [searchParams, setSearchParams] = useSearchParams();
+  const activeCity = searchParams.get("city") || "Вся Україна";
   // const inputRef = useRef<HTMLInputElement>(null);
 
   // const storedCity = localStorage.getItem("activeCity");
@@ -20,7 +19,7 @@ export const QueryInput: React.FC = () => {
   // }, []);
   return (
     <div className="list__heading">
-      <p className="list__top">, обирай найкращі пропозиції!</p>
+      <p className="list__top">{activeCity}, обирай найкращі пропозиції!</p>
       <div className="input-wrapper">
         <SlMagnifier className="input-icon" />
         <input
