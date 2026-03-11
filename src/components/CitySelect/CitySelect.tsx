@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 // import type { RootState } from '../../app/store';
 // import { setActiveCity, type City } from '../../features/filterCity';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useParams } from 'react-router-dom';
+import { setActiveCity } from '../../features/filterCity';
 import './CitySelect.scss';
 
 const cities: City[] = [
@@ -38,25 +39,26 @@ const cities: City[] = [
 
 const CitySelect = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [searchParams, setSearchParams] = useSearchParams();
+  //const [searchParams, setSearchParams] = useSearchParams();
 
-  // const activeCity = searchParams.get("city") || "Вся Україна";
-  const storedCity = localStorage.getItem("activeCity");
+  //const activeCity = searchParams.get("city") || "Вся Україна";
+  const activeCity = useParams();
+  // const storedCity = localStorage.getItem("activeCity");
 
-  const activeCity = searchParams.get("city") || storedCity || "Вся Україна";
+  // const activeCity = searchParams.get("city") || storedCity || "Вся Україна";
 
-  const handleSelect = (city: string) => {
-    setIsOpen(false);
+  // const handleSelect = (city: string) => {
+  //   setIsOpen(false);
 
-    localStorage.setItem("activeCity", city);
+  //   localStorage.setItem("activeCity", city);
 
 
-    if (city === "Вся Україна") {
-      setSearchParams({});
-    } else {
-      setSearchParams({ city });
-    }
-  };
+  //   if (city === "Вся Україна") {
+  //     setSearchParams({});
+  //   } else {
+  //     setSearchParams({ city });
+  //   }
+  // };
 
   return (
     <div className="city-select">
@@ -81,7 +83,7 @@ const CitySelect = () => {
               className={`city__option ${
                 activeCity === city ? "selected__option" : ""
               }`}
-              onClick={() => handleSelect(city)}
+              onClick={() => setActiveCity(city)}
             >
               {city}
             </div>

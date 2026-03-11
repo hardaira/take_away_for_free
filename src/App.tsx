@@ -6,12 +6,15 @@ import { useState } from 'react';
 import type { User } from './types/user';
 export const App = () => {
   const [user, setUser] = useState<User | null>(null);
+  const [products, setProducts] = useState(null);
+  const [activeCity, setActiveCity] = useState('Вся Україна');
+
   return (
     <>
       <div className="page">
         <Navbar />
         <div>
-          <Outlet context={{ user, setUser }} />
+          <Outlet context={{ user, setUser, products, setProducts, activeCity, setActiveCity }} />
         </div>
         <Footer />
       </div>
