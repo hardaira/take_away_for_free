@@ -42,18 +42,18 @@ export const ProductList: React.FC = () => {
     return <p>Loading...</p>;
   }
 
-  const filteredProducts = products
-    .filter((product) =>
-      product.title.toLowerCase().includes(query.toLowerCase())
-    )
-    .filter((product) => {
-      if (!selectedCity || selectedCity === "Вся Україна") return true;
-      return product.city === selectedCity;
-    });
+  // const filteredProducts = products
+  //   .filter((product) =>
+  //     product.title.toLowerCase().includes(query.toLowerCase())
+  //   )
+  //   .filter((product) => {
+  //     if (!selectedCity || selectedCity === "Вся Україна") return true;
+  //     return product.city === selectedCity;
+  //   });
 
   return (
     <div className="cards__container">
-      {filteredProducts.map((product) => (
+      {products.map((product) => (
         <div className="one__card" key={product.id}>
           <ProductCard {...product} />
         </div>
