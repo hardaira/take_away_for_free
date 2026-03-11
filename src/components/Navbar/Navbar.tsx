@@ -67,7 +67,7 @@ export const Navbar = () => {
         </div> */}
         {/* </div>
 <div className="navbar__rest"> */}
-        <CitySelect />
+        {/* <CitySelect /> */}
 
         {/* <div className="navbar__link__container">
 
