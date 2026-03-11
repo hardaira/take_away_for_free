@@ -3,6 +3,7 @@ import { ProductCard } from "../ProductCard/ProductCard";
 import "./ProductList.scss";
 import { SlMagnifier } from "react-icons/sl";
 import { useOutletContext } from "react-router-dom";
+//import products from "../../features/products";
 
 type Product = {
   id: number;
@@ -38,7 +39,7 @@ export const ProductList: React.FC = () => {
     };
 
     loadProducts();
-  }, [setProducts]);
+  }, [products]);
 
   if (!products.length) {
     return <p>No products found.</p>;

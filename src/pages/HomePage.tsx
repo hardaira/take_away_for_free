@@ -23,9 +23,9 @@ export const HomePage: React.FC = () => (
         <ProductList />
       </div> */}
       <QueryInput />
-      <div className="container">
+      {/* <div className="container">
         <ProductList />
-      </div>
+      </div> */}
       {/* <Form /> */}
       {/* <SliderTop />
       <SliderNewBrands />
