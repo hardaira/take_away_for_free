@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ProductCard } from "../ProductCard/ProductCard";
 import "./ProductList.scss";
 import { SlMagnifier } from "react-icons/sl";
-import { User } from "../../types/user";
-import products, { setProducts } from "../../features/products";
+import { useOutletContext } from "react-router-dom";
 
 type Product = {
   id: number;
@@ -13,22 +12,24 @@ type Product = {
   description: string;
 };
 
-// type Props = {
-//   user: User | null;
-// };
+type AppContext = {
+  products: Product[];
+  setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
+  activeCity: string;
+};
 
 export const ProductList: React.FC = () => {
-  //const [products, setProducts] = useState<Product[]>([]);
   const [query, setQuery] = useState("");
 
-  // const activeCity = user?.city;
+  const { products, setProducts, activeCity } = useOutletContext<AppContext>();
 
   useEffect(() => {
     const loadProducts = async () => {
       try {
         const res = await fetch(
-          "https;//team-project-backend-production.up.railway.app/products"
+          "https://team-project-backend-production.up.railway.app/products"
         );
+
         const data = await res.json();
         setProducts(data);
       } catch (err) {
@@ -37,19 +38,20 @@ export const ProductList: React.FC = () => {
     };
 
     loadProducts();
-  }, []);
+  }, [setProducts]);
 
   if (!products.length) {
     return <p>No products found.</p>;
   }
 
-  const filteredProducts = products.filter((product) =>
-    product.title.toLowerCase().includes(query.toLowerCase())
-  );
-  // .filter((product) => {
-  //   if (!activeCity || activeCity === "Вся Україна") return true;
-  //   return product.city === activeCity;
-  // });
+  const filteredProducts = products
+    .filter((product) =>
+      product.title.toLowerCase().includes(query.toLowerCase())
+    )
+    .filter((product) => {
+      if (!activeCity || activeCity === "Вся Україна") return true;
+      return product.city === activeCity;
+    });
 
   return (
     <>
