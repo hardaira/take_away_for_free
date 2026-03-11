@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import "./CitySelect.scss";
+import { useSearchParams } from "react-router-dom";
 
 type City = string;
 
@@ -41,6 +42,7 @@ const cities: City[] = [
 
 const CitySelect: React.FC<Props> = ({ activeCity, setActiveCity }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   return (
     <div className="city-select">
@@ -65,6 +67,7 @@ const CitySelect: React.FC<Props> = ({ activeCity, setActiveCity }) => {
               onClick={() => {
                 setActiveCity(city);
                 setIsOpen(false);
+                setSearchParams({ city });
               }}
             >
               {city}
