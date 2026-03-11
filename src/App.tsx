@@ -7,15 +7,15 @@ import type { User } from './types/user';
 export const App = () => {
   const [user, setUser] = useState<User | null>(null);
   const [products, setProducts] = useState([]);
-  const [activeCity, setActiveCity] = useState('Вся Україна');
+  // const [activeCity, setActiveCity] = useState('Вся Україна');
 
   return (
     <>
       <div className="page">
-        <Navbar activeCity={activeCity} setActiveCity={setActiveCity} />
+        <Navbar />
         <div>
           {/* <Outlet context={{ user, setUser, products, setProducts, activeCity, setActiveCity }} /> */}
-          <Outlet context={{ user, setUser, activeCity, setActiveCity }} />
+          <Outlet context={{ user, setUser }} />
         </div>
         <Footer />
       </div>

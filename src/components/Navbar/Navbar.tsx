@@ -66,7 +66,7 @@ export const Navbar = () => {
         </div> */}
         {/* </div>
 <div className="navbar__rest"> */}
-       <CitySelect activeCity={activeCity} setActiveCity={setActiveCity} />
+       <CitySelect />
 
         {/* <div className="navbar__link__container">
 

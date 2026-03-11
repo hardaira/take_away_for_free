@@ -40,7 +40,7 @@ const cities: City[] = [
   "Чернігів",
 ];
 
-const CitySelect: React.FC<Props> = ({ activeCity, setActiveCity }) => {
+const CitySelect: React.FC<Props> = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -67,6 +67,7 @@ const CitySelect: React.FC<Props> = ({ activeCity, setActiveCity }) => {
               onClick={() => {
                 setActiveCity(city);
                 setIsOpen(false);
+                localStorage.setItem("activeCity", city);
                 setSearchParams({ city });
               }}
             >
