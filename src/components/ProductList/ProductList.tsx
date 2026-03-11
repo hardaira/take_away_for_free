@@ -34,7 +34,7 @@ export const ProductList: React.FC = () => {
     };
 
     loadProducts();
-  }, []);
+  });
 
   if (loading) {
     return <p>Loading...</p>;
