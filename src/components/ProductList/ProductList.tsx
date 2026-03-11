@@ -4,6 +4,63 @@ import "./ProductList.scss";
 import { SlMagnifier } from "react-icons/sl";
 import { useOutletContext } from "react-router-dom";
 //import products from "../../features/products";
+type Product = {
+  id: number;
+  title: string;
+  city: string;
+  category: string;
+  description: string;
+};
+
+export const ProductList: React.FC = () => {
+  const [query, setQuery] = useState("");
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  const selectedCity = localStorage.getItem("activeCity") || "Вся Україна";
+
+  useEffect(() => {
+    const loadProducts = async () => {
+      try {
+        const res = await fetch(
+          "https://team-project-backend-production.up.railway.app/products"
+        );
+
+        const data = await res.json();
+
+        setProducts(data);
+        setLoading(false);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    loadProducts();
+  }, []);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  const filteredProducts = products
+    .filter((product) =>
+      product.title.toLowerCase().includes(query.toLowerCase())
+    )
+    .filter((product) => {
+      if (!selectedCity || selectedCity === "Вся Україна") return true;
+      return product.city === selectedCity;
+    });
+
+  return (
+    <div className="cards__container">
+      {filteredProducts.map((product) => (
+        <div className="one__card" key={product.id}>
+          <ProductCard {...product} />
+        </div>
+      ))}
+    </div>
+  );
+};
 
 // type Product = {
 //   id: number;
@@ -19,79 +76,79 @@ import { useOutletContext } from "react-router-dom";
 //   activeCity: string;
 // };
 
-export const ProductList: React.FC = () => {
-  const [query, setQuery] = useState("");
-  const [products, setProducts] = useState([]);
-  const selectedCity = localStorage.getItem("activeCity") || "Вся Україна";
-  // const { products, setProducts, activeCity } = useOutletContext<AppContext>();
+// export const ProductList: React.FC = () => {
+//   const [query, setQuery] = useState("");
+//   const [products, setProducts] = useState([]);
+//   const selectedCity = localStorage.getItem("activeCity") || "Вся Україна";
+//   // const { products, setProducts, activeCity } = useOutletContext<AppContext>();
 
-  useEffect(() => {
-    const loadProducts = async () => {
-      try {
-        const res = await fetch(
-          "https://team-project-backend-production.up.railway.app/products"
-        );
+//   useEffect(() => {
+//     const loadProducts = async () => {
+//       try {
+//         const res = await fetch(
+//           "https://team-project-backend-production.up.railway.app/products"
+//         );
 
-        if (!res.ok) {
-          throw new Error(`HTTP error! status: ${res.status}`);
-        }
+//         if (!res.ok) {
+//           throw new Error(`HTTP error! status: ${res.status}`);
+//         }
 
-        const data = await res.json();
-        console.log(data);
-        setProducts(data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
+//         const data = await res.json();
+//         console.log(data);
+//         setProducts(data);
+//       } catch (err) {
+//         console.error(err);
+//       }
+//     };
 
-    loadProducts();
-  }, []); // <- empty array, runs once
+//     loadProducts();
+//   }, []); // <- empty array, runs once
 
-  if (!products.length) {
-    return <p>No products found.</p>;
-  }
+//   if (!products.length) {
+//     return <p>No products found.</p>;
+//   }
 
-  const filteredProducts = products
-    .filter((product) =>
-      product.title.toLowerCase().includes(query.toLowerCase())
-    )
-    .filter((product) => {
-      if (!selectedCity || selectedCity === "Вся Україна") return true;
-      return product.city === selectedCity;
-    });
+//   const filteredProducts = products
+//     .filter((product) =>
+//       product.title.toLowerCase().includes(query.toLowerCase())
+//     )
+//     .filter((product) => {
+//       if (!selectedCity || selectedCity === "Вся Україна") return true;
+//       return product.city === selectedCity;
+//     });
 
-  return (
-    <>
-      {/* <div className="list__heading">
-        <p className="list__top">
-          {activeCity || "Вся Україна"}, обирай найкращі пропозиції!
-        </p>
+//   return (
+//     <>
+//       {/* <div className="list__heading">
+//         <p className="list__top">
+//           {activeCity || "Вся Україна"}, обирай найкращі пропозиції!
+//         </p>
 
-        <div className="input-wrapper">
-          <SlMagnifier className="input-icon" />
+//         <div className="input-wrapper">
+//           <SlMagnifier className="input-icon" />
 
-          <input
-            type="text"
-            className="input-style query"
-            placeholder="Шукай за назвою"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-        </div>
-      </div> */}
+//           <input
+//             type="text"
+//             className="input-style query"
+//             placeholder="Шукай за назвою"
+//             value={query}
+//             onChange={(e) => setQuery(e.target.value)}
+//           />
+//         </div>
+//       </div> */}
 
-      <div className="cards__container">
-        {filteredProducts.map((product) => (
-          <div className="one__card" key={product.id}>
-            <ProductCard {...product} />
-          </div>
-        ))}
-      </div>
-    </>
-  );
-};
+//       <div className="cards__container">
+//         {filteredProducts.map((product) => (
+//           <div className="one__card" key={product.id}>
+//             <ProductCard {...product} />
+//           </div>
+//         ))}
+//       </div>
+//     </>
+//   );
+// };
 
-export default ProductList;
+// export default ProductList;
 // import React, { useEffect, useState } from 'react';
 // import { useSelector, useDispatch } from 'react-redux';
 // import { type AppDispatch, type RootState } from '../../app/store';
@@ -160,4 +217,4 @@ export default ProductList;
 //   );
 // };
 
-// export default ProductList;
+ export default ProductList;
