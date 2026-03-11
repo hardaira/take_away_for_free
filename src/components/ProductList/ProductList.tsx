@@ -5,24 +5,25 @@ import { SlMagnifier } from "react-icons/sl";
 import { useOutletContext } from "react-router-dom";
 //import products from "../../features/products";
 
-type Product = {
-  id: number;
-  title: string;
-  city: string;
-  category: string;
-  description: string;
-};
+// type Product = {
+//   id: number;
+//   title: string;
+//   city: string;
+//   category: string;
+//   description: string;
+// };
 
-type AppContext = {
-  products: Product[];
-  setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
-  activeCity: string;
-};
+// type AppContext = {
+//   products: Product[];
+//   setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
+//   activeCity: string;
+// };
 
 export const ProductList: React.FC = () => {
   const [query, setQuery] = useState("");
-
-  const { products, setProducts, activeCity } = useOutletContext<AppContext>();
+  const [products, setProducts] = useState([]);
+const selectedCity = localStorage.getItem("activeCity") || "Вся Україна";
+  // const { products, setProducts, activeCity } = useOutletContext<AppContext>();
 
   useEffect(() => {
     const loadProducts = async () => {
@@ -50,13 +51,13 @@ export const ProductList: React.FC = () => {
       product.title.toLowerCase().includes(query.toLowerCase())
     )
     .filter((product) => {
-      if (!activeCity || activeCity === "Вся Україна") return true;
-      return product.city === activeCity;
+      if (!selectedCity || selectedCity === "Вся Україна") return true;
+      return product.city === selectedCity;
     });
 
   return (
     <>
-      <div className="list__heading">
+      {/* <div className="list__heading">
         <p className="list__top">
           {activeCity || "Вся Україна"}, обирай найкращі пропозиції!
         </p>
@@ -72,7 +73,7 @@ export const ProductList: React.FC = () => {
             onChange={(e) => setQuery(e.target.value)}
           />
         </div>
-      </div>
+      </div> */}
 
       <div className="cards__container">
         {filteredProducts.map((product) => (

@@ -25,7 +25,7 @@ interface ProductCardProps {
   title: string;
   category: string;
   description: string;
-  location_city: string;
+  city: string;
   contact: string;
   image: string;
   showFullDetails?: boolean;
@@ -40,7 +40,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   title,
   category,
   description,
-  location_city,
+  city,
   contact,
   image,
   showFullDetails = false,
@@ -52,7 +52,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     title,
     category,
     description,
-    location_city,
+    city,
     contact,
     image,
     // showFullDetails: false,
@@ -109,7 +109,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           <HiOutlineLocationMarker
             style={{ width: '14px', height: '14px', color: '#A2A5A6' }}
           />
-          <span className="product__location">{location_city}</span>
+          <span className="product__location">{city}</span>
         </p>
         {/* <p className="info">
           <HiOutlineCalendar
