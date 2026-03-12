@@ -17,14 +17,17 @@ import { getFavoritesQuantity } from '../../features/favorites';
 //import { getTotals } from '../../features/cart';
 import { useOutletContext } from "react-router-dom";
 import Logo from '../Logo/Logo';
-
+type OutletContextType = {
+  user: { id: number } | null;
+  setUser: (user: { id: number } | null) => void;
+};
 
 export const Navbar = () => {
   // const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   //   classNames('navbar-item', { 'has-underline': isActive });
-
-   const userString = localStorage.getItem("user");
-   const user = userString ? JSON.parse(userString) : null;
+const { user, setUser } = useOutletContext<OutletContextType>();
+  //  const userString = localStorage.getItem("user");
+  //  const user = userString ? JSON.parse(userString) : null;
   //const { user, setUser } = useOutletContext<any>();
   //const { user } = useOutletContext<any>();
   const favoriteTotalQuantity = useSelector(
@@ -53,7 +56,7 @@ export const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    //setUser(null);
+    setUser(null);
   };
 
   return (
