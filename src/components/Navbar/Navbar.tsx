@@ -23,9 +23,9 @@ export const Navbar = () => {
   // const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   //   classNames('navbar-item', { 'has-underline': isActive });
 
-  const userString = localStorage.getItem("user");
-  const user = userString ? JSON.parse(userString) : null;
-  
+  // const userString = localStorage.getItem("user");
+  // const user = userString ? JSON.parse(userString) : null;
+  const { user, setUser } = useOutletContext<any>();
   //const { user } = useOutletContext<any>();
   const favoriteTotalQuantity = useSelector(
     (state: RootState) => state.favorites.favoriteTotalQuantity
@@ -50,6 +50,12 @@ export const Navbar = () => {
     dispatch(getFavoritesQuantity());
   }, [dispatch, favoriteItems]);
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    setUser(null);
+  };
+
   return (
     <>
       <nav className="navbar">
@@ -71,7 +77,7 @@ export const Navbar = () => {
         </div> */}
         {/* </div>
 <div className="navbar__rest"> */}
-       <CitySelect />
+        <CitySelect />
 
         {/* <div className="navbar__link__container">
 
@@ -156,9 +162,15 @@ export const Navbar = () => {
           Профіль
         </NavLink>
 
-        <NavLink to="/login" className="advertise">
-          Увійти
-        </NavLink>
+        {user ? (
+          <NavLink to="/login" className="advertise" onClick={handleLogout}>
+            Вийти
+          </NavLink>
+        ) : (
+          <NavLink to="/login" className="advertise">
+            Увійти
+          </NavLink>
+        )}
 
         <NavLink to="/menu" className="burger-menu">
           <LuMenu />
