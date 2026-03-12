@@ -22,8 +22,8 @@ import Logo from '../Logo/Logo';
 export const Navbar = () => {
   // const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   //   classNames('navbar-item', { 'has-underline': isActive });
-  // const user = localStorage.getItem('user');
-  const { user } = useOutletContext<any>();
+  const user = localStorage.getItem('user');
+  //const { user } = useOutletContext<any>();
   const favoriteTotalQuantity = useSelector(
     (state: RootState) => state.favorites.favoriteTotalQuantity
   );
