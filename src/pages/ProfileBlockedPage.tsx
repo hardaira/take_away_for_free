@@ -25,4 +25,4 @@ export const ProfileBlockedPage: React.FC = () => {
   );
 };
 
-export default InformationPage;
+export default ProfileBlockedPage;
