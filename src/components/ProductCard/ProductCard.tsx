@@ -86,10 +86,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
   return (
     <div className="product__card">
-      <NavLink
-        to={`/${category}/${id}`}
-        className="card-image"
-      >
+      <NavLink to={`/${category}/${id}`} className="card-image">
         <img
           className="product__card__img"
           src={`./${image}`}
@@ -101,13 +98,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <h2 className="product__title ">{title}</h2>
         <p className="info">
           <HiOutlineBookmark
-            style={{ width: '14px', height: '14px', color: '#A2A5A6' }}
+            style={{ width: "14px", height: "14px", color: "#A2A5A6" }}
           />
           <span className="product__location">{category}</span>
         </p>
         <p className="info">
           <HiOutlineLocationMarker
-            style={{ width: '14px', height: '14px', color: '#A2A5A6' }}
+            style={{ width: "14px", height: "14px", color: "#A2A5A6" }}
           />
           <span className="product__location">{city}</span>
         </p>
@@ -128,7 +125,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           <>
             <p className="info">
               <HiOutlineUserCircle
-                style={{ width: '14px', height: '14px', color: '#A2A5A6' }}
+                style={{ width: "14px", height: "14px", color: "#A2A5A6" }}
               />
               <span className="places__left">{contact}</span>
             </p>
@@ -152,10 +149,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               >
                 <HiOutlineHeart
                   style={{
-                    width: '20px',
-                    height: '20px',
-                    fill: 'rgb(16, 91, 16)',
-                    stroke: 'rgb(16, 91, 16)',
+                    width: "20px",
+                    height: "20px",
+                    fill: "#4a6fa5",
+                    stroke: "#4a6fa5",
                   }}
                 />
               </button>
@@ -166,10 +163,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               >
                 <HiOutlineHeart
                   style={{
-                    width: '20px',
-                    height: '20px',
-                    fill: 'white',
-                    stroke: 'white',
+                    width: "20px",
+                    height: "20px",
+                    fill: "white",
+                    stroke: "white",
                   }}
                 />
               </button>
@@ -215,10 +212,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               >
                 <HiOutlinePencil
                   style={{
-                    width: '20px',
-                    height: '20px',
+                    width: "20px",
+                    height: "20px",
                     // fill: 'rgb(16, 91, 16)',
-                    stroke: 'rgb(16, 91, 16)',
+                    stroke: "rgb(16, 91, 16)",
                   }}
                 />
               </button>
@@ -242,10 +239,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               >
                 <HiOutlineArchiveBoxXMark
                   style={{
-                    width: '20px',
-                    height: '20px',
+                    width: "20px",
+                    height: "20px",
                     // fill: 'rgb(16, 91, 16)',
-                    stroke: 'rgb(16, 91, 16)',
+                    stroke: "rgb(16, 91, 16)",
                   }}
                 />
               </button>
