@@ -149,7 +149,7 @@ export const Navbar = () => {
           Додати оголошення
         </NavLink>
 
-        <NavLink to={`/profile/${user?.id}`}` className="advertise">
+        <NavLink to={`/profile/${user?.id}`} className="advertise">
           Профіль
         </NavLink>
 
