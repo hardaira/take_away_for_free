@@ -23,9 +23,9 @@ export const Navbar = () => {
   // const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   //   classNames('navbar-item', { 'has-underline': isActive });
 
-  // const userString = localStorage.getItem("user");
-  // const user = userString ? JSON.parse(userString) : null;
-  const { user, setUser } = useOutletContext<any>();
+   const userString = localStorage.getItem("user");
+   const user = userString ? JSON.parse(userString) : null;
+  //const { user, setUser } = useOutletContext<any>();
   //const { user } = useOutletContext<any>();
   const favoriteTotalQuantity = useSelector(
     (state: RootState) => state.favorites.favoriteTotalQuantity
@@ -53,7 +53,7 @@ export const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    setUser(null);
+    //setUser(null);
   };
 
   return (
@@ -162,7 +162,7 @@ export const Navbar = () => {
           Профіль
         </NavLink>
 
-        {user ? (
+        { user ? (
           <NavLink to="/login" className="advertise" onClick={handleLogout}>
             Вийти
           </NavLink>
