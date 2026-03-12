@@ -15,19 +15,19 @@ import CitySelect from '../CitySelect/CitySelect';
 //import CityFilter from '../CityFilter/CityFilter';
 import { getFavoritesQuantity } from '../../features/favorites';
 //import { getTotals } from '../../features/cart';
-import { useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import Logo from '../Logo/Logo';
-type OutletContextType = {
-  user: { id: number } | null;
-  setUser: (user: { id: number } | null) => void;
-};
+// type OutletContextType = {
+//   user: { id: number } | null;
+//   setUser: (user: { id: number } | null) => void;
+// };
 
 export const Navbar = () => {
   // const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   //   classNames('navbar-item', { 'has-underline': isActive });
-const { user, setUser } = useOutletContext<OutletContextType>();
-  //  const userString = localStorage.getItem("user");
-  //  const user = userString ? JSON.parse(userString) : null;
+  //const { user, setUser } = useOutletContext<OutletContextType>();
+   const userString = localStorage.getItem("user");
+   const user = userString ? JSON.parse(userString) : null;
   //const { user, setUser } = useOutletContext<any>();
   //const { user } = useOutletContext<any>();
   const favoriteTotalQuantity = useSelector(
@@ -52,11 +52,12 @@ const { user, setUser } = useOutletContext<OutletContextType>();
   useEffect(() => {
     dispatch(getFavoritesQuantity());
   }, [dispatch, favoriteItems]);
-
+const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    setUser(null);
+    //setUser(null);
+    navigate(`/login`);
   };
 
   return (
@@ -165,7 +166,7 @@ const { user, setUser } = useOutletContext<OutletContextType>();
           Профіль
         </NavLink>
 
-        { user ? (
+        {user ? (
           <NavLink to="/login" className="advertise" onClick={handleLogout}>
             Вийти
           </NavLink>
