@@ -162,9 +162,15 @@ const navigate = useNavigate();
           Додати оголошення
         </NavLink>
 
-        <NavLink to={`/profile/${user?.id}`} className="advertise">
-          Профіль
-        </NavLink>
+        {user ? (
+          <NavLink to={`/profile/${user?.id}`} className="advertise">
+            Профіль
+          </NavLink>
+        ) : (
+          <NavLink to="/profile-blocked" className="advertise">
+            Профіль
+          </NavLink>
+        )}
 
         {user ? (
           <NavLink to="/login" className="advertise" onClick={handleLogout}>

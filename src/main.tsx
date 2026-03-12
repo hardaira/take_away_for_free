@@ -34,12 +34,13 @@ import { ResetUserPassword } from "./pages/ResetUserPassword";
 import { MenuPage } from "./pages/MenuPage";
 import { ProductPage } from "./pages/ProductPage";
 import { TestPage } from "./pages/TestPage";
+import { ProfileBlockedPage } from "./pages/ProfileBlockedPage";
 // import { ProductInformationPage } from './pages/ProductInformationPage';
 // import ScrollToTop from './components/ScrollToTop';
 
 createRoot(document.getElementById("root") as HTMLDivElement).render(
   <Provider store={store}>
-    <Router >
+    <Router>
       {/* <ScrollToTop /> */}
       <Routes>
         <Route path="/" element={<App />}>
@@ -59,6 +60,7 @@ createRoot(document.getElementById("root") as HTMLDivElement).render(
             <Route path="add-post" element={<FormPage />} />
             <Route path="my-posts" element={<PostsPage />} />
           </Route>
+          <Route path="profile-blocked" element={<ProfileBlockedPage />} />
           <Route path="menu" element={<MenuPage />} />
           <Route path="registration" element={<RegistrationPage />} />
           <Route path="activation" element={<ActivationPage />} />
