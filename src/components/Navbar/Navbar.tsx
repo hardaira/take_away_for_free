@@ -22,7 +22,7 @@ import Logo from '../Logo/Logo';
 //   setUser: (user: { id: number } | null) => void;
 // };
 
-export const Navbar = () => {
+export const Navbar = ({setUser}) => {
   // const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   //   classNames('navbar-item', { 'has-underline': isActive });
   //const { user, setUser } = useOutletContext<OutletContextType>();
@@ -56,7 +56,7 @@ const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    //setUser(null);
+    setUser(null);
     navigate(`/login`);
   };
 
