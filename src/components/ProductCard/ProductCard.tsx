@@ -168,8 +168,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                   style={{
                     width: '20px',
                     height: '20px',
-                    fill: 'orange',
-                    stroke: 'orange',
+                    fill: 'white',
+                    stroke: 'white',
                   }}
                 />
               </button>
