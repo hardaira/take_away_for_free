@@ -15,13 +15,15 @@ import CitySelect from '../CitySelect/CitySelect';
 //import CityFilter from '../CityFilter/CityFilter';
 import { getFavoritesQuantity } from '../../features/favorites';
 //import { getTotals } from '../../features/cart';
-
+import { useOutletContext } from "react-router-dom";
 import Logo from '../Logo/Logo';
 
 
 export const Navbar = () => {
   // const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   //   classNames('navbar-item', { 'has-underline': isActive });
+  // const user = localStorage.getItem('user');
+  const { user } = useOutletContext<any>();
   const favoriteTotalQuantity = useSelector(
     (state: RootState) => state.favorites.favoriteTotalQuantity
   );
@@ -147,7 +149,7 @@ export const Navbar = () => {
           Додати оголошення
         </NavLink>
 
-        <NavLink to="/profile" className="advertise">
+        <NavLink to={`/profile/${user?.id}`}` className="advertise">
           Профіль
         </NavLink>
 
