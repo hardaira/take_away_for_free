@@ -167,7 +167,7 @@ const navigate = useNavigate();
             Профіль
           </NavLink>
         ) : (
-          <NavLink to="/profile-blocked" className="advertise">
+          <NavLink to="/profile/undefined" className="advertise">
             Профіль
           </NavLink>
         )}

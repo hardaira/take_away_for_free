@@ -60,7 +60,7 @@ createRoot(document.getElementById("root") as HTMLDivElement).render(
             <Route path="add-post" element={<FormPage />} />
             <Route path="my-posts" element={<PostsPage />} />
           </Route>
-          <Route path="profile-blocked" element={<ProfileBlockedPage />} />
+          <Route path="profile/undefined" element={<ProfileBlockedPage />} />
           <Route path="menu" element={<MenuPage />} />
           <Route path="registration" element={<RegistrationPage />} />
           <Route path="activation" element={<ActivationPage />} />
