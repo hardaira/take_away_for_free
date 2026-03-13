@@ -35,6 +35,7 @@ import { MenuPage } from "./pages/MenuPage";
 import { ProductPage } from "./pages/ProductPage";
 import { TestPage } from "./pages/TestPage";
 import { ProfileBlockedPage } from "./pages/ProfileBlockedPage";
+import DetailsBlockedPage from "./pages/DetailsBlockedPage";
 // import { ProductInformationPage } from './pages/ProductInformationPage';
 // import ScrollToTop from './components/ScrollToTop';
 
@@ -75,6 +76,7 @@ createRoot(document.getElementById("root") as HTMLDivElement).render(
 
           {/* <Route path="cart" element={<CartPage />} /> */}
           <Route path="product/:productId" element={<ProductPage />} />
+          <Route path="details" element={<DetailsBlockedPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
