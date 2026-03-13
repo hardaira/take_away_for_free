@@ -57,6 +57,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     image,
     // showFullDetails: false,
   };
+
+  const userString = localStorage.getItem("user");
+  const user = userString ? JSON.parse(userString) : null;
   
   const navigate = useNavigate();
   const [inProfile, _setInProfile] = useState(false);
