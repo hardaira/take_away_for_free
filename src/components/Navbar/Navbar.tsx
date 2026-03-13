@@ -140,7 +140,7 @@ const navigate = useNavigate();
         </NavLink>
 
         {/* <NavLink to="/form" className="advertise">
-          {/* <Badge
+           <Badge
               //badgeContent={cartTotalQuantity}
               color="error"
               sx={{
@@ -158,7 +158,7 @@ const navigate = useNavigate();
               }}
             >
               <LuShoppingBag size={18} />
-            </Badge> */}
+            </Badge> 
           Додати оголошення
         </NavLink> */}
 
