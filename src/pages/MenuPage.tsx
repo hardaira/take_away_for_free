@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import TopBackLink from '../components/TopBackLink/TopBackLink';
 import { useNavigate, useOutletContext } from "react-router-dom";
 import './Menu.scss';
-export const MenuPage: React.FC = () => {
+export const MenuPage: React.FC = ({setUser}) => {
   const userString = localStorage.getItem("user");
   const user = userString ? JSON.parse(userString) : null;
   //const { user, setUser } = useOutletContext<any>();
