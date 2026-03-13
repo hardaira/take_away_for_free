@@ -99,14 +99,14 @@ export const LoginPage: React.FC = () => {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
-                <p className="rule">Мінімум 8 знаків</p>
               </div>
+              <p className="rule">Мінімум 8 знаків</p>
               <button type="submit" className="loginButton">
                 Підтвердити
               </button>
             </form>
 
-            {loginError && <p style={{ color: 'red' }}>{loginError}</p>} 
+            {loginError && <p style={{ color: "red" }}>{loginError}</p>}
 
             <p>Немає облікового запису?</p>
             <p className="login_link" onClick={() => navigate("/registration")}>
