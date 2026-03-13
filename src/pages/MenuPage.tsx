@@ -6,7 +6,7 @@ import './Menu.scss';
 export const MenuPage: React.FC = () => {
   // const userString = localStorage.getItem("user");
   // const user = userString ? JSON.parse(userString) : null;
-  const [ user, setUser ] = useOutletContext<any>();
+  const { user, setUser } = useOutletContext<any>();
 const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem("token");
