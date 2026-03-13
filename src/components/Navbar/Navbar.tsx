@@ -139,7 +139,7 @@ const navigate = useNavigate();
           </Badge>
         </NavLink>
 
-        <NavLink to="/form" className="advertise">
+        {/* <NavLink to="/form" className="advertise">
           {/* <Badge
               //badgeContent={cartTotalQuantity}
               color="error"
@@ -160,9 +160,9 @@ const navigate = useNavigate();
               <LuShoppingBag size={18} />
             </Badge> */}
           Додати оголошення
-        </NavLink>
+        </NavLink> */}
 
-        {user ? (
+        {/* {user ? (
           <NavLink to={`/profile/${user?.id}`} className="advertise">
             Профіль
           </NavLink>
@@ -170,7 +170,19 @@ const navigate = useNavigate();
           <NavLink to="/profile/undefined" className="advertise">
             Профіль
           </NavLink>
-        )}
+        )} */}
+        <NavLink
+          to={user ? `/profile/${user.id}/add-post` : "/form"}
+          className="advertise"
+        >
+          Додати оголошення
+        </NavLink>
+        <NavLink
+          to={`/profile/${user?.id ?? "undefined"}`}
+          className="advertise"
+        >
+          Профіль
+        </NavLink>
 
         {user ? (
           <NavLink to="/login" className="advertise" onClick={handleLogout}>
