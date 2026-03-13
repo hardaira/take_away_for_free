@@ -89,18 +89,22 @@ export const LoginPage: React.FC = () => {
                 />
               </div>
               {/* <label htmlFor="password">Пароль</label> */}
-              <div className="input-wrapper">
-                <input
-                  // id="password"
-                  type="password"
-                  className="input-style"
-                  placeholder="Введіть свій пароль"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
+
+              <div className="input-group">
+                <div className="input-wrapper">
+                  <input
+                    // id="password"
+                    type="password"
+                    className="input-style"
+                    placeholder="Введіть свій пароль"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                </div>
+                <p className="rule">Мінімум 8 знаків</p>
               </div>
-              <p className="rule">Мінімум 8 знаків</p>
+
               <button type="submit" className="loginButton">
                 Підтвердити
               </button>
