@@ -19,20 +19,22 @@ const navigate = useNavigate();
     <div className="section">
       <div className="container menu">
         <TopBackLink />
-        <Link to="/form" className="in_menu">
+        <Link
+          to={user ? `/profile/${user.id}/add-post` : "/form"}
+          className="in_menu"
+        >
           Додати оголошення
         </Link>
-
-        <Link to="/profile" className="in_menu">
+        <Link to={`/profile/${user?.id ?? "undefined"}`} className="in_menu">
           Профіль
         </Link>
 
         {user ? (
-          <Link to="/login" className="advertise" onClick={handleLogout}>
+          <Link to="/login" className="in_menu" onClick={handleLogout}>
             Вийти
           </Link>
         ) : (
-          <Link to="/login" className="advertise">
+          <Link to="/login" className="in_menu">
             Увійти
           </Link>
         )}
