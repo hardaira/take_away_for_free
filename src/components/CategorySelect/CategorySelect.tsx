@@ -3,17 +3,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from '../../app/store';
 import { setActiveCategory, type Category } from '../../features/filterCategory';
 // import { setActiveCategory } from '../../features/filterCategory';
-// import { useSearchParams, useParams } from 'react-router-dom';
+import { useSearchParams, useParams } from 'react-router-dom';
 import './CategorySelect.scss';
 // import { NavLink } from 'react-router-dom';
 
-export type Category =
-  | "Їжа"
-  | "Меблі"
-  | "Товари для дітей"
-  | "Одяг"
-  | "Товари для дому";
+type Category = string;
 
+const categories: Category[] = [
+  "Їжа",
+  "Меблі",
+  "Товари для дітей",
+  "Одяг",
+  "Товари для дому",
+];
 // const categoryBackgrounds: Record<Category, string> = {
 //   // Театр: './category__images/theatre.jpg',
 //   // Кіно: './category__images/cinema.jpg',
@@ -74,12 +76,7 @@ const CategorySelect: React.FC = () => {
   return (
     <section>
       <div className="category__select">
-        {/* <div className="slider__heading">
-          <h2 className="text_above_slider">Обери категорію</h2>
-          <NavLink to={`/events/${chosenCity}`} className="info-button">
-            Всі категорії
-          </NavLink>
-        </div> */}
+        
 
         <div className="filter__category">
           {categories.map(category => (
@@ -87,7 +84,7 @@ const CategorySelect: React.FC = () => {
               key={category}
               //className="category__option"
               className={`category__option ${activeCategory.includes(category) ? 'category__option__selected' : ''}`}
-              onClick={e => handleCategoryChange(category, e)}
+              //onClick={e => handleCategoryChange(category, e)}
               // style={{
               //   backgroundImage: `url(${categoryBackgrounds[category]})`,
               //   backgroundSize: 'cover',

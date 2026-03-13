@@ -22,6 +22,7 @@ export const HomePage: React.FC = () => (
       {/* <div className="container">
         <ProductList />
       </div> */}
+      <CategorySelect />
        <QueryInput />
       <div className="container">
         <ProductList />

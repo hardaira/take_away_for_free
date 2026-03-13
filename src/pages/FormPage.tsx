@@ -1,5 +1,6 @@
 import './FormPage.scss';
 import { useState } from 'react';
+import { setProducts } from '../features/products';
 // import { useNavigate } from 'react-router-dom';
 // import { useSelector, useDispatch } from 'react-redux';
 // import { selectAllProducts, addProduct } from '../features/products';
@@ -10,9 +11,10 @@ export const FormPage: React.FC = () => {
   const [newDescription, setNewDescription] = useState('');
   const [newContact, setNewContact] = useState('');
   const [newCategory, setNewCategory] = useState('');
-  const [newLocation, setNewLocation] = useState('');
+  const [newCity, setNewCity] = useState('');
   const [newPhoto, setNewPhoto] = useState<File | null>(null);
-
+  const [error, setError] = useState("");
+  
   // const allProducts = useSelector(selectAllProducts);
   // const navigate = useNavigate();
   // import axios from 'axios';
@@ -22,62 +24,133 @@ export const FormPage: React.FC = () => {
   const [warning, setWarning] = useState('');
   const [_loading, setLoading] = useState(false);
 
-  const handleAddProduct = async (e: React.FormEvent) => {
-    e.preventDefault();
+  // const handleAddProduct = async (e: React.FormEvent) => {
+  //   e.preventDefault();
 
-    setFail('');
-    setSuccess('');
-    setWarning('');
+  //   setFail('');
+  //   setSuccess('');
+  //   setWarning('');
 
-    if (
-      !newTitle.trim() ||
-      !newDescription.trim() ||
-      !newLocation.trim() ||
-      !newContact.trim() ||
-      !newPhoto
-    ) {
-      setWarning('Потрібно заповнити всі поля');
-      return;
-    }
+  //   if (
+  //     !newTitle.trim() ||
+  //     !newDescription.trim() ||
+  //     !newLocation.trim() ||
+  //     !newContact.trim() ||
+  //     !newPhoto
+  //   ) {
+  //     setWarning('Потрібно заповнити всі поля');
+  //     return;
+  //   }
 
-    setLoading(true);
+  //   setLoading(true);
 
-    try {
-      const formData = new FormData();
+  //   try {
+  //     const formData = new FormData();
 
-      formData.append('title', newTitle);
-      formData.append('category', newCategory);
-      formData.append('description', newDescription);
-      formData.append('location', newLocation);
-      formData.append('contact', newContact);
-      formData.append('image', newPhoto);
+  //     formData.append('title', newTitle);
+  //     formData.append('category', newCategory);
+  //     formData.append('description', newDescription);
+  //     formData.append('location', newLocation);
+  //     formData.append('contact', newContact);
+  //     formData.append('image', newPhoto);
 
-      const res = await fetch('/api/products', {
-        method: 'POST',
-        body: formData,
-      });
+  //     const res = await fetch('/api/products', {
+  //       method: 'POST',
+  //       body: formData,
+  //     });
 
-      const data = await res.json();
+  //     const data = await res.json();
 
-      if (res.ok) {
-        setSuccess('Товар успішно додано');
-        setNewTitle('');
-        setNewCategory('');
-        setNewDescription('');
-        setNewLocation('');
-        setNewContact('');
-        setNewPhoto(null);
-      } else {
-        setFail(data.message || 'Товар не додано. Спробуйте ще раз');
-      }
-    } catch {
-      setFail('Сервер не відповідає');
-    } finally {
-      setLoading(false);
-    }
-  };
+  //     if (res.ok) {
+  //       setSuccess('Товар успішно додано');
+  //       setNewTitle('');
+  //       setNewCategory('');
+  //       setNewDescription('');
+  //       setNewCity('');
+  //       setNewContact('');
+  //       setNewPhoto(null);
+  //     } else {
+  //       setFail(data.message || 'Товар не додано. Спробуйте ще раз');
+  //     }
+  //   } catch {
+  //     setFail('Сервер не відповідає');
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
 
+
+
+const handleAddProduct = async (e) => {
+  e.preventDefault();
+
+  // if (!newMessageText.trim()) {
+  //   setCreateMessageError("Title is required");
+  //   return;
+  // }
+
+  try {
+    // 1️⃣ Fetch existing users
+
+    const productsRes = await fetch(
+      `http://localhost:5000/messages?room=${roomTitle}`
+    );
+    if (!productsRes.ok) throw new Error("Failed to fetch productss");
+
+    const products = await productsRes.json();
+
+    // 2️⃣ Check if user already exists
+    // const existingMessage = messages.find((m) => m.text === newMessageText && m.author === author);
+
+    // if (existingMessage) {
+    //   // If user exists → login without creating
+    //   // setIsLoggedIn(true);
+    //   setNewMessageText(''); // clear input
+    console.log(products);
+    //   return;
+    // }
+
+    // 3️⃣ Create new user if not found
+    const createRes = await fetch("http://localhost:5000/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        title: newTitle,
+        category: newCategory,
+        description: newDescription,
+        city: newCity,
+        contact: newContact,
+        img: newPhoto,
+        // text: newMessageText,
+        // author: author,
+        // room: roomTitle,
+      }),
+    });
+
+    // if (!createRes.ok) {
+    //   throw new Error('Failed to create message');
+    // }
+
+    const createdProduct = await createRes.json();
+    console.log("Created product:", createdProduct);
+    setProducts([...products, createdProduct]);             
+//setProducts((products) => [...products, createdProduct]);
+    // 4️⃣ Log in and clear input
+
+    setNewTitle("");
+    setNewCategory("");
+    setNewDescription("");
+    setNewCity("");
+    setNewContact("");
+    setNewPhoto(null);
+    console.log(products);
+  } catch (err) {
+    console.error("Error:", err);
+    setError("Сервер не відповідає");
+    
+  }
+};
 
   return (
     <div className="form__box">
@@ -120,8 +193,8 @@ export const FormPage: React.FC = () => {
             type="text"
             className="form-input-style"
             placeholder="Місто"
-            value={newLocation}
-            onChange={e => setNewLocation(e.target.value)}
+            value={newCity}
+            onChange={e => setNewCity(e.target.value)}
           />
         </div>
 
@@ -161,7 +234,7 @@ export const FormPage: React.FC = () => {
         )}
 
         {/* <div className="form__buttons"> */}
-          <button id="add" className="addButton" type="submit">
+          <button id="add" className="addButton" type="submit" >
             Додати товар
           </button>
           {/* <button id="back" className="addButton" onClick={() => navigate('/')}>
