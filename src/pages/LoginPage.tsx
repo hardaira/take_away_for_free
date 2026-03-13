@@ -99,6 +99,7 @@ export const LoginPage: React.FC = () => {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
+                <p className="rule">Мінімум 8 знаків</p>
               </div>
               <button type="submit" className="loginButton">
                 Підтвердити
