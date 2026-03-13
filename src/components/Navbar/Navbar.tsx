@@ -52,7 +52,8 @@ export const Navbar = ({setUser}) => {
   useEffect(() => {
     dispatch(getFavoritesQuantity());
   }, [dispatch, favoriteItems]);
-const navigate = useNavigate();
+  const navigate = useNavigate();
+  
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");

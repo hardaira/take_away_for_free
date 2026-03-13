@@ -15,6 +15,8 @@ const categories: Category[] = [
   "Товари для дітей",
   "Одяг",
   "Товари для дому",
+  "Техніка",
+  
 ];
 // const categoryBackgrounds: Record<Category, string> = {
 //   // Театр: './category__images/theatre.jpg',
