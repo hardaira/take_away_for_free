@@ -4,9 +4,9 @@ import TopBackLink from '../components/TopBackLink/TopBackLink';
 import { useNavigate, useOutletContext } from "react-router-dom";
 import './Menu.scss';
 export const MenuPage: React.FC = () => {
-  // const userString = localStorage.getItem("user");
-  // const user = userString ? JSON.parse(userString) : null;
-  const { user, setUser } = useOutletContext<any>();
+  const userString = localStorage.getItem("user");
+  const user = userString ? JSON.parse(userString) : null;
+  //const { user, setUser } = useOutletContext<any>();
 const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -28,13 +28,13 @@ const navigate = useNavigate();
         </Link>
 
         {user ? (
-          <NavLink to="/login" className="advertise" onClick={handleLogout}>
+          <Link to="/login" className="advertise" onClick={handleLogout}>
             Вийти
-          </NavLink>
+          </Link>
         ) : (
-          <NavLink to="/login" className="advertise">
+          <Link to="/login" className="advertise">
             Увійти
-          </NavLink>
+          </Link>
         )}
       </div>
     </div>
