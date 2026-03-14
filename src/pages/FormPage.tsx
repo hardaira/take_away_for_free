@@ -23,6 +23,8 @@ export const FormPage: React.FC = () => {
   const [fail, setFail] = useState('');
   const [warning, setWarning] = useState('');
   const [_loading, setLoading] = useState(false);
+
+const token = localStorage.getItem("token");
 const userString = localStorage.getItem("user");
 const user = userString ? JSON.parse(userString) : null;
   // const handleAddProduct = async (e: React.FormEvent) => {
@@ -121,7 +123,10 @@ const handleAddProduct = async (e) => {
       "https://team-project-backend-production.up.railway.app/products",
       {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify({
           title: newTitle,
           category: newCategory,
@@ -129,9 +134,6 @@ const handleAddProduct = async (e) => {
           city: newCity,
           contact: newContact,
           img: newPhoto,
-          // text: newMessageText,
-          // author: author,
-          // room: roomTitle,
         }),
       }
     );
