@@ -21,9 +21,9 @@ type Product = {
   description: string;
 };
 
-export const ProductList: React.FC = () => {
+export const PostsPage: React.FC = () => {
   
-  const [products, setProducts] = useState<Product[]>([]);
+  const [myProducts, setMyProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
   //const selectedCity = localStorage.getItem("activeCity") || "Вся Україна";
@@ -37,7 +37,7 @@ export const ProductList: React.FC = () => {
 
         const data = await res.json();
 
-        setProducts(data.content);
+        setMyProducts(data.content);
         setLoading(false);
       } catch (err) {
         console.error(err);
@@ -61,7 +61,7 @@ export const ProductList: React.FC = () => {
 
   return (
     <div className="cards__container">
-      {products.map((product) => (
+      {myProducts.map((product) => (
         <div className="one__card" key={product.id}>
           <ProductCard {...product} />
         </div>
@@ -69,3 +69,4 @@ export const ProductList: React.FC = () => {
     </div>
   );
 };
+export default PostsPage;
