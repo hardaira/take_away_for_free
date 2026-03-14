@@ -33,7 +33,7 @@ export const FormPage: React.FC = () => {
       !newDescription.trim() ||
       !newCity.trim() ||
       !newContact.trim() ||
-      !newPhoto
+      // !newPhoto
     ) {
       setError("Потрібно заповнити всі поля");
       return;
@@ -49,7 +49,7 @@ export const FormPage: React.FC = () => {
       formData.append("description", newDescription);
       formData.append("city", newCity);
       formData.append("contact", newContact);
-      formData.append("image", newPhoto);
+     formData.append("image", newPhoto);
 
       const res = await fetch(
         "https://team-project-backend-production.up.railway.app/products",
