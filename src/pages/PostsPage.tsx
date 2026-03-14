@@ -25,6 +25,9 @@ export const PostsPage: React.FC = () => {
   
   const [myProducts, setMyProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const token = localStorage.getItem("token");
+  const userString = localStorage.getItem("user");
+  const user = userString ? JSON.parse(userString) : null;
 
   //const selectedCity = localStorage.getItem("activeCity") || "Вся Україна";
 
@@ -32,7 +35,14 @@ export const PostsPage: React.FC = () => {
     const loadProducts = async () => {
       try {
         const res = await fetch(
-          "https://team-project-backend-production.up.railway.app/products/myProducts"
+          "https://team-project-backend-production.up.railway.app/products/myProducts",
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+            
+          }
         );
 
         const data = await res.json();
