@@ -32,7 +32,7 @@ export const FormPage: React.FC = () => {
       !newTitle.trim() ||
       !newDescription.trim() ||
       !newCity.trim() ||
-      !newContact.trim() ||
+      !newContact.trim() 
       // !newPhoto
     ) {
       setError("Потрібно заповнити всі поля");
