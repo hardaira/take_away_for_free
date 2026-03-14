@@ -11,7 +11,8 @@ export const ProfilePage: React.FC = () => {
 //const user = localStorage.getItem("user");
   const [loading, setLoading] = useState(true);
   const token = localStorage.getItem("token");
-const user = localStorage.getItem("user");
+const userString = localStorage.getItem("user");
+const user = userString ? JSON.parse(userString) : null;
   console.log(`user is ${userId}`);
   useEffect(() => {
     if (!userId || !token) return;
