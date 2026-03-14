@@ -33,7 +33,7 @@ export const FormPage: React.FC = () => {
       !newDescription.trim() ||
       !newCity.trim() ||
       !newContact.trim() 
-      // !newPhoto
+      //!newPhoto
     ) {
       setError("Потрібно заповнити всі поля");
       return;
@@ -49,7 +49,7 @@ export const FormPage: React.FC = () => {
       formData.append("description", newDescription);
       formData.append("city", newCity);
       formData.append("contact", newContact);
-     formData.append("image", newPhoto);
+    //  formData.append("image", newPhoto);
 
       const res = await fetch(
         "https://team-project-backend-production.up.railway.app/products",
@@ -75,7 +75,7 @@ export const FormPage: React.FC = () => {
       setNewDescription("");
       setNewCity("");
       setNewContact("");
-      setNewPhoto(null);
+      //setNewPhoto(null);
     } catch (err: any) {
       console.error(err);
       setError(err.message || "Сервер не відповідає");
@@ -141,7 +141,7 @@ export const FormPage: React.FC = () => {
           />
         </div>
 
-        <div className="form-input-wrapper">
+        {/* <div className="form-input-wrapper">
           <label className="form-label">
             <span className="here">Додати фото товару</span>
 
@@ -156,15 +156,15 @@ export const FormPage: React.FC = () => {
               }}
             />
           </label>
-        </div>
+        </div> */}
 
-        {newPhoto && (
+        {/* {newPhoto && (
           <img
             src={URL.createObjectURL(newPhoto)}
             alt="Preview"
             className="form-image-preview"
           />
-        )}
+        )} */}
 
         <button id="add" className="addButton" type="submit" disabled={loading}>
           {loading ? "Додаємо..." : "Додати товар"}
