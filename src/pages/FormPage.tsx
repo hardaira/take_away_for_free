@@ -56,7 +56,7 @@ export const FormPage: React.FC = () => {
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
+          
             Authorization: `Bearer ${token}`,
           },
           body: formData,
