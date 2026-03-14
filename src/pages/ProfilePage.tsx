@@ -7,11 +7,11 @@ import { useOutletContext } from "react-router-dom";
 export const ProfilePage: React.FC = () => {
   const { userId } = useParams();
   // const navigate = useNavigate();
-  const { user, setUser } = useOutletContext<any>();
+  const { setUser } = useOutletContext<any>();
 //const user = localStorage.getItem("user");
   const [loading, setLoading] = useState(true);
   const token = localStorage.getItem("token");
-
+const user = localStorage.getItem("user");
   console.log(`user is ${userId}`);
   useEffect(() => {
     if (!userId || !token) return;
