@@ -9,7 +9,7 @@
 import React, { useEffect, useState } from "react";
 import { ProductCard } from "../components/ProductCard/ProductCard";
 //import { ProductCard } from "../ProductCard/ProductCard";
-import "./ProductList.scss";
+// import "./ProductList.scss";
 //import { SlMagnifier } from "react-icons/sl";
 //import { useOutletContext } from "react-router-dom";
 //import products from "../../features/products";
