@@ -94,9 +94,9 @@ const handleAddProduct = async (e) => {
     // 1️⃣ Fetch existing users
 
     const productsRes = await fetch(
-      `http://localhost:5000/messages?room=${roomTitle}`
+      `https://team-project-backend-production.up.railway.app/products `
     );
-    if (!productsRes.ok) throw new Error("Failed to fetch productss");
+    if (!productsRes.ok) throw new Error("Failed to fetch products");
 
     const products = await productsRes.json();
 
@@ -112,21 +112,24 @@ const handleAddProduct = async (e) => {
     // }
 
     // 3️⃣ Create new user if not found
-    const createRes = await fetch("http://localhost:5000/messages", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        title: newTitle,
-        category: newCategory,
-        description: newDescription,
-        city: newCity,
-        contact: newContact,
-        img: newPhoto,
-        // text: newMessageText,
-        // author: author,
-        // room: roomTitle,
-      }),
-    });
+    const createRes = await fetch(
+      "https://team-project-backend-production.up.railway.app/products",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          title: newTitle,
+          category: newCategory,
+          description: newDescription,
+          city: newCity,
+          contact: newContact,
+          img: newPhoto,
+          // text: newMessageText,
+          // author: author,
+          // room: roomTitle,
+        }),
+      }
+    );
 
     // if (!createRes.ok) {
     //   throw new Error('Failed to create message');
