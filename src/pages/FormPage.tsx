@@ -23,7 +23,8 @@ export const FormPage: React.FC = () => {
   const [fail, setFail] = useState('');
   const [warning, setWarning] = useState('');
   const [_loading, setLoading] = useState(false);
-
+const userString = localStorage.getItem("user");
+const user = userString ? JSON.parse(userString) : null;
   // const handleAddProduct = async (e: React.FormEvent) => {
   //   e.preventDefault();
 
@@ -89,6 +90,10 @@ const handleAddProduct = async (e) => {
   //   setCreateMessageError("Title is required");
   //   return;
   // }
+  if (!user) {
+    console.log("Ви повинні увійти в систему");
+    return;
+  }
 
   try {
     // 1️⃣ Fetch existing users
