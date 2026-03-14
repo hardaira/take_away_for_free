@@ -48,7 +48,7 @@ export const LoginPage: React.FC = () => {
       // ✅ store token
       // localStorage.setItem("accessToken", data.accessToken);
       localStorage.setItem('token', data.token);
-      
+      localStorage.setItem("user", JSON.stringify(data));
       // ✅ store ONLY user data (no token, no password)
       // setUser({
       //   id: data.id,
@@ -58,7 +58,7 @@ export const LoginPage: React.FC = () => {
 
       console.log(data);
       setUser(data);
-      localStorage.setItem("user", JSON.stringify(data));
+      
       
       navigate(`/profile/${data.id}`);
       
