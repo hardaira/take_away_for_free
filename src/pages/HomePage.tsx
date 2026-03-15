@@ -1,4 +1,4 @@
-import React { useState } from 'react';
+import React, { useState } from 'react';
 import CategorySelect from '../components/CategorySelect/CategorySelect';
 import ProductList from '../components/ProductList/ProductList';
 import QueryInput from "../components/QueryInput/QueryInput";
