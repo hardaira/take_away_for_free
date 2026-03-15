@@ -14,14 +14,14 @@ type Product = {
   description: string;
 };
 
-export const ProductList: React.FC = ({ query }) => {
+export const ProductList: React.FC = () => {
   //const [query, setQuery] = useState("");
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
   const selectedCity = localStorage.getItem("activeCity") || "Вся Україна";
-  //const [searchParams] = useSearchParams();
-  //const query = searchParams.get("query") || "";
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get("query") || "";
   useEffect(() => {
     const loadProducts = async () => {
       try {
@@ -37,7 +37,7 @@ export const ProductList: React.FC = ({ query }) => {
     };
 
     loadProducts();
-  }, [products]);
+  }, []);
 
   if (loading) {
     return <p>Loading...</p>;
