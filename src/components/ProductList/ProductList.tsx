@@ -42,14 +42,17 @@ console.log("API:", data);
   if (loading) {
     return <p>Loading...</p>;
   }
-  const filteredProducts = products
-    .filter((product) =>
-      product.title.toLowerCase().includes(query.toLowerCase())
-    )
-    .filter((product) => {
-      if (!selectedCity || selectedCity === "Вся Україна") return true;
-      return product.city === selectedCity;
-    });
+  const filteredProducts = products.filter((product) => {
+    const matchesQuery =
+      !query || product.title.toLowerCase().includes(query.toLowerCase());
+
+    const matchesCity =
+      !selectedCity ||
+      selectedCity === "Вся Україна" ||
+      product.city === selectedCity;
+
+    return matchesQuery && matchesCity;
+  });
 // const filteredProducts = products
 //     .filter((product) =>
 //       product.title.toLowerCase().includes(query.toLowerCase())
