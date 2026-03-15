@@ -28,7 +28,7 @@ const query = searchParams.get("query") || "";
         const res = await fetch("https://team-project-backend-production.up.railway.app/products");
 
         const data = await res.json();
-
+console.log("API:", data);
         setProducts(data.content);
         setLoading(false);
       } catch (err) {
