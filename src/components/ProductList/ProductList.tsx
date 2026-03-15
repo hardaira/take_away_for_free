@@ -76,26 +76,27 @@ export const ProductList: React.FC = () => {
 
   return (
     <>
-    <div className="cards__container">
-      {products
-      .filter((product) => {
-         if (!selectedCity || selectedCity === "Вся Україна") return true;
-        return product.city === selectedCity;
-    })
-        .filter((product) =>
-          product.title.toLowerCase().includes(query.toLowerCase())
-        )
-        .map((product) => (
-          <div className="one__card" key={product.id}>
-            <ProductCard {...product} />
-          </div>
-        ))}
-    </div>
+      <div className="cards__container">
+        {products
+          .filter((product) => {
+            if (!selectedCity || selectedCity === "Вся Україна") return true;
+            return product.city === selectedCity;
+          })
+          .filter((product) =>
+            product.title.toLowerCase().includes(query.toLowerCase())
+          )
+          .map((product) => (
+            <div className="one__card" key={product.id}>
+              <ProductCard {...product} />
+            </div>
+          ))}
+      </div>
 
-    {products.length === 0 && 
-      <div>За  вашим запитом не знайдено жодних пропозицій</div>
-    }
-      );
+      {products.length === 0 && (
+        <div>За вашим запитом не знайдено жодних пропозицій</div>
+      )}
+    </>
+  );
     
 }
 // type Product = {
