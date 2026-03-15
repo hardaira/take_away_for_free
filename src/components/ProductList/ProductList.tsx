@@ -37,7 +37,7 @@ console.log("API:", data);
     };
 
     loadProducts();
-  });
+  }, []);
 
   if (loading) {
     return <p>Loading...</p>;
