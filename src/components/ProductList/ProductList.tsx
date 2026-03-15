@@ -52,6 +52,7 @@ export const ProductList: React.FC = () => {
         return product.city === selectedCity;
       });
   
+  
 
   //   return (
   //     <div className="cards__container">
@@ -63,14 +64,11 @@ export const ProductList: React.FC = () => {
   //     </div>
   //   );
   // };
-  if (filteredProducts.length === 0) {
-  return <p>За вашим запитом не знайдено жодних пропозицій</p>;
-}
+  
 
-  return (
-      
-      <div className="cards__container">
-        {/* {products
+  return (filteredProducts.length !== 0 ? (
+    <div className="cards__container">
+      {/* {products
           .filter((product) => {
             if (!selectedCity || selectedCity === "Вся Україна") return true;
             return product.city === selectedCity;
@@ -78,15 +76,16 @@ export const ProductList: React.FC = () => {
           .filter((product) =>
             product.title.toLowerCase().includes(query.toLowerCase())
           ) */}
-          {filteredProducts.map((product) => (
-            <div className="one__card" key={product.id}>
-              <ProductCard {...product} />
-            </div>
-          ))}
-    </div>    
-    
-  );
-    
+      {filteredProducts.map((product) => (
+        <div className="one__card" key={product.id}>
+          <ProductCard {...product} />
+        </div>
+      ))}
+    </div>
+  ) : (
+    <p> За вашим запитом не знайдено жодних пропозицій</p>
+  )
+  )  
 }
 // type Product = {
 //   id: number;
