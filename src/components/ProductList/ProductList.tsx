@@ -37,7 +37,7 @@ console.log("API:", data);
     };
 
     loadProducts();
-  },[]);
+  });
 
   if (loading) {
     return <p>Loading...</p>;
@@ -65,7 +65,7 @@ console.log("API:", data);
 
   return (
     <div className="cards__container">
-      {filteredProducts.map((product) => (
+      {products.map((product) => (
         <div className="one__card" key={product.id}>
           <ProductCard {...product} />
         </div>
