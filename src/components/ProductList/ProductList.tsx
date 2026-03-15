@@ -14,21 +14,21 @@ type Product = {
   description: string;
 };
 
-export const ProductList: React.FC = () => {
+export const ProductList: React.FC = ({ query }) => {
   //const [query, setQuery] = useState("");
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
   const selectedCity = localStorage.getItem("activeCity") || "Вся Україна";
-const [searchParams] = useSearchParams();
-const query = searchParams.get("query") || "";
+  //const [searchParams] = useSearchParams();
+  //const query = searchParams.get("query") || "";
   useEffect(() => {
     const loadProducts = async () => {
       try {
         const res = await fetch("https://team-project-backend-production.up.railway.app/products");
 
         const data = await res.json();
-console.log("API:", data);
+        console.log("API:", data);
         setProducts(data.content);
         setLoading(false);
       } catch (err) {
@@ -53,27 +53,41 @@ console.log("API:", data);
 
     return matchesQuery && matchesCity;
   });
-// const filteredProducts = products
-//     .filter((product) =>
-//       product.title.toLowerCase().includes(query.toLowerCase())
-//     )
-//     .filter((product) => {
-//       if (!selectedCity || selectedCity === "Вся Україна") return true;
-//       return product.city === selectedCity;
-//     });
+  // const filteredProducts = products
+  //     .filter((product) =>
+  //       product.title.toLowerCase().includes(query.toLowerCase())
+  //     )
+  //     .filter((product) => {
+  //       if (!selectedCity || selectedCity === "Вся Україна") return true;
+  //       return product.city === selectedCity;
+  //     });
   
+
+  //   return (
+  //     <div className="cards__container">
+  //       {products.filter((product)=>product.title.toLowerCase().includes(query.toLowerCase()).map((product) => (
+  //         <div className="one__card" key={product.id}>
+  //           <ProductCard {...product} />
+  //         </div>
+  //       ))}
+  //     </div>
+  //   );
+  // };
 
   return (
     <div className="cards__container">
-      {products.map((product) => (
-        <div className="one__card" key={product.id}>
-          <ProductCard {...product} />
-        </div>
-      ))}
+      {products
+        .filter((product) =>
+          product.title.toLowerCase().includes(query.toLowerCase())
+        )
+        .map((product) => (
+          <div className="one__card" key={product.id}>
+            <ProductCard {...product} />
+          </div>
+        ))}
     </div>
   );
-};
-
+}
 // type Product = {
 //   id: number;
 //   title: string;
