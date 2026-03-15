@@ -29,6 +29,7 @@ interface ProductCardProps {
   contact: string;
   image: string;
   showFullDetails?: boolean;
+  inProfile?: boolean;
 }
 
 // interface ProductCardProps {
