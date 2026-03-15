@@ -102,7 +102,11 @@ export const LoginPage: React.FC = () => {
                     required
                   />
                 </div>
-                <p className="rule">Мінімум 8 знаків</p>
+                <p className="rule">
+                  Пароль має містити мінімум 8 знаків (хоча б одну велику літеру (A-Z), хоча б одну
+                  малу літеру (a-z), хоча б одну цифру, хоча б один спецсимвол (
+                  @$!%*?&.#_-))
+                </p>
               </div>
 
               <button type="submit" className="loginButton">
@@ -113,7 +117,11 @@ export const LoginPage: React.FC = () => {
             {loginError && <p style={{ color: "red" }}>{loginError}</p>}
 
             <p>Немає облікового запису?</p>
-            <p className="login_link" onClick={() => navigate("/registration")}>
+
+            <div className="login_links">
+            <p
+            className="login_link"
+            onClick={() => navigate("/registration")} >
               Зареєструватись
             </p>
 
@@ -122,7 +130,8 @@ export const LoginPage: React.FC = () => {
               onClick={() => navigate("/reset-password")}
             >
               Забули пароль?
-            </p>
+          </p>
+          </div>
           </div>
         </div>
       </div>

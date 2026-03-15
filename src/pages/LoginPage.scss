@@ -65,8 +65,16 @@ width: 60vw;
 }
 
 .rule {
+display: flex;
+text-align: start;
   font-size: 12px;
   margin-top: 4px;
   align-self: flex-start;
   padding-left: 16px;
+}
+
+.login_links {
+display: flex;  
+justify-content: center;
+gap: 20px;
 }
