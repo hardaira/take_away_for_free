@@ -118,7 +118,7 @@ export const FormPage: React.FC = () => {
 
     // 3️⃣ Create new user if not found
     const createRes = await fetch(
-      "https://https://team-project-backend-production.up.railway.app/products/createProduct",
+      "https://team-project-backend-production.up.railway.app/products/createProduct",
       {
         method: "POST",
         headers: {
