@@ -77,6 +77,10 @@ export const ProductList: React.FC = () => {
   return (
     <div className="cards__container">
       {products
+      .filter((product) => {
+         if (!selectedCity || selectedCity === "Вся Україна") return true;
+        return product.city === selectedCity;
+    })
         .filter((product) =>
           product.title.toLowerCase().includes(query.toLowerCase())
         )
