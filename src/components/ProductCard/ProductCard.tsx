@@ -214,6 +214,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             <div className="in_profile">
               <button
                 className="icon icon__heart selected"
+                title="Редагувати"
                 // onClick={handleRemoveFromFavorites}
               >
                 <HiOutlinePencil
@@ -221,11 +222,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                     width: "20px",
                     height: "20px",
                     // fill: 'rgb(16, 91, 16)',
-                    stroke: "rgb(16, 91, 16)",
+                    stroke: "#4a6fa5",
                   }}
                 />
               </button>
-              
+
               <button
                 className="icon icon__heart selected"
                 // onClick={handleRemoveFromFavorites}
@@ -235,11 +236,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                     width: "20px",
                     height: "20px",
                     // fill: 'rgb(16, 91, 16)',
-                    stroke: "rgb(16, 91, 16)",
+                    stroke: "#4a6fa5",
                   }}
                 />
               </button>
-              
             </div>
           )}
         </div>
