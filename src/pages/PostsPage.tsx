@@ -28,7 +28,7 @@ export const PostsPage: React.FC = () => {
   const token = localStorage.getItem("token");
   const userString = localStorage.getItem("user");
   const user = userString ? JSON.parse(userString) : null;
-
+const [inProfile, setInProfile] = useState(true);
   //const selectedCity = localStorage.getItem("activeCity") || "Вся Україна";
 
   useEffect(() => {

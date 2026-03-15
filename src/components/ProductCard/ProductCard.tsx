@@ -62,7 +62,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const user = userString ? JSON.parse(userString) : null;
   
   const navigate = useNavigate();
-  const [inProfile, _setInProfile] = useState(false);
+  const [inProfile, setInProfile] = useState(false);
   const [showDetails, setShowDetails] = useState(showFullDetails);
   const isInFavorites = useSelector((state: RootState) =>
     state.favorites.favoriteItems.some(item => item.title === product.title),
@@ -223,20 +223,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                   }}
                 />
               </button>
-              {/* ) : (
-              <button
-                className="icon icon__heart"
-                onClick={handleAddToFavorites}
-              >
-                <HiOutlinePencil
-                  style={{
-                    width: '20px',
-                    height: '20px',
-                    fill: 'orange',
-                    stroke: 'orange',
-                  }}
-                />
-              </button> */}
+              
               <button
                 className="icon icon__heart selected"
                 // onClick={handleRemoveFromFavorites}
@@ -250,20 +237,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                   }}
                 />
               </button>
-              {/* ) : (
-              <button
-                className="icon icon__heart"
-                onClick={handleAddToFavorites}
-              >
-                <HiOutlinePencil
-                  style={{
-                    width: '20px',
-                    height: '20px',
-                    fill: 'orange',
-                    stroke: 'orange',
-                  }}
-                />
-              </button> */}
+              
             </div>
           )}
         </div>
