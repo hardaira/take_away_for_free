@@ -37,7 +37,7 @@ export const ProductList: React.FC = ({ query }) => {
     };
 
     loadProducts();
-  }, []);
+  }, [products]);
 
   if (loading) {
     return <p>Loading...</p>;
