@@ -118,7 +118,7 @@ export const FormPage: React.FC = () => {
 
     // 3️⃣ Create new user if not found
     const createRes = await fetch(
-      "https://team-project-backend-production.up.railway.app/products",
+      "https://https://team-project-backend-production.up.railway.app/products/createProduct",
       {
         method: "POST",
         headers: {
@@ -131,7 +131,6 @@ export const FormPage: React.FC = () => {
           description: newDescription,
           city: newCity,
           contact: newContact,
-          
         }),
       }
     );
@@ -142,6 +141,7 @@ export const FormPage: React.FC = () => {
 
     const createdProduct = await createRes.json();
     console.log("Created product:", createdProduct);
+    //products.push(createdProduct);
     //setProducts([...products, createdProduct]);
 //setProducts((products) => [...products, createdProduct]);
     // 4️⃣ Log in and clear input
