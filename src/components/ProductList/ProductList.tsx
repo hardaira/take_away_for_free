@@ -37,7 +37,7 @@ const query = searchParams.get("query") || "";
     };
 
     loadProducts();
-  });
+  },[]);
 
   if (loading) {
     return <p>Loading...</p>;
