@@ -29,6 +29,12 @@ export const HomePage: React.FC = () => {
         <div className="container">
           <ProductList query={query} />
         </div>
+        
+        {products.length === 0 && (
+          <div>
+            <p>За вашим запитом не знайдено жодних пропозицій</p>
+          </div>
+        )}
         {/* <Form /> */}
         {/* <SliderTop />
       <SliderNewBrands />
