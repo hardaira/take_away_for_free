@@ -78,7 +78,7 @@ export const ProductList: React.FC = () => {
           .filter((product) =>
             product.title.toLowerCase().includes(query.toLowerCase())
           ) */}
-          filteredProducts.map((product) => (
+          {filteredProducts.map((product) => (
             <div className="one__card" key={product.id}>
               <ProductCard {...product} />
             </div>
