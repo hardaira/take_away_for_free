@@ -3,6 +3,8 @@ import { ProductCard } from "../ProductCard/ProductCard";
 import "./ProductList.scss";
 import { SlMagnifier } from "react-icons/sl";
 import { useOutletContext } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+
 //import products from "../../features/products";
 type Product = {
   id: number;
@@ -13,12 +15,13 @@ type Product = {
 };
 
 export const ProductList: React.FC = () => {
-  const [query, setQuery] = useState("");
+  //const [query, setQuery] = useState("");
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
   const selectedCity = localStorage.getItem("activeCity") || "Вся Україна";
-
+const [searchParams] = useSearchParams();
+const query = searchParams.get("query") || "";
   useEffect(() => {
     const loadProducts = async () => {
       try {
@@ -39,6 +42,14 @@ export const ProductList: React.FC = () => {
   if (loading) {
     return <p>Loading...</p>;
   }
+  const filteredProducts = products
+    .filter((product) =>
+      product.title.toLowerCase().includes(query.toLowerCase())
+    )
+    .filter((product) => {
+      if (!selectedCity || selectedCity === "Вся Україна") return true;
+      return product.city === selectedCity;
+    });
 // const filteredProducts = products
 //     .filter((product) =>
 //       product.title.toLowerCase().includes(query.toLowerCase())
@@ -51,7 +62,7 @@ export const ProductList: React.FC = () => {
 
   return (
     <div className="cards__container">
-      {products.map((product) => (
+      {filteredProducts.map((product) => (
         <div className="one__card" key={product.id}>
           <ProductCard {...product} />
         </div>

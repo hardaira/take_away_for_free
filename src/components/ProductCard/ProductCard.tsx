@@ -89,6 +89,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   //   dispatch(removeFromCart(cartItem));
   // };
 
+  const handleRemovePost = () => { 
+
+    console.log("Removed");
+  };
   return (
     <div className="product__card">
       <NavLink to={`/${category}/${id}`} className="card-image">
@@ -113,18 +117,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           />
           <span className="product__location">{city}</span>
         </p>
-        {/* <p className="info">
-          <HiOutlineCalendar
-            style={{ width: '14px', height: '14px', color: '#A2A5A6' }}
-          />
-          <span className="product__date">{expire}</span>
-        </p> */}
-        {/* <p className="info">
-          <HiOutlineWallet
-            style={{ width: '14px', height: '14px', color: '#A2A5A6' }}
-          />
-          <span className="product__price">{price}</span>
-        </p> */}
+        
 
         {showDetails ? (
           <>
@@ -179,49 +172,21 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             )}
           </div>
         )}
-        {/* <div className="card__tech__spec">
-          {[
-            { label: 'Screen', key: 'screen' },
-            { label: 'Capacity', key: 'capacity' },
-            { label: 'RAM', key: 'ram' },
-          ].map(({ label, key }) => {
-            const value = product[key as keyof typeof product];
 
-            return value ? (
-              <div className="product__info" key={key}>
-                <span className="feature">{label}:</span>
-                <span className="feature__info">{value}</span>
-              </div>
-            ) : null;
-          })}
-        </div> */}
 
         <div className="buttons">
-          {/* {isInCart ? (
-            <button
-              className="addButton selected"
-              onClick={() => handleRemoveFromCart(product)}
-            >
-              Запис додано
-            </button>
-          ) : (
-            <button className="addButton" onClick={handleAddToCart}>
-              Записатися
-            </button>
-          )} */}
 
           {inProfile && (
             <div className="in_profile">
               <button
                 className="icon icon__heart selected"
                 title="Редагувати"
-                // onClick={handleRemoveFromFavorites}
+                // onClick={handleEditPost}
               >
                 <HiOutlinePencil
                   style={{
                     width: "20px",
                     height: "20px",
-                    // fill: 'rgb(16, 91, 16)',
                     stroke: "#4a6fa5",
                   }}
                 />
@@ -229,13 +194,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
               <button
                 className="icon icon__heart selected"
-                // onClick={handleRemoveFromFavorites}
+                onClick={handleRemovePost}
               >
                 <HiOutlineArchiveBoxXMark
                   style={{
                     width: "20px",
                     height: "20px",
-                    // fill: 'rgb(16, 91, 16)',
                     stroke: "#4a6fa5",
                   }}
                 />
