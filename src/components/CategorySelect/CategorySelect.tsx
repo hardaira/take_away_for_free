@@ -5,7 +5,7 @@ import "./CategorySelect.scss";
 type Category = string;
 
 const categories: Category[] = [
-  "Їжа",
+  "Продукти",
   "Меблі",
   "Товари для дітей",
   "Одяг",
