@@ -73,7 +73,7 @@ const [inProfile, setInProfile] = useState(true);
     <div className="cards__container">
       {myProducts.map((product) => (
         <div className="one__card" key={product.id}>
-          <ProductCard {...product} />
+          <ProductCard {...product} inProfile={true} />
         </div>
       ))}
     </div>
