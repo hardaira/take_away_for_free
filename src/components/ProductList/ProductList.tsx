@@ -75,6 +75,7 @@ export const ProductList: React.FC = () => {
   // };
 
   return (
+    <>
     <div className="cards__container">
       {products
       .filter((product) => {
@@ -90,7 +91,12 @@ export const ProductList: React.FC = () => {
           </div>
         ))}
     </div>
-  );
+
+    {products.length === 0 && 
+      <div>За  вашим запитом не знайдено жодних пропозицій</div>
+    }
+      );
+    
 }
 // type Product = {
 //   id: number;
