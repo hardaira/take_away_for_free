@@ -22,6 +22,7 @@ export const ProductList: React.FC = () => {
   const selectedCity = localStorage.getItem("activeCity") || "Вся Україна";
   const [searchParams] = useSearchParams();
   const query = searchParams.get("query") || "";
+  const activeCategories = searchParams.getAll("category");
   useEffect(() => {
     const loadProducts = async () => {
       try {
@@ -50,7 +51,12 @@ export const ProductList: React.FC = () => {
       .filter((product) => {
         if (!selectedCity || selectedCity === "Вся Україна") return true;
         return product.city === selectedCity;
-      });
+      })
+      .filter((product) => {
+    if (activeCategories.length === 0) return true;
+    return activeCategories.includes(product.category);
+  });
+  
   
   
 

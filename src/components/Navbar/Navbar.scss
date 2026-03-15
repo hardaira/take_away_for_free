@@ -69,9 +69,9 @@ position: fixed;
 top: 0;
 left: 0;
 right: 0;
-box-shadow: inset 0 0 20px rgb(136, 139, 137);
-border: 2px solid darkgrey;
-background-color: #f7f7f7;
+// box-shadow: inset 0 0 20px rgb(136, 139, 137);
+// border: 2px solid darkgrey;
+// background-color: #f7f7f7;
 border-radius: 0 0 200px 200px;
 height: 64px;
 
@@ -117,26 +117,6 @@ svg:hover {
   transform: scale(1.1);
   transition-duration: 3ms;
 }
-
-
-
-.searchButton {
- text-decoration: none;
-  display: flex;
-  width: 90px;
-  height: 40px;
-  padding: auto;
-  justify-content: center;
-  align-items: center;
-  background-color: #E0531F;
-  color: white;
-  border: 1px solid #E0531F;
-  border-radius: 100px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 500;
-}
-
 
 input::placeholder {
   font-family: 'Montserrat', sans-serif;
