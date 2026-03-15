@@ -44,6 +44,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   contact,
   image,
   showFullDetails = false,
+  inProfile = false
 }) => {
   const dispatch = useDispatch();
 
@@ -62,7 +63,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const user = userString ? JSON.parse(userString) : null;
   
   const navigate = useNavigate();
-  const [inProfile, setInProfile] = useState(false);
+  //const [inProfile, setInProfile] = useState(false);
   const [showDetails, setShowDetails] = useState(showFullDetails);
   const isInFavorites = useSelector((state: RootState) =>
     state.favorites.favoriteItems.some(item => item.title === product.title),

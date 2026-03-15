@@ -28,7 +28,7 @@ export const PostsPage: React.FC = () => {
   const token = localStorage.getItem("token");
   const userString = localStorage.getItem("user");
   const user = userString ? JSON.parse(userString) : null;
-const [inProfile, setInProfile] = useState(true);
+
   //const selectedCity = localStorage.getItem("activeCity") || "Вся Україна";
 
   useEffect(() => {
@@ -73,7 +73,7 @@ const [inProfile, setInProfile] = useState(true);
     <div className="cards__container">
       {myProducts.map((product) => (
         <div className="one__card" key={product.id}>
-          <ProductCard {...product} inProfile={true} />
+          <ProductCard {...product} showFullDetails={true} inProfile={true} />
         </div>
       ))}
     </div>
