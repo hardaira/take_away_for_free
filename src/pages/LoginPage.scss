@@ -21,7 +21,7 @@
    margin-top: 3%;
    margin-bottom: 3%;
 
-   @media (min-width: 320px) and (max-width: 460px) {
+ @media (min-width: 320px) and (max-width: 460px) {
 width: 90vw;
 }
 
@@ -77,4 +77,8 @@ text-align: start;
 display: flex;  
 justify-content: center;
 gap: 20px;
+@media (min-width: 320px) and (max-width: 614px) {
+flex-direction: column;
+}
+
 }

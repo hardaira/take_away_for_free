@@ -64,6 +64,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const user = userString ? JSON.parse(userString) : null;
   
   const navigate = useNavigate();
+  const [loading, setloading] = useState(false);
+  
+  const token = localStorage.getItem("token");
   //const [inProfile, setInProfile] = useState(false);
   const [showDetails, setShowDetails] = useState(showFullDetails);
   const isInFavorites = useSelector((state: RootState) =>
@@ -89,9 +92,44 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   //   dispatch(removeFromCart(cartItem));
   // };
 
-  const handleRemovePost = () => { 
 
-    console.log("Removed");
+  const handleRemovePost = async (productId: string) => {
+   // setSuccess("");
+    //setError("");
+
+    if (!user) {
+      console.log("Ви повинні увійти в систему");
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      const res = await fetch(
+        `https://team-project-backend-production.up.railway.app/products/${productId}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || "Не вдалося видалити товар");
+      }
+console.log("Товар успішно видалено");
+      //setSuccess("Товар успішно видалено");
+
+      // setProducts(prev => prev.filter(p => p._id !== productId));
+    } catch (err: any) {
+      console.error(err);
+      //setError(err.message || "Сервер не відповідає");
+    } finally {
+      setLoading(false);
+    }
   };
   return (
     <div className="product__card">
@@ -101,6 +139,35 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           src={`./${image}`}
           alt="Product photo"
         />
+        {isInFavorites ? (
+              <button
+                className="icon icon__heart selected"
+                onClick={handleRemoveFromFavorites}
+              >
+                <HiOutlineHeart
+                  style={{
+                    width: "20px",
+                    height: "20px",
+                    fill: "#4a6fa5",
+                    stroke: "#4a6fa5",
+                  }}
+                />
+              </button>
+            ) : (
+              <button
+                className="icon icon__heart"
+                onClick={handleAddToFavorites}
+              >
+                <HiOutlineHeart
+                  style={{
+                    width: "20px",
+                    height: "20px",
+                    fill: "white",
+                    stroke: "white",
+                  }}
+                />
+              </button>
+            )}
       </NavLink>
 
       <div className="card-content">
@@ -141,35 +208,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             >
               Повний опис
             </div>
-            {isInFavorites ? (
-              <button
-                className="icon icon__heart selected"
-                onClick={handleRemoveFromFavorites}
-              >
-                <HiOutlineHeart
-                  style={{
-                    width: "20px",
-                    height: "20px",
-                    fill: "#4a6fa5",
-                    stroke: "#4a6fa5",
-                  }}
-                />
-              </button>
-            ) : (
-              <button
-                className="icon icon__heart"
-                onClick={handleAddToFavorites}
-              >
-                <HiOutlineHeart
-                  style={{
-                    width: "20px",
-                    height: "20px",
-                    fill: "white",
-                    stroke: "white",
-                  }}
-                />
-              </button>
-            )}
+            
           </div>
         )}
 

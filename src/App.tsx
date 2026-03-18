@@ -13,11 +13,12 @@ export const App = () => {
     <>
       <div className="page">
         <Navbar />
-        <div>
+        <div className="main-and-footer">
           {/* <Outlet context={{ user, setUser, products, setProducts, activeCity, setActiveCity }} /> */}
           <Outlet context={{ user, setUser }} />
+          <Footer />
         </div>
-        <Footer />
+        
       </div>
     </>
   );
