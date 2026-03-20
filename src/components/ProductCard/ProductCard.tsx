@@ -74,6 +74,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [myProducts, setMyProducts] = useState([]);
   
   const token = localStorage.getItem("token");
   //const [inProfile, setInProfile] = useState(false);
@@ -156,7 +157,7 @@ const handleRemoveFromFavorites = (productId: string) => {
     try {
       setLoading(true);
       console.log("DELETE ID:", productId);
-console.log("TYPE:", typeof productId);
+      console.log("TYPE:", typeof productId);
 
       const res = await fetch(
         `https://team-project-backend-production.up.railway.app/products/${productId}`,
@@ -176,7 +177,7 @@ console.log("TYPE:", typeof productId);
 console.log("Товар успішно видалено");
       //setSuccess("Товар успішно видалено");
 
-      // setProducts(prev => prev.filter(p => p._id !== productId));
+      setMyProducts(prev => prev.filter(p => p._id !== productId));
     } catch (err: any) {
       console.error(err);
       //setError(err.message || "Сервер не відповідає");
