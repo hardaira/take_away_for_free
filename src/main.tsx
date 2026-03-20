@@ -13,7 +13,7 @@ import { store } from "./app/store";
 import { App } from "./App";
 import { HomePage } from "./pages/HomePage";
 // import { PhonesPage } from './pages/PhonesPage';
-import { AllCategoriesPage } from "./pages/AllCategoriesPage";
+///import { AllCategoriesPage } from "./pages/AllCategoriesPage";
 // import { TabletsPage } from './pages/TabletsPage';
 // import { AccessoriesPage } from './pages/AccessoriesPage';
 import { NotFoundPage } from "./pages/NotFoundPage";
@@ -36,6 +36,7 @@ import { ProductPage } from "./pages/ProductPage";
 import { TestPage } from "./pages/TestPage";
 import { ProfileBlockedPage } from "./pages/ProfileBlockedPage";
 import DetailsBlockedPage from "./pages/DetailsBlockedPage";
+import FavoritesBlockedPage from "./pages/FavoritesBlockedPage";
 // import { ProductInformationPage } from './pages/ProductInformationPage';
 // import ScrollToTop from './components/ScrollToTop';
 
@@ -76,6 +77,8 @@ createRoot(document.getElementById("root") as HTMLDivElement).render(
 
           {/* <Route path="cart" element={<CartPage />} /> */}
           <Route path="product/:productId" element={<ProductPage />} />
+          <Route path="favorites/:userId" element={<FavoritesPage />} />
+          <Route path="favorites/undefined" element={<FavoritesBlockedPage />} />
           <Route path="details" element={<DetailsBlockedPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
