@@ -155,6 +155,8 @@ const handleRemoveFromFavorites = (productId: string) => {
 
     try {
       setLoading(true);
+      console.log("DELETE ID:", productId);
+console.log("TYPE:", typeof productId);
 
       const res = await fetch(
         `https://team-project-backend-production.up.railway.app/products/${productId}`,
