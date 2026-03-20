@@ -108,7 +108,7 @@ export const Navbar = ({setUser}) => {
           Мої записи
         </NavLink> */}
 
-        <NavLink to={`/favorites/${user?.id ?? "undefined"}`} className="favorite__events ">
+        <NavLink to={`/favorites/${user?.id}`} className="favorite__events ">
           <Badge
             badgeContent={favoriteTotalQuantity || 0}
             color="error"
