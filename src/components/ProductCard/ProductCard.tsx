@@ -73,7 +73,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const user = userString ? JSON.parse(userString) : null;
   
   const navigate = useNavigate();
-  const [loading, setloading] = useState(false);
+  const [loading, setLoading] = useState(false);
   
   const token = localStorage.getItem("token");
   //const [inProfile, setInProfile] = useState(false);
@@ -271,7 +271,7 @@ console.log("Товар успішно видалено");
           {inProfile && (
             <div className="in_profile">
               <button
-                className="icon icon__heart selected"
+                className="icon icon__edit selected"
                 title="Редагувати"
                 // onClick={handleEditPost}
               >
@@ -285,7 +285,7 @@ console.log("Товар успішно видалено");
               </button>
 
               <button
-                className="icon icon__heart selected"
+                className="icon icon__delete selected"
                 onClick={handleRemovePost}
               >
                 <HiOutlineArchiveBoxXMark
