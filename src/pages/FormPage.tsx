@@ -17,147 +17,148 @@ export const FormPage: React.FC = () => {
   const userString = localStorage.getItem("user");
   const user = userString ? JSON.parse(userString) : null;
 
-  const handleAddProduct = async (e: React.FormEvent) => {
-    e.preventDefault();
+  // const handleAddProduct = async (e: React.FormEvent) => {
+  //   e.preventDefault();
 
-    setSuccess("");
-    setError("");
+  //   setSuccess("");
+  //   setError("");
 
-    if (!user) {
-      setError("Ви повинні увійти в систему");
-      return;
-    }
+  //   if (!user) {
+  //     setError("Ви повинні увійти в систему");
+  //     return;
+  //   }
 
-    if (
-      !newTitle.trim() ||
-      !newDescription.trim() ||
-      !newCity.trim() ||
-      !newContact.trim()
-      //!newPhoto
-    ) {
-      setError("Потрібно заповнити всі поля");
-      return;
-    }
+  //   if (
+  //     !newTitle.trim() ||
+  //     !newDescription.trim() ||
+  //     !newCity.trim() ||
+  //     !newContact.trim()
+  //     //!newPhoto
+  //   ) {
+  //     setError("Потрібно заповнити всі поля");
+  //     return;
+  //   }
 
-    try {
-      setLoading(true);
+  //   try {
+  //     setLoading(true);
 
-      const formData = new FormData();
+  //     const formData = new FormData();
 
-      formData.append("title", newTitle);
-      formData.append("category", newCategory);
-      formData.append("description", newDescription);
-      formData.append("city", newCity);
-      formData.append("contact", newContact);
-    //  formData.append("image", newPhoto);
+  //     formData.append("title", newTitle);
+  //     formData.append("category", newCategory);
+  //     formData.append("description", newDescription);
+  //     formData.append("city", newCity);
+  //     formData.append("contact", newContact);
+  //   //  formData.append("image", newPhoto);
 
-      const res = await fetch(
-        "https://team-project-backend-production.up.railway.app/products/createProduct",
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          body: formData,
-        }
-      );
+  //     const res = await fetch(
+  //       "https://team-project-backend-production.up.railway.app/products/createProduct",
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //         body: formData,
+  //       }
+  //     );
 
-      const data = await res.json();
+  //     const data = await res.json();
 
-      if (!res.ok) {
-        throw new Error(data.message || "Не вдалося додати товар");
-      }
+  //     if (!res.ok) {
+  //       throw new Error(data.message || "Не вдалося додати товар");
+  //     }
 
-      setSuccess("Товар успішно додано");
+  //     setSuccess("Товар успішно додано");
 
-      setNewTitle("");
-      setNewCategory("");
-      setNewDescription("");
-      setNewCity("");
-      setNewContact("");
-      //setNewPhoto(null);
-    } catch (err: any) {
-      console.error(err);
-      setError(err.message || "Сервер не відповідає");
-    } finally {
-      setLoading(false);
-    }
-  };
+  //     setNewTitle("");
+  //     setNewCategory("");
+  //     setNewDescription("");
+  //     setNewCity("");
+  //     setNewContact("");
+  //     //setNewPhoto(null);
+  //   } catch (err: any) {
+  //     console.error(err);
+  //     setError(err.message || "Сервер не відповідає");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
   
 
+  
 
-//   const handleAddProduct = async (e) => {
-//   e.preventDefault();
+  const handleAddProduct = async (e) => {
+  e.preventDefault();
 
-//   if (!user) {
-//     console.log("Ви повинні увійти в систему");
-//     return;
-//   }
+  if (!user) {
+    console.log("Ви повинні увійти в систему");
+    return;
+  }
 
-//   try {
-//     // 1️⃣ Fetch existing users
+  try {
+    // 1️⃣ Fetch existing users
 
-//     const productsRes = await fetch(
-//       `https://team-project-backend-production.up.railway.app/products `
-//     );
-//     if (!productsRes.ok) throw new Error("Failed to fetch products");
+    const productsRes = await fetch(
+      `https://team-project-backend-production.up.railway.app/products `
+    );
+    if (!productsRes.ok) throw new Error("Failed to fetch products");
 
-//     const products = await productsRes.json();
+    const products = await productsRes.json();
 
-//     // 2️⃣ Check if user already exists
-//     // const existingMessage = messages.find((m) => m.text === newMessageText && m.author === author);
+    // 2️⃣ Check if user already exists
+    // const existingMessage = messages.find((m) => m.text === newMessageText && m.author === author);
 
-//     // if (existingMessage) {
-//     //   // If user exists → login without creating
-//     //   // setIsLoggedIn(true);
-//     //   setNewMessageText(''); // clear input
-//     console.log(products);
-//     //   return;
-//     // }
+    // if (existingMessage) {
+    //   // If user exists → login without creating
+    //   // setIsLoggedIn(true);
+    //   setNewMessageText(''); // clear input
+    console.log(products);
+    //   return;
+    // }
 
-//     // 3️⃣ Create new user if not found
-//     const createRes = await fetch(
-//       "https://team-project-backend-production.up.railway.app/products/createProduct",
-//       {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//           Authorization: `Bearer ${token}`,
-//         },
-//         body: JSON.stringify({
-//           title: newTitle,
-//           category: newCategory,
-//           description: newDescription,
-//           city: newCity,
-//           contact: newContact,
-//         }),
-//       }
-//     );
+    // 3️⃣ Create new user if not found
+    const createRes = await fetch(
+      "https://team-project-backend-production.up.railway.app/products/createProduct",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          title: newTitle,
+          category: newCategory,
+          description: newDescription,
+          city: newCity,
+          contact: newContact,
+        }),
+      }
+    );
 
-//     // if (!createRes.ok) {
-//     //   throw new Error('Failed to create message');
-//     // }
+    // if (!createRes.ok) {
+    //   throw new Error('Failed to create message');
+    // }
 
-//     const createdProduct = await createRes.json();
-//     console.log("Created product:", createdProduct);
-//     //products.push(createdProduct);
-//     //setProducts([...products, createdProduct]);
-// //setProducts((products) => [...products, createdProduct]);
-//     // 4️⃣ Log in and clear input
+    const createdProduct = await createRes.json();
+    console.log("Created product:", createdProduct);
+    //products.push(createdProduct);
+    //setProducts([...products, createdProduct]);
+//setProducts((products) => [...products, createdProduct]);
+    // 4️⃣ Log in and clear input
 
-//     setNewTitle("");
-//     setNewCategory("");
-//     setNewDescription("");
-//     setNewCity("");
-//     setNewContact("");
+    setNewTitle("");
+    setNewCategory("");
+    setNewDescription("");
+    setNewCity("");
+    setNewContact("");
     
-//     console.log(products);
-//   } catch (err) {
-//     console.error("Error:", err);
-//     setError("Сервер не відповідає");
+    console.log(products);
+  } catch (err) {
+    console.error("Error:", err);
+    setError("Сервер не відповідає");
 
-//   }
-// };
+  }
+};
 
 
   return (
