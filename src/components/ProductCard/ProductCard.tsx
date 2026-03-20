@@ -193,34 +193,31 @@ console.log("Товар успішно видалено");
           alt="Product photo"
         />
         {isInFavorites ? (
-              <button
-                className="icon icon__heart selected"
-                onClick={handleRemoveFromFavorites}
-              >
-                <HiOutlineHeart
-                  style={{
-                    width: "20px",
-                    height: "20px",
-                    fill: "#4a6fa5",
-                    stroke: "#4a6fa5",
-                  }}
-                />
-              </button>
-            ) : (
-              <button
-                className="icon icon__heart"
-                onClick={handleAddToFavorites}
-              >
-                <HiOutlineHeart
-                  style={{
-                    width: "20px",
-                    height: "20px",
-                    fill: "white",
-                    stroke: "white",
-                  }}
-                />
-              </button>
-            )}
+          <button
+            className="icon icon__heart selected"
+            onClick={handleRemoveFromFavorites}
+          >
+            <HiOutlineHeart
+              style={{
+                width: "20px",
+                height: "20px",
+                fill: "#4a6fa5",
+                stroke: "#4a6fa5",
+              }}
+            />
+          </button>
+        ) : (
+          <button className="icon icon__heart" onClick={handleAddToFavorites}>
+            <HiOutlineHeart
+              style={{
+                width: "20px",
+                height: "20px",
+                fill: "white",
+                stroke: "white",
+              }}
+            />
+          </button>
+        )}
       </NavLink>
 
       <div className="card-content">
@@ -237,7 +234,6 @@ console.log("Товар успішно видалено");
           />
           <span className="product__location">{city}</span>
         </p>
-        
 
         {showDetails ? (
           <>
@@ -261,13 +257,10 @@ console.log("Товар успішно видалено");
             >
               Повний опис
             </div>
-            
           </div>
         )}
 
-
         <div className="buttons">
-
           {inProfile && (
             <div className="in_profile">
               <button
@@ -286,7 +279,7 @@ console.log("Товар успішно видалено");
 
               <button
                 className="icon icon__delete selected"
-                onClick={handleRemovePost}
+                onClick={() => handleRemovePost(product.id)}
               >
                 <HiOutlineArchiveBoxXMark
                   style={{
