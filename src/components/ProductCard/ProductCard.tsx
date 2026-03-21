@@ -170,8 +170,8 @@ const handleRemoveFromFavorites = (productId: string) => {
         }
       );
 
-      const data = await res.json();
-      console.log(data);
+      // const data = await res.json();
+      // console.log(data);
 
       // if (!res.ok) {
       //   throw new Error(data.message || "Не вдалося видалити товар");
