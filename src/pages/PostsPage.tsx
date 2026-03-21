@@ -69,11 +69,67 @@ export const PostsPage: React.FC = () => {
   //       return product.city === selectedCity;
   //     });
 
+const handleRemovePost = async (productId: number) => {
+  // setSuccess("");
+  //setError("");
+
+  if (!user) {
+    console.log("Ви повинні увійти в систему");
+    return;
+  }
+
+  try {
+    //setLoading(true);
+    console.log("DELETE ID:", productId);
+    console.log("TYPE:", typeof productId);
+
+    const deletedProductId = productId;
+
+    const res = await fetch(
+      `https://team-project-backend-production.up.railway.app/products/${productId}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    // const data = await res.json();
+    // console.log(data);
+
+    // if (!res.ok) {
+    //   throw new Error(data.message || "Не вдалося видалити товар");
+    // }
+
+    console.log("Товар успішно видалено");
+    //setSuccess("Товар успішно видалено");
+
+    //const prevProducts = myProducts;
+
+    setMyProducts((myProducts) =>
+      myProducts.filter((p) => p.id !== deletedProductId)
+    );
+  } catch (err: any) {
+    console.error(err);
+    //setMyProducts(prevProducts);
+    //setError(err.message || "Сервер не відповідає");
+  } finally {
+    //setLoading(false);
+    console.log("Товар успішно видалено");
+  }
+};
+
   return (
     <div className="cards__container">
       {myProducts.map((product) => (
         <div className="one__card" key={product.id}>
-          <ProductCard {...product} showFullDetails={true} inProfile={true} />
+          <ProductCard
+            {...product}
+            showFullDetails={true}
+            inProfile={true}
+            onDelete={handleRemovePost}
+          />
         </div>
       ))}
     </div>

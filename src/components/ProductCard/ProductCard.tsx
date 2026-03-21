@@ -20,6 +20,7 @@ import { useSelector } from 'react-redux';
 import type { RootState } from '../../app/store';
 // import { removeFromCart } from '../../features/cart';
 import { NavLink } from 'react-router-dom';
+//import { useOutletContext } from "react-router-dom";
 interface ProductCardProps {
   id: number;
   title: string;
@@ -30,6 +31,7 @@ interface ProductCardProps {
   image: string;
   showFullDetails?: boolean;
   inProfile?: boolean;
+  onDelete?: (id: number) => void;
 }
 export type Product = {
   id: string;
@@ -54,7 +56,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   contact,
   image,
   showFullDetails = false,
-  inProfile = false
+  inProfile = false,
+  onDelete
 }) => {
   const dispatch = useDispatch();
 
@@ -146,53 +149,7 @@ const handleRemoveFromFavorites = (productId: string) => {
   setFavorites(updated);
 };
 
-  const handleRemovePost = async (productId: string) => {
-   // setSuccess("");
-    //setError("");
-
-    if (!user) {
-      console.log("Ви повинні увійти в систему");
-      return;
-    }
-
-    try {
-      setLoading(true);
-      console.log("DELETE ID:", productId);
-      console.log("TYPE:", typeof productId);
-
-      const res = await fetch(
-        `https://team-project-backend-production.up.railway.app/products/${productId}`,
-        {
-          method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      // const data = await res.json();
-      // console.log(data);
-
-      // if (!res.ok) {
-      //   throw new Error(data.message || "Не вдалося видалити товар");
-      // }
-
-      console.log("Товар успішно видалено");
-      //setSuccess("Товар успішно видалено");
-
-      //const prevProducts = myProducts;
-
-      //setMyProducts((myProducts) => myProducts.filter((p) => p.id !== data.id));
-    } catch (err: any) {
-      console.error(err);
-      //setMyProducts(prevProducts);
-      //setError(err.message || "Сервер не відповідає");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-
+  
   return (
     <div className="product__card">
       <NavLink to={`/${category}/${id}`} className="card-image">
@@ -288,7 +245,7 @@ const handleRemoveFromFavorites = (productId: string) => {
 
               <button
                 className="icon icon__delete selected"
-                onClick={() => handleRemovePost(product.id)}
+                onClick={() => onDelete?.(${id})}
               >
                 <HiOutlineArchiveBoxXMark
                   style={{
