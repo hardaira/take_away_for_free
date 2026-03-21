@@ -177,9 +177,12 @@ const handleRemoveFromFavorites = (productId: string) => {
 console.log("Товар успішно видалено");
       //setSuccess("Товар успішно видалено");
 
-      setMyProducts(prev => prev.filter(p => p._id !== productId));
+      //const prevProducts = myProducts;
+
+      setMyProducts((data) => data.filter((p) => p.id !== productId));
     } catch (err: any) {
       console.error(err);
+      //setMyProducts(prevProducts);
       //setError(err.message || "Сервер не відповідає");
     } finally {
       setLoading(false);
