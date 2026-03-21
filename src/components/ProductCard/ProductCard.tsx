@@ -245,7 +245,7 @@ const handleRemoveFromFavorites = (productId: string) => {
 
               <button
                 className="icon icon__delete selected"
-                onClick={() => onDelete?.(${id})}
+                onClick={() => onDelete?.(id)}
               >
                 <HiOutlineArchiveBoxXMark
                   style={{
