@@ -75,6 +75,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [myProducts, setMyProducts] = useState([]);
+  const [favotites, setFavorites] = useState([]);
   
   const token = localStorage.getItem("token");
   //const [inProfile, setInProfile] = useState(false);
@@ -170,6 +171,7 @@ const handleRemoveFromFavorites = (productId: string) => {
       );
 
       const data = await res.json();
+      console.log(data);
 
       if (!res.ok) {
         throw new Error(data.message || "Не вдалося видалити товар");
@@ -179,7 +181,7 @@ console.log("Товар успішно видалено");
 
       //const prevProducts = myProducts;
 
-      setMyProducts((data) => data.filter((p) => p.id !== productId));
+      setMyProducts((myProducts) => myProducts.filter((p) => p.id !== data.id));
     } catch (err: any) {
       console.error(err);
       //setMyProducts(prevProducts);
