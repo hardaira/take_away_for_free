@@ -363,13 +363,14 @@ const handleRemoveFromFavorites = (productId: string) => {
                 title="Зберегти зміни"
                 //disabled={!isEditing}
                 onClick={() => {
-                  onSave?.(id, {
-                    title: editedTitle,
-                    category: editedCategory,
-                    description: editedDescription,
-                    city: editedCity,
-                    contact: editedContact,
-                  });
+                  onSave?.(
+  id,
+  editedTitle,
+  editedCategory,
+  editedDescription,
+  editedCity,
+  editedContact
+);
                   setIsEditing(false);
                 }}
               >
