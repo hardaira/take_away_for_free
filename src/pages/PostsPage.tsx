@@ -160,12 +160,15 @@ const handleRemovePost = async (productId: number) => {
     editedCity: string,
     editedContact: string
   ) => {
+
+    console.log("start");
     if (!user) {
       console.log("Ви повинні увійти в систему");
       return;
     }
 
     try {
+      console.log("updated ID:", productId);
       // Make the PUT request to update the room title
       const updateRes = await fetch(
         `https://team-project-backend-production.up.railway.app/products/${productId}`,
@@ -185,6 +188,8 @@ const handleRemovePost = async (productId: number) => {
         }
       );
 
+      const data = await updateRes.json();
+console.log(data);
       if (!updateRes.ok) {
         const data = await updateRes.json();
         alert(data.message || "Failed to update message");
