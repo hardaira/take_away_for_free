@@ -247,7 +247,7 @@ const handleRemoveFromFavorites = (productId: string) => {
         <div className="buttons">
           {inProfile && (
             <div className="in_profile">
-              <
+              <button
                 className="icon icon__edit selected"
                 title="Редагувати"
                 onClick={() => setIsEditing(true)}
