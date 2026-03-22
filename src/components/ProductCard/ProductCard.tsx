@@ -301,14 +301,13 @@ const handleRemoveFromFavorites = (productId: string) => {
                 title="Зберегти зміни"
                 disabled={!onEdit}
                 onClick={() => {
-                  onSave?.(
-                    id,
-                    editedTitle,
-                    editedCategory,
-                    editedDescription,
-                    editedCity,
-                    editedContact
-                  );
+                  onSave?.(id, {
+                    title: editedTitle,
+                    category: editedCategory,
+                    description: editedDescription,
+                    city: editedCity,
+                    contact: editedContact,
+                  });
                   setIsEditing(false);
                 }}
               >
