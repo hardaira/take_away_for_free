@@ -245,7 +245,8 @@ const handleRemoveFromFavorites = (productId: string) => {
   
   return (
     <div className="product__card">
-      <NavLink to={`/${category}/${id}`} className="card-image">
+      {/* <NavLink to={`/${category}/${id}`} className="card-image"> */}
+        <div className="card-image">
         <img
           className="product__card__img"
           src={`./${image}`}
@@ -277,7 +278,7 @@ const handleRemoveFromFavorites = (productId: string) => {
             />
           </button>
         )} */}
-        <button onClick={() => toggleFavorite(product.id)}>
+        <button className="icon icon__heart" onClick={() => toggleFavorite(product.id)}>
           {myFavoriteProducts.includes(product.id) ? (
             <HiOutlineHeart
               className="icon icon__heart selected"
@@ -300,7 +301,7 @@ const handleRemoveFromFavorites = (productId: string) => {
             />
           )}
         </button>
-      </NavLink>
+      </div>
 
       <div className="card-content">
         {isEditing ? (
