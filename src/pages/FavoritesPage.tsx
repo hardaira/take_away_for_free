@@ -49,16 +49,10 @@ export const FavoritesPage: React.FC = () => {
 
   // --- RENDER ---
 
-  const favorites = localStorage.getItem(favorite_products);
+  const favorites = localStorage.getItem('favorite_products');
 
-  useEffect(() => {
-    const favorites = localStorage.getItem(favorite_products);
-
-    if (favorites) {
-      setMyFavoriteProducts(JSON.parse(favorites));
-    }
-  }, []);
   
+
   return (
     <div className="section" id="favorites">
       <div className="favorites">
