@@ -94,9 +94,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const [editedContact, setEditedContact] = useState(contact || "");
   //const [inProfile, setInProfile] = useState(false);
   const [showDetails, setShowDetails] = useState(showFullDetails);
-  const isInFavorites = useSelector((state: RootState) =>
-    state.favorites.favoriteItems.some(item => item.title === product.title),
-  );
+
+  const [myFavoriteProducts, setMyFavoriteProducts] = useState([]);
+  // const isInFavorites = useSelector((state: RootState) =>
+  //   state.favorites.favoriteItems.some(item => item.title === product.title),
+  // );
 
   // const isInCart = useSelector((state: RootState) =>
   //   state.cart.cartItems.some(item => item.name === product.title),
@@ -224,6 +226,22 @@ const handleRemoveFromFavorites = (productId: string) => {
   //     //setEditText(null);
   //   }
   // };
+
+  const toggleFavorite = (productId) => {
+    setMyFavoriteProducts((prev) => {
+      if (prev.includes(productId)) {
+        // remove
+        return prev.filter((id) => id !== productId);
+      } else {
+        // add
+        return [...prev, productId];
+      }
+    });
+  };
+
+  localStorage.setItem("favorite_products", JSON.stringify(myFavoriteProducts));
+
+  const isFavorite = myFavoriteProducts.includes(product.id);
   
   return (
     <div className="product__card">
@@ -233,7 +251,7 @@ const handleRemoveFromFavorites = (productId: string) => {
           src={`./${image}`}
           alt="Product photo"
         />
-        {isInFavorites ? (
+        {/* {isInFavorites ? (
           <button
             className="icon icon__heart selected"
             onClick={handleRemoveFromFavorites}
@@ -258,7 +276,28 @@ const handleRemoveFromFavorites = (productId: string) => {
               }}
             />
           </button>
-        )}
+        )} */}
+        <button onClick={() => toggleFavorite(product.id)}>
+          {myFavoriteProducts.includes(product.id) ? (
+            <HiOutlineHeart
+              style={{
+                width: "20px",
+                height: "20px",
+                fill: "#4a6fa5",
+                stroke: "#4a6fa5",
+              }}
+            />
+          ) : (
+            <HiOutlineHeart
+              style={{
+                width: "20px",
+                height: "20px",
+                fill: "white",
+                stroke: "white",
+              }}
+            />
+          )}
+        </button>
       </NavLink>
 
       <div className="card-content">
@@ -364,13 +403,13 @@ const handleRemoveFromFavorites = (productId: string) => {
                 disabled={!isEditing}
                 onClick={() => {
                   onSave?.(
-  id,
-  editedTitle,
-  editedCategory,
-  editedDescription,
-  editedCity,
-  editedContact
-);
+                    id,
+                    editedTitle,
+                    editedCategory,
+                    editedDescription,
+                    editedCity,
+                    editedContact
+                  );
                   setIsEditing(false);
                 }}
               >

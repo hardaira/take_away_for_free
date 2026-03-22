@@ -15,39 +15,50 @@ export type Product = {
 };
 // --- COMPONENT ---
 export const FavoritesPage: React.FC = () => {
-  const [favorites, setFavorites] = useState<Product[]>([]);
+  // const [favorites, setFavorites] = useState<Product[]>([]);
 
-  // --- GET USER ---
-  const userString = localStorage.getItem("user");
-  const user = userString ? JSON.parse(userString) : null;
+  // // --- GET USER ---
+  // const userString = localStorage.getItem("user");
+  // const user = userString ? JSON.parse(userString) : null;
 
-  // --- STORAGE HELPERS (inside same file) ---
-  const getFavorites = (userId: string): Product[] => {
-    const data = localStorage.getItem(`favorites_${userId}`);
-    return data ? JSON.parse(data) : [];
-  };
+  // // --- STORAGE HELPERS (inside same file) ---
+  // const getFavorites = (userId: string): Product[] => {
+  //   const data = localStorage.getItem(`favorites_${userId}`);
+  //   return data ? JSON.parse(data) : [];
+  // };
 
-  const saveFavorites = (userId: string, items: Product[]) => {
-    localStorage.setItem(`favorites_${userId}`, JSON.stringify(items));
-  };
+  // const saveFavorites = (userId: string, items: Product[]) => {
+  //   localStorage.setItem(`favorites_${userId}`, JSON.stringify(items));
+  // };
 
-  const removeFavorite = (productId: string) => {
-    if (!user) return;
+  // const removeFavorite = (productId: string) => {
+  //   if (!user) return;
 
-    const updated = favorites.filter((item) => item.id !== productId);
-    saveFavorites(user.id, updated);
-    setFavorites(updated);
-  };
+  //   const updated = favorites.filter((item) => item.id !== productId);
+  //   saveFavorites(user.id, updated);
+  //   setFavorites(updated);
+  // };
 
-  // --- LOAD FAVORITES ---
-  useEffect(() => {
-    if (user) {
-      const data = getFavorites(user.id);
-      setFavorites(data);
-    }
-  }, [user]);
+  // // --- LOAD FAVORITES ---
+  // useEffect(() => {
+  //   if (user) {
+  //     const data = getFavorites(user.id);
+  //     setFavorites(data);
+  //   }
+  // }, [user]);
 
   // --- RENDER ---
+
+  const favorites = localStorage.getItem(favorite_products);
+
+  useEffect(() => {
+    const favorites = localStorage.getItem(favorite_products);
+
+    if (favorites) {
+      setMyFavoriteProducts(JSON.parse(favorites));
+    }
+  }, []);
+  
   return (
     <div className="section" id="favorites">
       <div className="favorites">
