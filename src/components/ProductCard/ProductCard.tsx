@@ -246,11 +246,10 @@ const handleRemoveFromFavorites = (productId: string) => {
 
               <button
                 className="icon icon__save selected"
-                title="Редагувати"
+                title="Зберегти зміни"
                 // onClick={handleEditPost}
               >
                 <HiOutlineSave
-                title= "Зберегти зміни"
                   style={{
                     width: "20px",
                     height: "20px",
@@ -261,6 +260,7 @@ const handleRemoveFromFavorites = (productId: string) => {
 
               <button
                 className="icon icon__delete selected"
+                title="Видалити оголошення"
                 onClick={() => onDelete?.(id)}
               >
                 <HiOutlineArchiveBoxXMark
