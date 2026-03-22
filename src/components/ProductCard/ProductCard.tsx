@@ -256,11 +256,11 @@ const handleRemoveFromFavorites = (productId: string) => {
             </p>
             {isEditing ? (
               <input
-                value={editedeDescription}
+                value={editedDescription}
                 onChange={(e) => setEditedDescription(e.target.value)}
               />
             ) : (
-              <span className="product__description">{v}</span>
+              <span className="product__description">{description}</span>
             )}
             {/* <p className="product__description">{description}</p> */}
           </>
@@ -301,7 +301,7 @@ const handleRemoveFromFavorites = (productId: string) => {
                 title="Зберегти зміни"
                 disabled={!onEdit}
                 onClick={() => {
-                  onSave(
+                  onSave?.(
                     id,
                     editedTitle,
                     editedCategory,

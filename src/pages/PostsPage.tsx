@@ -19,6 +19,7 @@ type Product = {
   city: string;
   category: string;
   description: string;
+  contact: string;
 };
 
 export const PostsPage: React.FC = () => {
@@ -152,11 +153,11 @@ const handleRemovePost = async (productId: number) => {
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({
-            title: editedTitle,
-            category: editedCategory,
-            description: editedDescription,
-            city: editedCity,
-            contact: editedContact,
+            title: editedTitle || product.title,
+            category: editedCategory || product.category,
+            description: editedDescription || product.description,
+            city: editedCity || product.city,
+            contact: editedContact || product.contact,
           }),
         }
       );
