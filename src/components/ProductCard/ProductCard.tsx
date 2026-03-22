@@ -13,6 +13,7 @@ import { HiOutlineHeart } from 'react-icons/hi';
 import { HiOutlinePencil } from "react-icons/hi";
 import { HiOutlineArchiveBoxXMark } from 'react-icons/hi2';
 import { HiOutlineBookmark } from 'react-icons/hi';
+import { HiOutlineSave } from "react-icons/hi";
 import { useDispatch } from 'react-redux';
 //import { Product} from '../../types/product';
 //import { addToFavorites, removeFromFavorites } from '../../features/favorites';
@@ -235,6 +236,21 @@ const handleRemoveFromFavorites = (productId: string) => {
                 // onClick={handleEditPost}
               >
                 <HiOutlinePencil
+                  style={{
+                    width: "20px",
+                    height: "20px",
+                    stroke: "#4a6fa5",
+                  }}
+                />
+              </button>
+
+              <button
+                className="icon icon__save selected"
+                title="Редагувати"
+                // onClick={handleEditPost}
+              >
+                <HiOutlineSave
+                title= "Зберегти зміни"
                   style={{
                     width: "20px",
                     height: "20px",
