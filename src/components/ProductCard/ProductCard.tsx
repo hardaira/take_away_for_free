@@ -280,6 +280,7 @@ const handleRemoveFromFavorites = (productId: string) => {
         <button onClick={() => toggleFavorite(product.id)}>
           {myFavoriteProducts.includes(product.id) ? (
             <HiOutlineHeart
+              className="icon icon__heart selected"
               style={{
                 width: "20px",
                 height: "20px",
@@ -289,6 +290,7 @@ const handleRemoveFromFavorites = (productId: string) => {
             />
           ) : (
             <HiOutlineHeart
+              className="icon icon__heart"
               style={{
                 width: "20px",
                 height: "20px",
