@@ -179,11 +179,11 @@ const handleRemovePost = async (productId: number) => {
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({
-            title: editedTitle || product.title,
-            category: editedCategory || product.category,
-            description: editedDescription || product.description,
-            city: editedCity || product.city,
-            contact: editedContact || product.contact,
+            title: editedTitle, //|| product.title,
+            category: editedCategory, //|| product.category,
+            description: editedDescription, //|| product.description,
+            city: editedCity, //|| product.city,
+            contact: editedContact, //|| product.contact,
           }),
         }
       );
