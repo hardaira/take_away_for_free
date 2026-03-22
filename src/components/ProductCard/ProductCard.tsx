@@ -33,7 +33,6 @@ interface ProductCardProps {
   showFullDetails?: boolean;
   inProfile?: boolean;
   onDelete?: (id: number) => void;
-  onEdit?: (id: number) => void;
   onSave?: (id: number) => void;
 }
 export type Product = {
@@ -61,8 +60,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   showFullDetails = false,
   inProfile = false,
   onDelete,
-  onEdit,
-  onSave
+  onSave,
 }) => {
   const dispatch = useDispatch();
 
@@ -161,7 +159,71 @@ const handleRemoveFromFavorites = (productId: string) => {
   // update UI
   setFavorites(updated);
 };
+//const handleUpdatePost = async (
+  //   productId: number,
+  //   //messageAuthor: string,
+  //   editedTitle: string,
+  //   editedCategory: string,
+  //   editedDescription: string,
+  //   editedCity: string,
+  //   editedContact: string
+  // ) => {
+  //   if (!user) {
+  //     console.log("Ви повинні увійти в систему");
+  //     return;
+  //   }
 
+  //   try {
+  //     // Make the PUT request to update the room title
+  //     const updateRes = await fetch(
+  //       `https://team-project-backend-production.up.railway.app/products/${productId}`,
+  //       {
+  //         method: "PUT",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //         body: JSON.stringify({
+  //           title: editedTitle || product.title,
+  //           category: editedCategory || product.category,
+  //           description: editedDescription || product.description,
+  //           city: editedCity || product.city,
+  //           contact: editedContact || product.contact,
+  //         }),
+  //       }
+  //     );
+
+  //     if (!updateRes.ok) {
+  //       const data = await updateRes.json();
+  //       alert(data.message || "Failed to update message");
+  //       //setEditText(null);
+
+  //       // return;
+  //     }
+
+  //     // Update the state to reflect the room update
+  //     setMyProducts((myProducts) =>
+  //       myProducts.map((p) =>
+  //         p.id === productId
+  //           ? {
+  //               ...p,
+  //               title: editedTitle,
+  //               category: editedCategory,
+  //               description: editedDescription,
+  //               city: editedCity,
+  //               contact: editedContact,
+  //             }
+  //           : p
+  //       )
+  //     );
+
+  //     // Exit edit mode after successful update
+  //     //setEditText(null);
+  //   } catch (err) {
+  //     alert("Failed to update room");
+  //     //setEditText(null);
+  //   }
+  // };
   
   return (
     <div className="product__card">
