@@ -33,6 +33,8 @@ interface ProductCardProps {
   showFullDetails?: boolean;
   inProfile?: boolean;
   onDelete?: (id: number) => void;
+  onEdit?: (id: number) => void;
+  onSave?: (id: number) => void;
 }
 export type Product = {
   id: string;
@@ -58,7 +60,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   image,
   showFullDetails = false,
   inProfile = false,
-  onDelete
+  onDelete,
+  onEdit,
+  onSave
 }) => {
   const dispatch = useDispatch();
 
@@ -82,6 +86,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const [favotites, setFavorites] = useState([]);
   
   const token = localStorage.getItem("token");
+
+  const [isEditing, setIsEditing] = useState(false);
+
+  const [editedTitle, setEditedTitle] = useState(title);
+  const [editedCategory, setEditedCategory] = useState(category);
+  const [editedDescription, setEditedDescription] = useState(description);
+  const [editedCity, setEditedCity] = useState(city);
+  const [editedContact, setEditedContact] = useState(contact || "");
   //const [inProfile, setInProfile] = useState(false);
   const [showDetails, setShowDetails] = useState(showFullDetails);
   const isInFavorites = useSelector((state: RootState) =>
@@ -188,7 +200,12 @@ const handleRemoveFromFavorites = (productId: string) => {
       </NavLink>
 
       <div className="card-content">
-        <h2 className="product__title ">{title}</h2>
+        {isEditing ? (
+  <input value={editedTitle} onChange={(e) => setEditedTitle(e.target.value)} />
+) : (
+  <h2 className="product__title ">{title}</h2>
+)}
+        {/* <h2 className="product__title ">{title}</h2> */}
         <p className="info">
           <HiOutlineBookmark
             style={{ width: "14px", height: "14px", color: "#A2A5A6" }}
@@ -230,10 +247,10 @@ const handleRemoveFromFavorites = (productId: string) => {
         <div className="buttons">
           {inProfile && (
             <div className="in_profile">
-              <button
+              <
                 className="icon icon__edit selected"
                 title="Редагувати"
-                // onClick={handleEditPost}
+                onClick={() => setIsEditing(true)}
               >
                 <HiOutlinePencil
                   style={{
@@ -247,7 +264,18 @@ const handleRemoveFromFavorites = (productId: string) => {
               <button
                 className="icon icon__save selected"
                 title="Зберегти зміни"
-                // onClick={handleEditPost}
+                disabled={!onEdit}
+                onClick={() => {
+                  onSave(
+                    id,
+                    editedTitle,
+                    editedCategory,
+                    editedDescription,
+                    editedCity,
+                    editedContact
+                  );
+                  setIsEditing(false);
+                }}
               >
                 <HiOutlineSave
                   style={{

@@ -12,6 +12,7 @@ export const FormPage: React.FC = () => {
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  
 
   const token = localStorage.getItem("token");
   const userString = localStorage.getItem("user");
