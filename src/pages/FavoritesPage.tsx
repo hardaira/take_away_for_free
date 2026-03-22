@@ -49,9 +49,7 @@ export const FavoritesPage: React.FC = () => {
 
   // --- RENDER ---
 
-  const favorites = localStorage.getItem('favorite_products');
-
-  
+  const favorites = localStorage.getItem("favorite_products");
 
   return (
     <div className="section" id="favorites">
@@ -60,9 +58,13 @@ export const FavoritesPage: React.FC = () => {
 
         <h1 className="heading-favorites">Вибране</h1>
 
-        <p className="under__heading1">{favorites.length} обраних товарів</p>
+        <p className="under__heading1"> обраних товарів</p>
+      </div>
+    </div>
+  );
+};
 
-        {favorites.length === 0 ? (
+        {/* {favorites.length === 0 ? (
           <p>Поки що немає обраних товарів.</p>
         ) : (
           <div className="cards__container">
@@ -73,8 +75,8 @@ export const FavoritesPage: React.FC = () => {
                 //onRemove={() => removeFavorite(product.id)} // optional
               />
             ))}
-          </div>
-        )}
+          </div> 
+        )}/ *}
       </div>
     </div>
   );
