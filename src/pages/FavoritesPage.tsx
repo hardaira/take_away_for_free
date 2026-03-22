@@ -70,7 +70,7 @@ export const FavoritesPage: React.FC = () => {
               <ProductCard
                 key={product.id}
                 {...product}
-                onRemove={() => removeFavorite(product.id)} // optional
+                //onRemove={() => removeFavorite(product.id)} // optional
               />
             ))}
           </div>

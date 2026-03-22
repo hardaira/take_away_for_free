@@ -240,8 +240,8 @@ const handleRemoveFromFavorites = (productId: string) => {
   };
 
   localStorage.setItem("favorite_products", JSON.stringify(myFavoriteProducts));
-
-  const isFavorite = myFavoriteProducts.includes(product.id);
+ console.log(myFavoriteProducts);
+  //const isFavorite = myFavoriteProducts.includes(product.id);
   
   return (
     <div className="product__card">
@@ -281,7 +281,7 @@ const handleRemoveFromFavorites = (productId: string) => {
         <button className="icon icon__heart" onClick={() => toggleFavorite(product.id)}>
           {myFavoriteProducts.includes(product.id) ? (
             <HiOutlineHeart
-              className="icon icon__heart selected"
+              // className="icon icon__heart selected"
               style={{
                 width: "20px",
                 height: "20px",
@@ -291,7 +291,7 @@ const handleRemoveFromFavorites = (productId: string) => {
             />
           ) : (
             <HiOutlineHeart
-              className="icon icon__heart"
+              //className="icon icon__heart"
               style={{
                 width: "20px",
                 height: "20px",
