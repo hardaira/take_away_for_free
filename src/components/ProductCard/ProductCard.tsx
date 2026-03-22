@@ -201,22 +201,41 @@ const handleRemoveFromFavorites = (productId: string) => {
 
       <div className="card-content">
         {isEditing ? (
-  <input value={editedTitle} onChange={(e) => setEditedTitle(e.target.value)} />
-) : (
-  <h2 className="product__title ">{title}</h2>
-)}
+          <input
+            value={editedTitle}
+            onChange={(e) => setEditedTitle(e.target.value)}
+          />
+        ) : (
+          <h2 className="product__title ">{title}</h2>
+        )}
         {/* <h2 className="product__title ">{title}</h2> */}
         <p className="info">
           <HiOutlineBookmark
             style={{ width: "14px", height: "14px", color: "#A2A5A6" }}
           />
-          <span className="product__location">{category}</span>
+          {isEditing ? (
+            <input
+              value={editedCategory}
+              onChange={(e) => setEditedCategory(e.target.value)}
+            />
+          ) : (
+            <span className="product__location">{category}</span>
+          )}
+          {/* <span className="product__location">{category}</span> */}
         </p>
         <p className="info">
           <HiOutlineLocationMarker
             style={{ width: "14px", height: "14px", color: "#A2A5A6" }}
           />
-          <span className="product__location">{city}</span>
+          {isEditing ? (
+            <input
+              value={editedCity}
+              onChange={(e) => setEditedCity(e.target.value)}
+            />
+          ) : (
+            <span className="product__location">{city}</span>
+          )}
+          {/* <span className="product__location">{city}</span> */}
         </p>
 
         {showDetails ? (
@@ -225,9 +244,25 @@ const handleRemoveFromFavorites = (productId: string) => {
               <HiOutlineUserCircle
                 style={{ width: "14px", height: "14px", color: "#A2A5A6" }}
               />
-              <span className="places__left">{contact}</span>
+              {isEditing ? (
+                <input
+                  value={editedContact}
+                  onChange={(e) => setEditedContact(e.target.value)}
+                />
+              ) : (
+                <span className="places__left">{contact}</span>
+              )}
+              {/* <span className="places__left">{contact}</span> */}
             </p>
-            <p className="product__description">{description}</p>
+            {isEditing ? (
+              <input
+                value={editedeDescription}
+                onChange={(e) => setEditedDescription(e.target.value)}
+              />
+            ) : (
+              <span className="product__description">{v}</span>
+            )}
+            {/* <p className="product__description">{description}</p> */}
           </>
         ) : (
           <div className="main_page_card_buttons">
