@@ -61,6 +61,21 @@ export const FavoritesPage: React.FC = () => {
         <p className="under__heading1"> обраних товарів</p>
       </div>
     </div>
+
+    <div className="cards__container">
+      {favorites.map((product) => (
+        <div className="one__card" key={product.id}>
+          <ProductCard
+            {...product}
+            //isFavorite={true}
+            //showFullDetails={true}
+            //inProfile={true}
+            //onDelete={handleRemovePost}
+            //onSave={handleUpdatePost}
+          />
+        </div>
+      ))}
+    </div>
   );
 };
 
