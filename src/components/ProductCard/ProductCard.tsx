@@ -280,9 +280,9 @@ const handleRemoveFromFavorites = (productId: string) => {
         )} */}
         <button
           className="icon icon__heart"
-          onClick={() => toggleFavorite(${id})}
+          onClick={() => toggleFavorite(id)}
         >
-          {myFavoriteProducts.includes(${id}) ? (
+          {myFavoriteProducts.includes(id)) ? (
             <HiOutlineHeart
               //className="selected"
               style={{
