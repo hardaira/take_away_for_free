@@ -299,7 +299,7 @@ const handleRemoveFromFavorites = (productId: string) => {
               <button
                 className="icon icon__save selected"
                 title="Зберегти зміни"
-                disabled={!onEdit}
+                //disabled={!isEditing}
                 onClick={() => {
                   onSave?.(id, {
                     title: editedTitle,
