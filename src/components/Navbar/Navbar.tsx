@@ -93,8 +93,7 @@ export const Navbar = ({setUser}) => {
       <nav className="navbar">
         {/* <div className="navbar__logo__search"> */}
         <div>
-          <NavLink to="/">
-            {/* <img src="./img/transparent.png" alt="company_logo" /> */}
+          <NavLink to="/#">
             <Logo />
           </NavLink>
         </div>
