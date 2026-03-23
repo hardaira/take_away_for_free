@@ -16,7 +16,7 @@ import { HiOutlineBookmark } from 'react-icons/hi';
 import { HiOutlineSave } from "react-icons/hi";
 import { useDispatch } from 'react-redux';
 //import { Product} from '../../types/product';
-//import { addToFavorites, removeFromFavorites } from '../../features/favorites';
+import { addToFavorites, removeFromFavorites } from '../../features/favorites';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../app/store';
 // import { removeFromCart } from '../../features/cart';
@@ -99,6 +99,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const [showDetails, setShowDetails] = useState(showFullDetails);
 
   const [myFavoriteProducts, setMyFavoriteProducts] = useState([]);
+const isInFavorites = useSelector((state: RootState) =>
+  state.favorites.favoriteItems.some((item) => item.title === product.title)
+);
+  const handleAddToFavorites = () => {
+    dispatch(addToFavorites(product));
+  };
+
+  const handleRemoveFromFavorites = () => {
+    dispatch(removeFromFavorites(product));
+  };
  
   const toggleFavorite = (productId) => {
     setMyFavoriteProducts((prev) => {
@@ -127,7 +137,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           src={`./${image}`}
           alt="Product photo"
         />
-        {/* {isInFavorites ? (
+        {isInFavorites ? (
           <button
             className="icon icon__heart selected"
             onClick={handleRemoveFromFavorites}
@@ -152,8 +162,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               }}
             />
           </button>
-        )} */}
-        <button
+        )}
+        {/* <button
           className="icon icon__heart"
           onClick={() => toggleFavorite(product)}
         >
@@ -178,7 +188,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               }}
             />
           )}
-        </button>
+        </button> */}
       </div>
 
       <div className="card-content">
