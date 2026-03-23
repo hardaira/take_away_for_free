@@ -64,11 +64,6 @@ export const Navbar = ({setUser}) => {
     setFavoritesCount(favorites.length);
   };
 
-  // useEffect(() => {
-  //   dispatch(getFavoritesQuantity());
-  // }, [dispatch, favoriteItems]);
-  // const navigate = useNavigate();
-
   useEffect(() => {
     loadFavoritesCount();
 
@@ -91,50 +86,15 @@ export const Navbar = ({setUser}) => {
   return (
     <>
       <nav className="navbar">
-        {/* <div className="navbar__logo__search"> */}
+        
         <div>
           <NavLink to="/#">
             <Logo />
           </NavLink>
         </div>
-
-        {/* <div className="navbar__query">
-          <input
-            type="text"
-            className="input-style"
-            placeholder="Яку подію бажаєш відвідати?"
-          />
-          <div className="searchButton">Пошук</div>
-        </div> */}
-        {/* </div>
-<div className="navbar__rest"> */}
+ 
         <CitySelect />
 
-        {/* <div className="navbar__link__container">
-
-            <NavLink to="/" className={getLinkClass}>
-              HOME
-            </NavLink>
-
-            <NavLink to="/phones" className={getLinkClass}>
-              PHONES
-            </NavLink>
-
-            <NavLink to="/tablets" className={getLinkClass}>
-              TABLETS
-            </NavLink>
-
-            <NavLink to="/accessories" className={getLinkClass}>
-              ACCESSORIES
-            </NavLink>
-          </div> */}
-        {/* </div> */}
-        {/* <div > */}
-        {/* <NavLink to="/cart" className="registered__events">
-          Мої записи
-        </NavLink> */}
-
-        
           <NavLink to={`/favorites/${user?.id}`} className="favorite__events ">
             <Badge
               badgeContent={favoritesCount}
@@ -156,55 +116,18 @@ export const Navbar = ({setUser}) => {
             >
               <LuHeart
                 className="heart-favorite"
-                // style={{
-                //   width: '30px',
-                //   height: '30px',
-                //   fill: '#d57eeb',
-                //   stroke: '#AA5486',
-                //   filter: 'inset 2px 2px 4px rgba(177, 30, 230, 0.5)',
-                // }}
               />
             </Badge>
           </NavLink>
         
-        {/* <NavLink to="/form" className="advertise">
-           <Badge
-              //badgeContent={cartTotalQuantity}
-              color="error"
-              sx={{
-                '& .MuiBadge-badge': {
-                  fontSize: '0.5rem',
-                  width: '16px',
-                  height: '16px',
-                  minWidth: '16px', // ensures consistency
-                  borderRadius: '50%',
-                  padding: 0,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                },
-              }}
-            >
-              <LuShoppingBag size={18} />
-            </Badge> 
-          Додати оголошення
-        </NavLink> */}
 
-        {/* {user ? (
-          <NavLink to={`/profile/${user?.id}`} className="advertise">
-            Профіль
-          </NavLink>
-        ) : (
-          <NavLink to="/profile/undefined" className="advertise">
-            Профіль
-          </NavLink>
-        )} */}
         <NavLink
           to={user ? `/profile/${user.id}/add-post` : "/form"}
           className="advertise"
         >
           Додати оголошення
         </NavLink>
+
         <NavLink
           to={`/profile/${user?.id ?? "undefined"}`}
           className="advertise"
@@ -225,12 +148,10 @@ export const Navbar = ({setUser}) => {
         <NavLink to="/menu" className="burger-menu">
           <LuMenu />
         </NavLink>
-        {/* </div> */}
+        
       </nav>
 
-      {/* {isMenuOpen && (
-        <Menu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-      )} */}
+      
     </>
   );
 };
