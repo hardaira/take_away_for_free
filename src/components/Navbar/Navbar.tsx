@@ -135,39 +135,43 @@ export const Navbar = ({setUser}) => {
           Мої записи
         </NavLink> */}
 
-        <NavLink to={`/favorites/${user?.id}`} className="favorite__events ">
-          {user &&
-          <Badge
-            badgeContent={favoritesCount}
-            color="error"
-            sx={{
-              "& .MuiBadge-badge": {
-                backgroundColor: "#4a6fa5",
-                fontSize: "0.5rem",
-                width: "18px",
-                height: "18px",
-                minWidth: "18px", // ensures consistency
-                borderRadius: "50%",
-                padding: 0,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              },
-            }}
-          >}
-            <LuHeart
-              className="heart-favorite"
-              // style={{
-              //   width: '30px',
-              //   height: '30px',
-              //   fill: '#d57eeb',
-              //   stroke: '#AA5486',
-              //   filter: 'inset 2px 2px 4px rgba(177, 30, 230, 0.5)',
-              // }}
-            />
-          </Badge>
-        </NavLink>
-
+        {user ? (
+          <NavLink to={`/favorites/${user?.id}`} className="favorite__events ">
+            <Badge
+              badgeContent={favoritesCount}
+              color="error"
+              sx={{
+                "& .MuiBadge-badge": {
+                  backgroundColor: "#4a6fa5",
+                  fontSize: "0.5rem",
+                  width: "18px",
+                  height: "18px",
+                  minWidth: "18px", // ensures consistency
+                  borderRadius: "50%",
+                  padding: 0,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                },
+              }}
+            >
+              <LuHeart
+                className="heart-favorite"
+                // style={{
+                //   width: '30px',
+                //   height: '30px',
+                //   fill: '#d57eeb',
+                //   stroke: '#AA5486',
+                //   filter: 'inset 2px 2px 4px rgba(177, 30, 230, 0.5)',
+                // }}
+              />
+            </Badge>
+          </NavLink>
+        ) : (
+          <LuHeart
+            className="heart-favorite"
+          />
+        )}
         {/* <NavLink to="/form" className="advertise">
            <Badge
               //badgeContent={cartTotalQuantity}
