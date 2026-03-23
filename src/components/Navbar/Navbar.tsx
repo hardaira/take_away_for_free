@@ -72,7 +72,7 @@ export const Navbar = ({setUser}) => {
     return () => {
       window.removeEventListener("favoritesUpdated", loadFavoritesCount);
     };
-  }, []);
+  }, [user]);
   
   const handleLogout = () => {
     localStorage.removeItem("token");
