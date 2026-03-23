@@ -135,7 +135,7 @@ export const Navbar = ({setUser}) => {
           Мої записи
         </NavLink> */}
 
-        {user ? (
+        
           <NavLink to={`/favorites/${user?.id}`} className="favorite__events ">
             <Badge
               badgeContent={favoritesCount}
@@ -167,11 +167,7 @@ export const Navbar = ({setUser}) => {
               />
             </Badge>
           </NavLink>
-        ) : (
-          <LuHeart
-            className="heart-favorite"
-          />
-        )}
+        
         {/* <NavLink to="/form" className="advertise">
            <Badge
               //badgeContent={cartTotalQuantity}
