@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import './Navbar.scss';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { LuHeart } from 'react-icons/lu';
 // import { LuShoppingBag } from 'react-icons/lu';
 import { LuMenu } from 'react-icons/lu';
