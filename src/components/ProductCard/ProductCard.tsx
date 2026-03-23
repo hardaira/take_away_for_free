@@ -110,21 +110,31 @@ const isInFavorites = useSelector((state: RootState) =>
     dispatch(removeFromFavorites(product));
   };
  
-  const toggleFavorite = (productId) => {
-    setMyFavoriteProducts((prev) => {
-      if (prev.includes(productId)) {
-        // remove
-        return prev.filter((id) => id !== productId);
-      } else {
-        // add
-        return [...prev, productId];
-      }
-    });
-  };
+  const toggleFavorite = (product) => {
+    const userString = localStorage.getItem("user");
+    const user = userString ? JSON.parse(userString) : null;
 
- localStorage.setItem("favorite_products", JSON.stringify(myFavoriteProducts));
- console.log(myFavoriteProducts);
-  const isFavorite = myFavoriteProducts.includes(product.id);
+    if (!user) return;
+
+    const key = `favorites_${user.id}`;
+    const stored = localStorage.getItem(key);
+    const favorites = stored ? JSON.parse(stored) : [];
+
+    const exists = favorites.find((p) => p.id === product.id);
+
+    let updated;
+
+    if (exists) {
+      updated = favorites.filter((p) => p.id !== product.id);
+    } else {
+      updated = [...favorites, product];
+    }
+
+    localStorage.setItem(key, JSON.stringify(updated));
+
+    // 🔥 notify FavoritesPage to refresh
+    window.dispatchEvent(new Event("favoritesUpdated"));
+  };
   
   //const isFavorite = favorites.some((p) => p.id === product.id);
 
@@ -140,7 +150,7 @@ const isInFavorites = useSelector((state: RootState) =>
         {isInFavorites ? (
           <button
             className="icon icon__heart selected"
-            onClick={handleRemoveFromFavorites}
+            onClick={() => toggleFavorite(product)}
           >
             <HiOutlineHeart
               style={{
@@ -152,7 +162,10 @@ const isInFavorites = useSelector((state: RootState) =>
             />
           </button>
         ) : (
-          <button className="icon icon__heart" onClick={handleAddToFavorites}>
+          <button
+            className="icon icon__heart"
+            onClick={() => toggleFavorite(product)}
+          >
             <HiOutlineHeart
               style={{
                 width: "20px",
