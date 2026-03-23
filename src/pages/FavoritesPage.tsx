@@ -44,8 +44,9 @@ export const FavoritesPage: React.FC = () => {
   };
 
   return (
-    <div className="section" id="favorites">
-      <div className="favorites">
+    <div className="section" >
+      {/* <div className="favorites"> */}
+      <div>
         <TopBackLink />
 
         <h1 className="heading-favorites">Favorites</h1>
