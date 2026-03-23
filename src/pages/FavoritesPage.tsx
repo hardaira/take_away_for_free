@@ -2,14 +2,24 @@
 import { useOutletContext } from "react-router-dom";
 
 export const FavoritesPage = () => {
-  const { favorites } = useOutletContext();
+  //const { favorites } = useOutletContext();
 
   return (
-    <div>
-      {favorites.map((p) => (
-        <div key={p.id}>{p.name}</div>
-      ))}
+    <div className="section" id="favorites">
+      
+      <div className="favorites">
+         <TopBackLink />
+         <h1 className="heading-favorites">Вибране</h1>
+         <p className="under__heading1"> обраних товарів</p>
+      
+      </div>
+      
     </div>
+    // <div>
+    //   {favorites.map((p) => (
+    //     <div key={p.id}>{p.name}</div>
+    //   ))}
+    // </div>
   );
 };
 

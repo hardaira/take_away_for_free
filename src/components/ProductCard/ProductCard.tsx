@@ -21,7 +21,7 @@ import { useSelector } from 'react-redux';
 import type { RootState } from '../../app/store';
 // import { removeFromCart } from '../../features/cart';
 import { NavLink } from 'react-router-dom';
-import { useOutletContext } from "react-router-dom";
+i//mport { useOutletContext } from "react-router-dom";
 //import { useOutletContext } from "react-router-dom";
 interface ProductCardProps {
   id: number;
@@ -77,7 +77,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     // showFullDetails: false,
   };
 
-  const { favorites, toggleFavorite } = useOutletContext();
+  //const { favorites, toggleFavorite } = useOutletContext();
   const userString = localStorage.getItem("user");
   const user = userString ? JSON.parse(userString) : null;
   
@@ -100,23 +100,23 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
   const [myFavoriteProducts, setMyFavoriteProducts] = useState([]);
  
-//   const toggleFavorite = (productId) => {
-//     setMyFavoriteProducts((prev) => {
-//       if (prev.includes(productId)) {
-//         // remove
-//         return prev.filter((id) => id !== productId);
-//       } else {
-//         // add
-//         return [...prev, productId];
-//       }
-//     });
-//   };
+  const toggleFavorite = (productId) => {
+    setMyFavoriteProducts((prev) => {
+      if (prev.includes(productId)) {
+        // remove
+        return prev.filter((id) => id !== productId);
+      } else {
+        // add
+        return [...prev, productId];
+      }
+    });
+  };
 
-//  localStorage.setItem("favorite_products", JSON.stringify(myFavoriteProducts));
-//  console.log(myFavoriteProducts);
-//   const isFavorite = myFavoriteProducts.includes(product.id);
+ localStorage.setItem("favorite_products", JSON.stringify(myFavoriteProducts));
+ console.log(myFavoriteProducts);
+  const isFavorite = myFavoriteProducts.includes(product.id);
   
-  const isFavorite = favorites.some((p) => p.id === product.id);
+  //const isFavorite = favorites.some((p) => p.id === product.id);
 
   return (
     <div className="product__card">
