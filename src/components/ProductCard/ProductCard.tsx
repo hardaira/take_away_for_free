@@ -21,6 +21,7 @@ import { useSelector } from 'react-redux';
 import type { RootState } from '../../app/store';
 // import { removeFromCart } from '../../features/cart';
 import { NavLink } from 'react-router-dom';
+import { useOutletContext } from "react-router-dom";
 //import { useOutletContext } from "react-router-dom";
 interface ProductCardProps {
   id: number;
@@ -32,6 +33,7 @@ interface ProductCardProps {
   image: string;
   showFullDetails?: boolean;
   inProfile?: boolean;
+  isFavorite?: boolean;
   onDelete?: (id: number) => void;
   onSave?: (id: number) => void;
 }
@@ -75,6 +77,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     // showFullDetails: false,
   };
 
+  const { favorites, toggleFavorite } = useOutletContext();
   const userString = localStorage.getItem("user");
   const user = userString ? JSON.parse(userString) : null;
   
@@ -92,157 +95,29 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const [editedDescription, setEditedDescription] = useState(description);
   const [editedCity, setEditedCity] = useState(city);
   const [editedContact, setEditedContact] = useState(contact || "");
-  //const [inProfile, setInProfile] = useState(false);
+  
   const [showDetails, setShowDetails] = useState(showFullDetails);
 
   const [myFavoriteProducts, setMyFavoriteProducts] = useState([]);
-  // const isInFavorites = useSelector((state: RootState) =>
-  //   state.favorites.favoriteItems.some(item => item.title === product.title),
-  // );
+ 
+//   const toggleFavorite = (productId) => {
+//     setMyFavoriteProducts((prev) => {
+//       if (prev.includes(productId)) {
+//         // remove
+//         return prev.filter((id) => id !== productId);
+//       } else {
+//         // add
+//         return [...prev, productId];
+//       }
+//     });
+//   };
 
-  // const isInCart = useSelector((state: RootState) =>
-  //   state.cart.cartItems.some(item => item.name === product.title),
-  // );
-  // const handleAddToCart = () => {
-  //   dispatch(addToCart(product));
-  // };
-
-  // const handleAddToFavorites = () => {
-  //   dispatch(addToFavorites(product));
-  // };
-
-  // const handleRemoveFromFavorites = () => {
-  //   dispatch(removeFromFavorites(product));
-  // };
-
-  // const handleRemoveFromCart = (cartItem: string) => {
-  //   dispatch(removeFromCart(cartItem));
-  // };
-
-
-  const handleAddToFavorites = (product: Product) => {
-    const userString = localStorage.getItem("user");
-    const user = userString ? JSON.parse(userString) : null;
-
-    if (!user) {
-      alert("Please login");
-      return;
-    }
-
-    const key = `favorites_${user.id}`;
-    const existing = localStorage.getItem(key);
-    const favorites = existing ? JSON.parse(existing) : [];
-
-    const alreadyExists = favorites.find(
-      (item: Product) => item.id === product.id
-    );
-    if (alreadyExists) return;
-
-    const updated = [...favorites, product];
-    localStorage.setItem(key, JSON.stringify(updated));
-  };
-
-
-const handleRemoveFromFavorites = (productId: string) => {
-  if (!user) return;
-
-  const key = `favorites_${user.id}`;
-
-  // get current favorites
-  const existing = localStorage.getItem(key);
-  const favorites: Product[] = existing ? JSON.parse(existing) : [];
-
-  // remove item
-  const updated = favorites.filter((item) => item.id !== productId);
-
-  // save back
-  localStorage.setItem(key, JSON.stringify(updated));
-
-  // update UI
-  setFavorites(updated);
-};
-//const handleUpdatePost = async (
-  //   productId: number,
-  //   //messageAuthor: string,
-  //   editedTitle: string,
-  //   editedCategory: string,
-  //   editedDescription: string,
-  //   editedCity: string,
-  //   editedContact: string
-  // ) => {
-  //   if (!user) {
-  //     console.log("Ви повинні увійти в систему");
-  //     return;
-  //   }
-
-  //   try {
-  //     // Make the PUT request to update the room title
-  //     const updateRes = await fetch(
-  //       `https://team-project-backend-production.up.railway.app/products/${productId}`,
-  //       {
-  //         method: "PUT",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //         body: JSON.stringify({
-  //           title: editedTitle || product.title,
-  //           category: editedCategory || product.category,
-  //           description: editedDescription || product.description,
-  //           city: editedCity || product.city,
-  //           contact: editedContact || product.contact,
-  //         }),
-  //       }
-  //     );
-
-  //     if (!updateRes.ok) {
-  //       const data = await updateRes.json();
-  //       alert(data.message || "Failed to update message");
-  //       //setEditText(null);
-
-  //       // return;
-  //     }
-
-  //     // Update the state to reflect the room update
-  //     setMyProducts((myProducts) =>
-  //       myProducts.map((p) =>
-  //         p.id === productId
-  //           ? {
-  //               ...p,
-  //               title: editedTitle,
-  //               category: editedCategory,
-  //               description: editedDescription,
-  //               city: editedCity,
-  //               contact: editedContact,
-  //             }
-  //           : p
-  //       )
-  //     );
-
-  //     // Exit edit mode after successful update
-  //     //setEditText(null);
-  //   } catch (err) {
-  //     alert("Failed to update room");
-  //     //setEditText(null);
-  //   }
-  // };
-
-  const toggleFavorite = (productId) => {
-    setMyFavoriteProducts((prev) => {
-      if (prev.includes(productId)) {
-        // remove
-        return prev.filter((id) => id !== productId);
-      } else {
-        // add
-        return [...prev, productId];
-      }
-    });
-  };
-
- localStorage.setItem("favorite_products", JSON.stringify(myFavoriteProducts));
- console.log(myFavoriteProducts);
-  const isFavorite = myFavoriteProducts.includes(product.id);
+//  localStorage.setItem("favorite_products", JSON.stringify(myFavoriteProducts));
+//  console.log(myFavoriteProducts);
+//   const isFavorite = myFavoriteProducts.includes(product.id);
   
+  const isFavorite = favorites.some((p) => p.id === product.id);
+
   return (
     <div className="product__card">
       {/* <NavLink to={`/${category}/${id}`} className="card-image"> */}
@@ -280,7 +155,7 @@ const handleRemoveFromFavorites = (productId: string) => {
         )} */}
         <button
           className="icon icon__heart"
-          onClick={() => toggleFavorite(id)}
+          onClick={() => toggleFavorite(product)}
         >
           {isFavorite ? (
             <HiOutlineHeart
