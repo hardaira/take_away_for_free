@@ -1,4 +1,4 @@
-
+import TopBackLink from "../components/TopBackLink/TopBackLink";
 import { useOutletContext } from "react-router-dom";
 
 export const FavoritesPage = () => {
@@ -6,14 +6,11 @@ export const FavoritesPage = () => {
 
   return (
     <div className="section" id="favorites">
-      
       <div className="favorites">
-         <TopBackLink />
-         <h1 className="heading-favorites">Вибране</h1>
-         <p className="under__heading1"> обраних товарів</p>
-      
+        <TopBackLink />
+        <h1 className="heading-favorites">Вибране</h1>
+        <p className="under__heading1"> обраних товарів</p>
       </div>
-      
     </div>
     // <div>
     //   {favorites.map((p) => (
@@ -116,7 +113,7 @@ export default FavoritesPage;
 //                 //onRemove={() => removeFavorite(product.id)} // optional
 //               />
 //             ))}
-//           </div> 
+//           </div>
 //         )}/ *}
 //       </div>
 //     </div>
