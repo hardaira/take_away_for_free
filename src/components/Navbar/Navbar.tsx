@@ -29,21 +29,22 @@ export const Navbar = ({setUser}) => {
    const userString = localStorage.getItem("user");
    const user = userString ? JSON.parse(userString) : null;
    const [favoritesCount, setFavoritesCount] = useState(0);
+  const navigate = useNavigate();
   //const { user, setUser } = useOutletContext<any>();
   //const { user } = useOutletContext<any>();
-  const favoriteTotalQuantity = useSelector(
-    (state: RootState) => state.favorites.favoriteTotalQuantity
-  );
+  // const favoriteTotalQuantity = useSelector(
+  //   (state: RootState) => state.favorites.favoriteTotalQuantity
+  // );
 
   // const cartTotalQuantity = useSelector(
   //   (state: RootState) => state.cart.cartTotalQuantity,
   // );
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
 
   //const cartItems = useSelector((state: RootState) => state.cart.cartItems);
-  const favoriteItems = useSelector(
-    (state: RootState) => state.favorites.favoriteItems
-  );
+  // const favoriteItems = useSelector(
+  //   (state: RootState) => state.favorites.favoriteItems
+  // );
   //const [isMenuOpen, setIsMenuOpen] = useState(false);
   //const [activeCity, setActiveCity] = useState('Ukraine');
   // useEffect(() => {
@@ -135,6 +136,7 @@ export const Navbar = ({setUser}) => {
         </NavLink> */}
 
         <NavLink to={`/favorites/${user?.id}`} className="favorite__events ">
+          {user &&
           <Badge
             badgeContent={favoritesCount}
             color="error"
@@ -152,7 +154,7 @@ export const Navbar = ({setUser}) => {
                 justifyContent: "center",
               },
             }}
-          >
+          >}
             <LuHeart
               className="heart-favorite"
               // style={{
