@@ -84,7 +84,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   //const [myProducts, setMyProducts] = useState([]);
-  const [favotites, setFavorites] = useState([]);
+  const [favorites, setFavorites] = useState([]);
   
   const token = localStorage.getItem("token");
 
@@ -99,9 +99,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const [showDetails, setShowDetails] = useState(showFullDetails);
 
   const [myFavoriteProducts, setMyFavoriteProducts] = useState([]);
-const isInFavorites = useSelector((state: RootState) =>
-  state.favorites.favoriteItems.some((item) => item.title === product.title)
-);
+// const isInFavorites = useSelector((state: RootState) =>
+//   state.favorites.favoriteItems.some((item) => item.title === product.title)
+// );
   const handleAddToFavorites = () => {
     dispatch(addToFavorites(product));
   };
@@ -135,8 +135,9 @@ const isInFavorites = useSelector((state: RootState) =>
     // 🔥 notify FavoritesPage to refresh
     window.dispatchEvent(new Event("favoritesUpdated"));
   };
-  
-  //const isFavorite = favorites.some((p) => p.id === product.id);
+
+  //const isInFavorites = favorites.some((item) => item.id === productId);
+  const isInFavorites = favorites.some((p) => p.id === product.id);
 
   return (
     <div className="product__card">
