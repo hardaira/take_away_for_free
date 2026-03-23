@@ -131,7 +131,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     }
 
     localStorage.setItem(key, JSON.stringify(updated));
-
+    setFavorites(updated);
     // 🔥 notify FavoritesPage to refresh
     window.dispatchEvent(new Event("favoritesUpdated"));
   };
