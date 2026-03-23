@@ -86,40 +86,39 @@ export const Navbar = ({setUser}) => {
   return (
     <>
       <nav className="navbar">
-        
         <div>
           <NavLink to="/#">
             <Logo />
           </NavLink>
         </div>
- 
+
         <CitySelect />
 
-          <NavLink to={`/favorites/${user?.id}`} className="favorite__events ">
-            <Badge
-              badgeContent={favoritesCount}
-              color="error"
-              sx={{
-                "& .MuiBadge-badge": {
-                  backgroundColor: "#4a6fa5",
-                  fontSize: "0.5rem",
-                  width: "18px",
-                  height: "18px",
-                  minWidth: "18px", // ensures consistency
-                  borderRadius: "50%",
-                  padding: 0,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                },
-              }}
-            >
-              <LuHeart
-                className="heart-favorite"
-              />
-            </Badge>
-          </NavLink>
-        
+        <NavLink
+          to={user ? `/favorites/${user.id}` : "/favorites/undefined"}
+          className="favorite__events "
+        >
+          <Badge
+            badgeContent={favoritesCount}
+            color="error"
+            sx={{
+              "& .MuiBadge-badge": {
+                backgroundColor: "#4a6fa5",
+                fontSize: "0.5rem",
+                width: "18px",
+                height: "18px",
+                minWidth: "18px", // ensures consistency
+                borderRadius: "50%",
+                padding: 0,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              },
+            }}
+          >
+            <LuHeart className="heart-favorite" />
+          </Badge>
+        </NavLink>
 
         <NavLink
           to={user ? `/profile/${user.id}/add-post` : "/form"}
@@ -148,10 +147,7 @@ export const Navbar = ({setUser}) => {
         <NavLink to="/menu" className="burger-menu">
           <LuMenu />
         </NavLink>
-        
       </nav>
-
-      
     </>
   );
 };
