@@ -21,7 +21,7 @@ import { useSelector } from 'react-redux';
 import type { RootState } from '../../app/store';
 // import { removeFromCart } from '../../features/cart';
 import { NavLink } from 'react-router-dom';
-i//mport { useOutletContext } from "react-router-dom";
+//mport { useOutletContext } from "react-router-dom";
 //import { useOutletContext } from "react-router-dom";
 interface ProductCardProps {
   id: number;
