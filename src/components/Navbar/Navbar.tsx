@@ -28,6 +28,7 @@ export const Navbar = ({setUser}) => {
   //const { user, setUser } = useOutletContext<OutletContextType>();
    const userString = localStorage.getItem("user");
    const user = userString ? JSON.parse(userString) : null;
+   const [favoritesCount, setFavoritesCount] = useState(0);
   //const { user, setUser } = useOutletContext<any>();
   //const { user } = useOutletContext<any>();
   const favoriteTotalQuantity = useSelector(
@@ -49,10 +50,33 @@ export const Navbar = ({setUser}) => {
   //   dispatch(getTotals());
   // }, [dispatch, cartItems]);
 
+  const loadFavoritesCount = () => {
+    if (!user) {
+      setFavoritesCount(0);
+      return;
+    }
+
+    const key = `favorites_${user.id}`;
+    const stored = localStorage.getItem(key);
+    const favorites = stored ? JSON.parse(stored) : [];
+
+    setFavoritesCount(favorites.length);
+  };
+
+  // useEffect(() => {
+  //   dispatch(getFavoritesQuantity());
+  // }, [dispatch, favoriteItems]);
+  // const navigate = useNavigate();
+
   useEffect(() => {
-    dispatch(getFavoritesQuantity());
-  }, [dispatch, favoriteItems]);
-  const navigate = useNavigate();
+    loadFavoritesCount();
+
+    window.addEventListener("favoritesUpdated", loadFavoritesCount);
+
+    return () => {
+      window.removeEventListener("favoritesUpdated", loadFavoritesCount);
+    };
+  }, []);
   
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -60,6 +84,8 @@ export const Navbar = ({setUser}) => {
     setUser(null);
     navigate(`/login`);
   };
+
+
 
   return (
     <>
@@ -110,7 +136,7 @@ export const Navbar = ({setUser}) => {
 
         <NavLink to={`/favorites/${user?.id}`} className="favorite__events ">
           <Badge
-            badgeContent={favoriteTotalQuantity || 0}
+            badgeContent={favoritesCount}
             color="error"
             sx={{
               "& .MuiBadge-badge": {
