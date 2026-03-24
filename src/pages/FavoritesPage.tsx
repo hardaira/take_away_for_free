@@ -15,22 +15,22 @@ type Product = {
 export const FavoritesPage: React.FC = () => {
   const [favorites, setFavorites] = useState<Product[]>([]);
 
-  // --- GET USER
-  const userString = localStorage.getItem("user");
-  const user = userString ? JSON.parse(userString) : null;
+  // // --- GET USER
+  // const userString = localStorage.getItem("user");
+  // const user = userString ? JSON.parse(userString) : null;
 
-  // --- HELPERS
-  const getFavorites = (userId: string): Product[] => {
-    const data = localStorage.getItem(`favorites_${userId}`);
-    return data ? JSON.parse(data) : [];
-  };
+  // // --- HELPERS
+  // const getFavorites = (userId: string): Product[] => {
+  //   const data = localStorage.getItem(`favorites_${userId}`);
+  //   return data ? JSON.parse(data) : [];
+  // };
 
-  // --- LOAD FAVORITES
-  useEffect(() => {
-    if (user) {
-      setFavorites(getFavorites(user.id));
-    }
-  }, [user]);
+  // // --- LOAD FAVORITES
+  // useEffect(() => {
+  //   if (user) {
+  //     setFavorites(getFavorites(user.id));
+  //   }
+  // }, [user]);
   
 
   // --- OPTIONAL: REMOVE FROM FAVORITES
