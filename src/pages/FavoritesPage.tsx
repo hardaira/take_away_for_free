@@ -16,8 +16,8 @@ export const FavoritesPage: React.FC = () => {
   const [favorites, setFavorites] = useState<Product[]>([]);
 
   // --- GET USER
-  // const userString = localStorage.getItem("user");
-  // const user = userString ? JSON.parse(userString) : null;
+  const userString = localStorage.getItem("user");
+  const user = userString ? JSON.parse(userString) : null;
 
   // --- HELPERS
   const getFavorites = (userId: string): Product[] => {
@@ -55,7 +55,7 @@ export const FavoritesPage: React.FC = () => {
     const parsed = stored ? JSON.parse(stored) : [];
 
     setFavorites(parsed);
-  }, []);
+  }, [user]);
 
   return (
     <div className="section" >
