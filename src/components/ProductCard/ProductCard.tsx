@@ -134,7 +134,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
     localStorage.setItem(key, JSON.stringify(updated));
     setFavorites(updated);
-    // 🔥 notify FavoritesPage to refresh
+    //  notify FavoritesPage to refresh
     window.dispatchEvent(new Event("favoritesUpdated"));
   };
 
@@ -153,9 +153,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         {isInFavorites ? (
           <button
            className="icon icon__heart selected"
-            // className={`icon icon__heart ${
-            //   favorites.includes(product) ? "selected" : ""
-            // }`}
             onClick={() => toggleFavorite(product)}
           >
             <HiOutlineHeart
