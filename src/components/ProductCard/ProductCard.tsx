@@ -102,13 +102,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 // const isInFavorites = useSelector((state: RootState) =>
 //   state.favorites.favoriteItems.some((item) => item.title === product.title)
 // );
-  const handleAddToFavorites = () => {
-    dispatch(addToFavorites(product));
-  };
+  // const handleAddToFavorites = () => {
+  //   dispatch(addToFavorites(product));
+  // };
 
-  const handleRemoveFromFavorites = () => {
-    dispatch(removeFromFavorites(product));
-  };
+  // const handleRemoveFromFavorites = () => {
+  //   dispatch(removeFromFavorites(product));
+  // };
  
   const toggleFavorite = (product) => {
     const userString = localStorage.getItem("user");
@@ -148,9 +148,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           src={`./${image}`}
           alt="Product photo"
         />
-        {isInFavorites ? (
+        {/* {isInFavorites ? ( */}
           <button
-            className="icon icon__heart selected"
+           // className="icon icon__heart selected"
+            className={`icon icon__heart ${
+              favorites.includes(product) ? "selected" : ""
+            }`}
             onClick={() => toggleFavorite(product)}
           >
             <HiOutlineHeart
@@ -161,8 +164,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                 stroke: "#4a6fa5",
               }}
             />
-          </button>
-        ) : (
+        </button>
+        
+        {/* ) : (
           <button
             className="icon icon__heart"
             onClick={() => toggleFavorite(product)}
@@ -176,7 +180,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               }}
             />
           </button>
-        )}
+        )} */}
         {/* <button
           className="icon icon__heart"
           onClick={() => toggleFavorite(product)}
