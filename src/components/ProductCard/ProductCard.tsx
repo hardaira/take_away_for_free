@@ -21,6 +21,8 @@ import { useSelector } from 'react-redux';
 import type { RootState } from '../../app/store';
 // import { removeFromCart } from '../../features/cart';
 import { NavLink } from 'react-router-dom';
+import { withEmotionCache } from '../../../node_modules/@emotion/react/dist/emotion-react.cjs';
+import { withTheme } from '../../../node_modules/@emotion/react/dist/declarations/src/theming';
 //mport { useOutletContext } from "react-router-dom";
 //import { useOutletContext } from "react-router-dom";
 interface ProductCardProps {
@@ -148,25 +150,25 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           src={`./${image}`}
           alt="Product photo"
         />
-        {/* {isInFavorites ? ( */}
+        {isInFavorites ? (
           <button
-           // className="icon icon__heart selected"
-            className={`icon icon__heart ${
-              favorites.includes(product) ? "selected" : ""
-            }`}
+           className="icon icon__heart selected"
+            // className={`icon icon__heart ${
+            //   favorites.includes(product) ? "selected" : ""
+            // }`}
             onClick={() => toggleFavorite(product)}
           >
             <HiOutlineHeart
               style={{
                 width: "20px",
-                height: "20px",
-                fill: "#4a6fa5",
-                stroke: "#4a6fa5",
+              height: "20px",
+              fill: "#4a6fa5",
+              stroke: "#4a6fa5",
               }}
             />
         </button>
         
-        {/* ) : (
+         ) : (
           <button
             className="icon icon__heart"
             onClick={() => toggleFavorite(product)}
@@ -180,7 +182,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               }}
             />
           </button>
-        )} */}
+        )} 
         {/* <button
           className="icon icon__heart"
           onClick={() => toggleFavorite(product)}
