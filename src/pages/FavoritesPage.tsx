@@ -31,6 +31,7 @@ export const FavoritesPage: React.FC = () => {
       setFavorites(getFavorites(user.id));
     }
   }, [user]);
+  
 
   // --- OPTIONAL: REMOVE FROM FAVORITES
   const removeFavorite = (productId: string) => {
@@ -42,6 +43,19 @@ export const FavoritesPage: React.FC = () => {
 
     setFavorites(updated);
   };
+
+  useEffect(() => {
+    const userString = localStorage.getItem("user");
+    const user = userString ? JSON.parse(userString) : null;
+
+    if (!user) return;
+
+    const key = `favorites_${user.id}`;
+    const stored = localStorage.getItem(key);
+    const parsed = stored ? JSON.parse(stored) : [];
+
+    setFavorites(parsed);
+  }, []);
 
   return (
     <div className="section" >

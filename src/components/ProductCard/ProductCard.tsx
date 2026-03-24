@@ -111,6 +111,18 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   // const handleRemoveFromFavorites = () => {
   //   dispatch(removeFromFavorites(product));
   // };
+  useEffect(() => {
+    const userString = localStorage.getItem("user");
+    const user = userString ? JSON.parse(userString) : null;
+
+    if (!user) return;
+
+    const key = `favorites_${user.id}`;
+    const stored = localStorage.getItem(key);
+    const parsed = stored ? JSON.parse(stored) : [];
+
+    setFavorites(parsed);
+  }, []);
  
   const toggleFavorite = (product) => {
     const userString = localStorage.getItem("user");
