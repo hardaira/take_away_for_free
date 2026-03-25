@@ -16,57 +16,65 @@ export const ChangePassword: React.FC = () => {
   // const { user, setUser } = useOutletContext<OutletContextType>();
 
   const [newPassword, setNewPassword] = useState('');
-  const [oldPassword, setOldPassword] = useState('');
-  const [passwordError, _setPasswordError] = useState('');
-  // const handleChangePassword = async (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   setPasswordError('');
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
 
-  //   if (!oldPassword.trim()) {
-  //     setPasswordError('Old password field cannot be empty');
-  //     return;
-  //   }
+const token = localStorage.getItem("token");
+ //userString = localStorage.getItem("user");
+//constconst user = userString ? JSON.parse(userString) : null;
 
-  //   if (!newPassword.trim()) {
-  //     setPasswordError('New password field cannot be empty');
-  //     return;
-  //   }
+  const handleChangePassword = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setPasswordError('');
 
-  //   try {
-  //     const res = await fetch(
-  //       `http://localhost:5000/users/${user.id}/change-password`,
-  //       {
-  //         method: 'PATCH',
-  //         headers: { 'Content-Type': 'application/json' },
-  //         body: JSON.stringify({ oldPassword, newPassword }),
-  //       },
-  //     );
+    if (!currentPassword.trim()) {
+      setPasswordError('Old password field cannot be empty');
+      return;
+    }
 
-  //     const data = await res.json();
+    if (!newPassword.trim()) {
+      setPasswordError('New password field cannot be empty');
+      return;
+    }
 
-  //     if (!res.ok) {
-  //       setPasswordError(data.message || 'Failed to change password');
-  //       return;
-  //     }
+    try {
+      const res = await fetch(
+        `https://team-project-backend-production.up.railway.app/users/me/password`,
+        {
+          method: "PATCH",
+          headers: {
+           "Content-Type": "application/json",
+           Authorization: `Bearer ${token}`,
+         },
+          body: JSON.stringify({ currentPassword, newPassword }),
+        }
+      );
 
-  //     setPasswordError('Password changed successfully');
-  //     setOldPassword('');
-  //     setNewPassword('');
-  //   } catch {
-  //     setPasswordError('Failed to update your password');
-  //   }
-  // };
+      const data = await res.json();
+
+      if (!res.ok) {
+        setPasswordError(data.message || 'Failed to change password');
+        return;
+      }
+
+      setPasswordError('Password changed successfully');
+      setCurrentPassword('');
+      setNewPassword('');
+    } catch {
+      setPasswordError('Failed to update your password');
+    }
+  };
 
   return (
     <>
-      {/* <form onSubmit={handleChangePassword}> */}
-      <form className="change-password">
+      <form className="change-password" onSubmit={handleChangePassword}>
+      {/* <form className="change-password"> */}
         <div className="input-wrapper">
           <input
             type="password"
             className="input-style"
-            value={oldPassword}
-            onChange={e => setOldPassword(e.target.value)}
+            value={currentPassword}
+            onChange={e => setCurrentPassword(e.target.value)}
             placeholder="Введіть старий пароль"
           />
         </div>
