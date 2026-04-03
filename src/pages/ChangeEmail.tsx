@@ -19,53 +19,59 @@ export const ChangeEmail: React.FC = () => {
 
   const [password, setPassword] = useState('');
   const [newEmail, setNewEmail] = useState('');
-  const [message, _setMessage] = useState('');
-  const [loading, _setLoading] = useState(false);
-  // const handleChangeEmail = async (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   setMessage('');
-  //   setLoading(true);
+  const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
+const token = localStorage.getItem("token");
 
-  //   // if (!password.trim()) {
-  //   //   setMessage('Password field cannot be empty');
-  //   //   return;
-  //   // }
+  const handleChangeEmail = async (e) => {
+    e.preventDefault();
+    setMessage('');
+    setLoading(true);
+    console.log(`start`);
 
-  //   // if (!newEmail.trim()) {
-  //   //   setMessage('New email field cannot be empty');
-  //   //   return;
-  //   // }
+    // if (!password.trim()) {
+    //   setMessage('Password field cannot be empty');
+    //   return;
+    // }
 
-  //   try {
-  //     const res = await fetch(
-  //       `http://localhost:5000/users/${user.id}/change-email`,
-  //       {
-  //         method: 'PATCH',
-  //         headers: { 'Content-Type': 'application/json' },
-  //         body: JSON.stringify({ password, newEmail }),
-  //       },
-  //     );
+    // if (!newEmail.trim()) {
+    //   setMessage('New email field cannot be empty');
+    //   return;
+    // }
 
-  //     const data = await res.json();
+    try {
+      const res = await fetch(
+        `https://team-project-backend-production.up.railway.app/users/me/email`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ password, newEmail }),
+        }
+      );
 
-  //     if (!res.ok) {
-  //       setMessage(data.message);
-  //       return;
-  //     }
+      const data = await res.json();
 
-  //     setMessage(data.message);
-  //     setPassword('');
-  //     setNewEmail('');
-  //   } catch {
-  //     setLoading(false);
-  //     setMessage('Зміни не надіслано.Сервер не відповідає');
-  //   }
-  // };
+      if (!res.ok) {
+        setMessage(data.message);
+        return;
+      }
+
+      setMessage(data.message);
+      setPassword('');
+      setNewEmail('');
+    } catch {
+      setLoading(false);
+      setMessage('Зміни не надіслано.Сервер не відповідає');
+    }
+  };
 
   return (
     <>
-      {/* <form onSubmit={handleChangeEmail}> */}
-      <form className="change-password" >
+      <form className="change-password" onSubmit={handleChangeEmail}>
+      {/* <form className="change-password" > */}
         <div className="input-wrapper">
           <input
             type="password"
@@ -88,7 +94,7 @@ export const ChangeEmail: React.FC = () => {
           type="submit"
           className="profileButton"
           // style={{ width: '120px' }}
-          disabled={loading}
+          //disabled={loading}
         >
           {loading ? 'Надсилається' : 'Надіслати'}
         </button>

@@ -17,7 +17,7 @@ export const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState("");
-
+const [message, setMessage] = useState("");
   const { setUser } = useOutletContext<OutletContextType>();
   const navigate = useNavigate();
 
@@ -40,14 +40,14 @@ export const LoginPage: React.FC = () => {
 
       const data = await res.json();
 
-      // if (!res.ok) {
-      //   setLoginError(data.message || "Login failed");
-      //   return;
-      // }
+      if (!res.ok) {
+        setMessage(data.message);
+        return;
+      }
 
       // ✅ store token
       // localStorage.setItem("accessToken", data.accessToken);
-      localStorage.setItem('token', data.token);
+      localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data));
       // ✅ store ONLY user data (no token, no password)
       // setUser({
@@ -58,10 +58,8 @@ export const LoginPage: React.FC = () => {
 
       console.log(data);
       setUser(data);
-      
-      
+
       navigate(`/profile/${data.id}`);
-      
     } catch (err) {
       console.error(err);
       setLoginError("Сервер не відповідає.");
