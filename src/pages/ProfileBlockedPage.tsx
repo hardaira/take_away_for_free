@@ -1,6 +1,7 @@
 import "./InformationPage.scss";
 // import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import TopBackLink from "../components/TopBackLink/TopBackLink";
 // import { useSelector, useDispatch } from 'react-redux';
 // import { selectAllProducts, addProduct } from '../features/products';
 
@@ -9,11 +10,12 @@ export const ProfileBlockedPage: React.FC = () => {
   return (
     <div className="section">
       <div className="container">
+        <TopBackLink />
         <div className="centered">
           <div className="form__box__login">
+            <h2>Увага</h2>
             <p>
-              Спочатку потрібно зареєструватись і увійти на
-              сторінку профілю .
+              Спочатку потрібно зареєструватись і увійти на сторінку профілю .
             </p>
             <p className="login_link" onClick={() => navigate("/login")}>
               Увійти

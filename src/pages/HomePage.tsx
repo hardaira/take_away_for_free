@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import CategorySelect from '../components/CategorySelect/CategorySelect';
 import ProductList from '../components/ProductList/ProductList';
 import QueryInput from "../components/QueryInput/QueryInput";
+
 // import Form from './FormPage';
 
 //import { setActiveCity, City } from '../../features/filter';
@@ -24,12 +25,13 @@ export const HomePage: React.FC = () => {
         {/* <div className="container">
         <ProductList />
       </div> */}
-        <CategorySelect />
+
         <QueryInput query={query} setQuery={setQuery} />
+        <CategorySelect />
         <div className="container">
           <ProductList query={query} />
         </div>
-      
+
         {/* <Form /> */}
         {/* <SliderTop />
       <SliderNewBrands />

@@ -1,6 +1,7 @@
 import './InformationPage.scss';
 // import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import TopBackLink from "../components/TopBackLink/TopBackLink";
 // import { useSelector, useDispatch } from 'react-redux';
 // import { selectAllProducts, addProduct } from '../features/products';
 
@@ -9,18 +10,20 @@ export const InformationPage: React.FC = () => {
   return (
     <div className="section">
       <div className="container">
+        <TopBackLink />
         <div className="centered">
-        <div className="form__box__login">
-          <p>
-            Щоб додати оголошення потрібно зареєструватись і увійти на сторінку
-            профілю .
-          </p>
-          <p className="login_link" onClick={() => navigate('/login')}>
-            Увійти
-          </p>
+          <div className="form__box__login">
+            <h2>Увага</h2>
+            <p>
+              Щоб додати оголошення потрібно зареєструватись і увійти на
+              сторінку профілю .
+            </p>
+            <p className="login_link" onClick={() => navigate("/login")}>
+              Увійти
+            </p>
+          </div>
         </div>
-        </div>
-        </div>
+      </div>
     </div>
   );
 };

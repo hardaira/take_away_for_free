@@ -4,6 +4,7 @@ import "./ProductList.scss";
 import { SlMagnifier } from "react-icons/sl";
 import { useOutletContext } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
+import { FiLoader } from "react-icons/fi";
 
 //import products from "../../features/products";
 type Product = {
@@ -31,6 +32,7 @@ export const ProductList: React.FC = () => {
         const data = await res.json();
         console.log("API:", data);
         setProducts(data.content);
+        localStorage.setItem("products", JSON.stringify(data.content));
         setLoading(false);
       } catch (err) {
         console.error(err);

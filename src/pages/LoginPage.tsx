@@ -1,5 +1,8 @@
 import './LoginPage.scss';
 import React, { useState } from "react";
+import { IoEyeOutline } from "react-icons/io5";
+import { IoEyeOffOutline } from "react-icons/io5";
+import TopBackLink from "../components/TopBackLink/TopBackLink";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
 type User = {
@@ -17,6 +20,7 @@ export const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState("");
+  const [hidePassword, setHidePassword] = useState(true);
 const [message, setMessage] = useState("");
   const { setUser } = useOutletContext<OutletContextType>();
   const navigate = useNavigate();
@@ -69,6 +73,7 @@ const [message, setMessage] = useState("");
   return (
     <div className="section">
       <div className="container">
+        <TopBackLink />
         <div className="centered">
           <div className="form__box__login">
             <h2>Вхід</h2>
@@ -90,20 +95,44 @@ const [message, setMessage] = useState("");
 
               <div className="input-group">
                 <div className="input-wrapper">
-                  <input
-                    // id="password"
-                    type="password"
-                    className="input-style"
-                    placeholder="Введіть свій пароль"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                  />
+                  {hidePassword ? (
+                    <>
+                      <input
+                        // id="password"
+                        type="password"
+                        className="input-style"
+                        placeholder="Введіть свій пароль"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                      />
+                      <IoEyeOutline
+                        style={{ marginRight: "16px" }}
+                        onClick={() => setHidePassword(false)}
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <input
+                        // id="password"
+                        type="text"
+                        className="input-style"
+                        placeholder="Введіть свій пароль"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                      />
+                      <IoEyeOffOutline
+                        style={{ marginRight: "16px" }}
+                        onClick={() => setHidePassword(true)}
+                      />
+                    </>
+                  )}
                 </div>
                 <p className="rule">
-                  Пароль має містити мінімум 8 знаків (хоча б одну велику літеру (A-Z), хоча б одну
-                  малу літеру (a-z), хоча б одну цифру, хоча б один спецсимвол (
-                  @$!%*?&.#_-))
+                  Пароль має містити мінімум 8 знаків (хоча б одну велику літеру
+                  (A-Z), хоча б одну малу літеру (a-z), хоча б одну цифру, хоча
+                  б один спецсимвол ( @$!%*?&.#_-))
                 </p>
               </div>
 
@@ -117,19 +146,20 @@ const [message, setMessage] = useState("");
             <p>Немає облікового запису?</p>
 
             <div className="login_links">
-            <p
-            className="login_link"
-            onClick={() => navigate("/registration")} >
-              Зареєструватись
-            </p>
+              <p
+                className="login_link"
+                onClick={() => navigate("/registration")}
+              >
+                Зареєструватись
+              </p>
 
-            <p
-              className="login_link"
-              onClick={() => navigate("/reset-password")}
-            >
-              Забули пароль?
-          </p>
-          </div>
+              <p
+                className="login_link"
+                onClick={() => navigate("/reset-password")}
+              >
+                Забули пароль?
+              </p>
+            </div>
           </div>
         </div>
       </div>

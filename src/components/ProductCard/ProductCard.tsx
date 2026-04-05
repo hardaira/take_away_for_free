@@ -290,7 +290,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             <div
               className="addButton"
               onClick={() => {
-                //navigate(`/product/${id}`);
+                navigate(`/product/${id}`);
                 navigate(user ? `/product/${id}` : "/details");
                 setShowDetails(true);
               }}

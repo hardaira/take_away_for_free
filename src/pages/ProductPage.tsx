@@ -1,7 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { HiOutlineHeart } from "react-icons/hi";
-//import SliderTheNewest from "../components/SliderTheNewest/SliderTheNewest";
+import "./ProductPage.scss";
+import { ProductCard } from "../components/ProductCard/ProductCard";
+
 export const ProductPage: React.FC = () => {
+  const { productId } = useParams();
+  const [product, setProduct] = useState<any>(null);
+  const [favorites, setFavorites] = useState([]);
+  const [products, setProducts] = useState<any[]>([]);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("products");
+    console.log("RAW localStorage:", stored);
+
+    const products = stored ? JSON.parse(stored) : [];
+    console.log("Parsed products:", products);
+
+    console.log("URL productId:", productId);
+    setProducts(products);
+
+    const found = products.find((p: any) => p.id === +productId);
+
+    console.log("FOUND PRODUCT:", found);
+
+    setProduct(found);
+  }, [productId]);
+
+  if (!product) return <p>Product not found</p>;
+
   const toggleFavorite = (product) => {
     const userString = localStorage.getItem("user");
     const user = userString ? JSON.parse(userString) : null;
@@ -28,104 +55,76 @@ export const ProductPage: React.FC = () => {
     window.dispatchEvent(new Event("favoritesUpdated"));
   };
 
-  //const isInFavorites = favorites.some((item) => item.id === productId);
-  const isInFavorites = favorites.some((p) => p.id === product.id);
+  const isInFavorites = favorites.some((p: any) => p.id === product.id);
+
+  const recommended = products.filter(
+  (p: any) =>
+    p.id !== product.id && // exclude current product
+    p.city === product.city &&
+    p.category === product.category
+);
 
   return (
     <div className="section">
-      <div className="container">
-        <div className="card-image">
-          <img
-            className="product__card__img"
-            src={`./${image}`}
-            alt="Product photo"
-          />
-          {isInFavorites ? (
-            <button
-              className="icon icon__heart selected"
-              onClick={() => toggleFavorite(product)}
-            >
-              <HiOutlineHeart
-                style={{
-                  width: "20px",
-                  height: "20px",
-                  fill: "#4a6fa5",
-                  stroke: "#4a6fa5",
-                }}
-              />
-            </button>
-          ) : (
-            <button
-              className="icon icon__heart"
-              onClick={() => toggleFavorite(product)}
-            >
-              <HiOutlineHeart
-                style={{
-                  width: "20px",
-                  height: "20px",
-                  fill: "white",
-                  stroke: "white",
-                }}
-              />
-            </button>
-          )}
-        
+      <div className="container pp_container">
+        <div className="image_and_text">
+          <div className="image_and_button">
+            <img src={`./${product.image}`} alt="photo" />
+            <p>check</p>
+
+            {isInFavorites ? (
+              <button
+                //className="icon__heart selected"
+                //className="pp_heart fav"
+                onClick={() => toggleFavorite(product)}
+              >
+                <HiOutlineHeart
+                  style={{
+                    width: "20px",
+                    height: "20px",
+                    fill: "#4a6fa5",
+                    stroke: "#4a6fa5",
+                  }}
+                />
+              </button>
+            ) : (
+              <button
+                //className="icon__heart"
+                //className="pp_heart"
+                onClick={() => toggleFavorite(product)}
+              >
+                <HiOutlineHeart
+                  style={{
+                    width: "20px",
+                    height: "20px",
+                    fill: "white",
+                    stroke: "white",
+                  }}
+                />
+              </button>
+            )}
+          </div>
+
+          <div className="pp_info">
+            <div className="title_and_city">
+              <p>{product.title}</p>
+              <p>{product.city}</p>
+            </div>
+            <p>{product.category}</p>
+            <p>{product.description}</p>
+          </div>
+        </div>
+
+        <div classname="slider">
+          <h3>Схожі продукти з цього міста</h3>
+
+          <div className="recommended-grid">
+            {recommended.map((item) => (
+              <ProductCard key={item.id} {...item} />
+            ))}
+          </div>
         </div>
       </div>
     </div>
   );
-}
-// import React, { useEffect, useState } from 'react';
-// import { useParams } from 'react-router-dom';
-// import { ProductCard } from '../components/ProductCard/ProductCard';
-
-// interface Product {
-//   id: number;
-//   title: string;
-//   category: string;
-//   description: string;
-//   location_city: string;
-//   contact: string;
-//   image: string;
-// }
-
-// export const ProductPage: React.FC = () => {
-//   const { productId } = useParams();
-//   const [product, setProduct] = useState<Product | null>(null);
-//   // const [showDetails, setShowDetails] = useState(true);
-//   useEffect(() => {
-//     const loadProduct = async () => {
-//       const response = await fetch('/api/products.json');
-//       const products: Product[] = await response.json();
-
-//       const foundProduct = products.find(item => item.id === Number(productId));
-
-//       setProduct(foundProduct || null);
-
-//     };
-//     // setShowDetails(true);
-//     loadProduct();
-//   }, [productId]);
-
-//   return (
-//     <div className="section">
-//       <div
-//         className="container centered"
-//         style={{ maxWidth: '300px', margin: '0 auto' }}
-//       >
-//         {product && (
-//           <ProductCard
-//             id={product.id}
-//             title={product.title}
-//             category={product.category}
-//             description={product.description}
-//             location_city={product.location_city}
-//             contact={product.contact}
-//             image={product.image}
-//             showFullDetails={true}
-//           />
-//         )}
-//       </div>
-//     </div>
-//   );
-// };
+};

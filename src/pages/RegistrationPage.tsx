@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import './RegistrationPage.scss';
+import { IoEyeOutline } from "react-icons/io5";
+import { IoEyeOffOutline } from "react-icons/io5";
+import TopBackLink from "../components/TopBackLink/TopBackLink";
 
 export const RegistrationPage: React.FC = () => {
   const [name, setName] = useState('');
@@ -9,7 +12,7 @@ export const RegistrationPage: React.FC = () => {
   const [registrationError, setRegistrationError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [loading, setLoading] = useState(false);
-
+const [hidePassword, setHidePassword] = useState(true);
 
   const handleAddUser = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -58,67 +61,92 @@ export const RegistrationPage: React.FC = () => {
   };
 
   return (
-    
-      <div className="section">
-        <div className="container">
-          <div className="centered">
-            <div className="form__box__login">
-              <h2>Реєстрація</h2>
+    <div className="section">
+      <div className="container">
+        <TopBackLink />
+        <div className="centered">
+          <div className="form__box__login">
+            <h2>Реєстрація</h2>
 
-              {/* <form onSubmit={handleAddUser}> */}
-              <form className="registration__box" onSubmit={handleAddUser}>
-                {/* <label htmlFor="name">Введіть ім'я користувача</label>  */}
+            {/* <form onSubmit={handleAddUser}> */}
+            <form className="registration__box" onSubmit={handleAddUser}>
+              {/* <label htmlFor="name">Введіть ім'я користувача</label>  */}
+              <div className="input-wrapper">
+                <input
+                  type="text"
+                  id="name"
+                  className="input-style"
+                  placeholder="Введіть своє ім'я"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </div>
+              {/* <label htmlFor="email">E-mail</label> */}
+              <div className="input-wrapper">
+                <input
+                  type="email"
+                  id="email"
+                  className="input-style"
+                  placeholder="Введіть свій email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+              {/* <label htmlFor="password">Password(min 8 symbols)</label> */}
+              <div className="input-group">
                 <div className="input-wrapper">
-                  <input
-                    type="text"
-                    id="name"
-                    className="input-style"
-                    placeholder="Введіть своє ім'я"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
+                  {hidePassword ? (
+                    <>
+                      <input
+                        // id="password"
+                        type="password"
+                        className="input-style"
+                        placeholder="Введіть свій пароль"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                      />
+                      <IoEyeOutline
+                        style={{ marginRight: "16px" }}
+                        onClick={() => setHidePassword(false)}
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <input
+                        // id="password"
+                        type="text"
+                        className="input-style"
+                        placeholder="Введіть свій пароль"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                      />
+                      <IoEyeOffOutline
+                        style={{ marginRight: "16px" }}
+                        onClick={() => setHidePassword(true)}
+                      />
+                    </>
+                  )}
                 </div>
-                {/* <label htmlFor="email">E-mail</label> */}
-                <div className="input-wrapper">
-                  <input
-                    type="email"
-                    id="email"
-                    className="input-style"
-                    placeholder="Введіть свій email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </div>
-                {/* <label htmlFor="password">Password(min 8 symbols)</label> */}
-                <div className="input-wrapper">
-                  <input
-                    type="password"
-                    id="password"
-                    className="input-style"
-                    placeholder="Введіть свій пароль"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                </div>
+                <p className="rule">
+                  Пароль має містити мінімум 8 знаків (хоча б одну велику літеру
+                  (A-Z), хоча б одну малу літеру (a-z), хоча б одну цифру, хоча
+                  б один спецсимвол ( @$!%*?&.#_-))
+                </p>
+              </div>
 
-                <button
-                  type="submit"
-                  className="loginButton"
-                  disabled={loading}
-                >
-                  {loading ? "Надсилається" : "Надіслати"}
-                </button>
-                {registrationError && (
-                  <p style={{ color: "red" }}>{registrationError}</p>
-                )}
-              </form>
-            </div>
-            {successMessage && (
-              <p style={{ color: "green" }}>{successMessage}</p>
-            )}
+              <button type="submit" className="loginButton" disabled={loading}>
+                {loading ? "Надсилається" : "Надіслати"}
+              </button>
+              {registrationError && (
+                <p style={{ color: "red" }}>{registrationError}</p>
+              )}
+            </form>
           </div>
+          {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
         </div>
       </div>
-    
+    </div>
   );
 };

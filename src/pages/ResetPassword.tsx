@@ -1,5 +1,6 @@
  import React, { useState } from 'react';
 import './ResetPassword.scss';
+import TopBackLink from "../components/TopBackLink/TopBackLink";
 // import { useNavigate } from 'react-router-dom';
 // import { useAuth } from '../context/AuthContext';
 // import { useOutletContext } from 'react-router-dom';
@@ -14,6 +15,7 @@ export const ResetPassword: React.FC = () => {
   return (
     <div className="section">
       <div className="container">
+        <TopBackLink />
         <div className="centered">
           <div className="form__box__login">
             {/* <form onSubmit={handleResetPassword}> */}
