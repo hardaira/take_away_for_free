@@ -2,7 +2,7 @@ import './Logo.scss';
 // import { HiOutlineSpeakerphone } from 'react-icons/hi';
 export const Logo: React.FC = () => {
   return (
-    <div className="logo__link">
+    <div className="logo__link" title="На головну">
       <p className="logo">
         <span className="logo-word">ЗаБиРай</span>
       </p>

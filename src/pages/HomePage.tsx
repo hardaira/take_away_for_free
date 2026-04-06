@@ -15,7 +15,7 @@ import QueryInput from "../components/QueryInput/QueryInput";
 export const HomePage: React.FC = () => {
   const [query, setQuery] = useState("");
   return (
-    <div className="section" id="home">
+    <div className="section section__lower" id="home">
       <div className="home__page__container">
         {/* <h1 id="heading1" className="invisible">
           Home Page

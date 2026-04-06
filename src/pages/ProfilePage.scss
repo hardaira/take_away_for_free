@@ -1,8 +1,26 @@
 .profile_buttons{
   display: flex;
-  justify-content: space-evenly;
-  margin-top: 40px;
+  justify-content: flex-start;
+  margin-top: 20px;
   flex-wrap: wrap;
+  gap: 60px;
+
+  @media (min-width: 320px) and (max-width: 390px) {
+    flex-direction: column;
+    gap: 50px;
+  }
+
+
+  @media (min-width: 1200px) {
+    gap: 120px;
+  }
+
+  &_heading {
+    text-align: start;
+    @media (min-width: 433px) {
+    text-align: center;
+    }
+  }
   // @media (min-width: 320px) and (max-width: 450px) {
   //   flex-direction: column;
   //   align-items: center;
@@ -12,7 +30,7 @@
   -webkit-tap-highlight-color: transparent;
   text-decoration: none;
   display: flex;
-  // width: 150px;
+  //width: 265px;
   height: 40px;
   // padding-left: 8px;
   // padding-right: 8px;
@@ -32,21 +50,22 @@
   font-size: 16px;
   font-weight: 500;
 
-  @media (min-width: 320px) and (max-width: 355px) {
-    width: 140px;
-    margin-bottom: 8px;
-    height: 30px;
-    font-size: 12px;
-  }
+  // @media (min-width: 320px) and (max-width: 355px) {
+  //   width: 140px;
+  //   margin-bottom: 8px;
+  //   height: 30px;
+  //   font-size: 12px;
+  // }
 
-  @media (min-width: 356px) and (max-width: 379px) {
-    width: 150px;
-    margin-bottom: 8px;
-    height: 30px;
-    font-size: 14px;
-  }
+  // @media (min-width: 356px) and (max-width: 379px) {
+  //   width: 150px;
+  //   margin-bottom: 8px;
+  //   height: 30px;
+  //   font-size: 14px;
+  // }
 
-   @media (min-width: 380px) and (max-width: 419px) {
+  //  @media (min-width: 380px) and (max-width: 419px) {
+    @media (min-width: 320px) and (max-width: 419px) {
     width: 160px;
     margin-bottom: 8px;
     height: 30px;
@@ -69,12 +88,12 @@
     width: 160px;
   }
 
-  @media (min-width: 776px) and (max-width: 920px) {
+  @media (min-width: 776px) and (max-width: 1000px) {
     padding-inline: 4px;
     width: 170px;
   }
 
-  @media (min-width: 921px) {
+  @media (min-width: 1001px) {
     width: 200px;
   }
 
@@ -104,4 +123,14 @@
   display: flex;
   justify-content: space-between;
   // margin-top: 40px;
+}
+
+.subbuttons {
+gap: 20px;
+
+}
+
+.profile_greeting {
+  margin-top: 40px;
+  margin-bottom: 40px;
 }

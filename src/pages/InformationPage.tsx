@@ -9,7 +9,7 @@ export const InformationPage: React.FC = () => {
   const navigate = useNavigate();
   return (
     <div className="section">
-      <div className="container">
+      <div className="container" >
         <TopBackLink />
         <div className="centered">
           <div className="form__box__login">

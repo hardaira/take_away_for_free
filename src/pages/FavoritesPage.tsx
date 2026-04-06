@@ -119,8 +119,10 @@ export const FavoritesPage: React.FC = () => {
       <div>
         <TopBackLink />
 
-        <h1 className="heading-favorites">Favorites</h1>
-        <p className="under__heading1">{favorites.length} items</p>
+        <h1 className="heading-favorites">Вибране</h1>
+        <p className="under__heading1">
+          Вибрано товарів: {favorites.length}
+        </p>
 
         {favorites.length === 0 ? (
           <p>Поки що немає обраних товарів.</p>

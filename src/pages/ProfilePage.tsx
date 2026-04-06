@@ -38,49 +38,54 @@ const user = userString ? JSON.parse(userString) : null;
       <div className="container">
         {/* <h1>Hello, {user.name}</h1> */}
         <TopBackLink />
-        <h1>{user.name}, вітаємо на сторінці профілю!</h1>
+        <h1 className="profile_greeting">{user.name}, вітаємо на сторінці профілю!</h1>
         {/* <button>Вийти</button> */}
 
         <div className="profile_buttons">
-          <div>
-            <NavLink
-              to="change-password"
-              className={({ isActive }) =>
-                cn("profileButton", { buttonPressed: isActive })
-              }
-            >
-              Змінити пароль
-            </NavLink>
+          <div className="profile_part">
+            <p className="profile_buttons_heading">Керування оголошеннями</p>
+            <div className="profile_buttons subbuttons">
+              <NavLink
+                to="add-post"
+                className={({ isActive }) =>
+                  cn("profileButton", { buttonPressed: isActive })
+                }
+              >
+                Додати оголошення
+              </NavLink>
+
+              <NavLink
+                to="my-posts"
+                className={({ isActive }) =>
+                  cn("profileButton", { buttonPressed: isActive })
+                }
+              >
+                Мої оголошення
+              </NavLink>
+            </div>
           </div>
-          <div>
-            <NavLink
-              to="change-email"
-              className={({ isActive }) =>
-                cn("profileButton", { buttonPressed: isActive })
-              }
-            >
-              Змінити email
-            </NavLink>
-          </div>
-          <div>
-            <NavLink
-              to="add-post"
-              className={({ isActive }) =>
-                cn("profileButton", { buttonPressed: isActive })
-              }
-            >
-              Додати оголошення
-            </NavLink>
-          </div>
-          <div>
-            <NavLink
-              to="my-posts"
-              className={({ isActive }) =>
-                cn("profileButton", { buttonPressed: isActive })
-              }
-            >
-              Мої оголошення
-            </NavLink>
+
+          <div className="profile_part">
+            <p className="profile_buttons_heading">Безпека профілю</p>
+            <div className="profile_buttons subbuttons">
+              <NavLink
+                to="change-password"
+                className={({ isActive }) =>
+                  cn("profileButton", { buttonPressed: isActive })
+                }
+              >
+                Змінити пароль
+              </NavLink>
+
+              <NavLink
+                to="change-email"
+                className={({ isActive }) =>
+                  cn("profileButton", { buttonPressed: isActive })
+                }
+              >
+                Змінити email
+              </NavLink>
+            </div>
           </div>
         </div>
         {/* <Outlet context={{ user, setUser }} /> */}

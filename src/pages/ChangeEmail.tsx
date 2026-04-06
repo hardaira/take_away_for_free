@@ -1,5 +1,7 @@
 // import { useOutletContext } from 'react-router-dom';
 import { useState } from 'react';
+import { IoEyeOutline } from "react-icons/io5";
+import { IoEyeOffOutline } from "react-icons/io5";
 // import type { OutletContextType } from '../types/user';
 // type User = {
 //   id: number;
@@ -16,7 +18,7 @@ export const ChangeEmail: React.FC = () => {
 
   // const { user} = useOutletContext<OutletContextType>();
   // const [user, setUser] = useState<User | null>(null);
-
+const [hidePassword, setHidePassword] = useState(true);
   const [password, setPassword] = useState('');
   const [newEmail, setNewEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -71,22 +73,51 @@ const token = localStorage.getItem("token");
   return (
     <>
       <form className="change-password" onSubmit={handleChangeEmail}>
-      {/* <form className="change-password" > */}
-        <div className="input-wrapper">
-          <input
-            type="password"
-            className="input-style"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            placeholder="Введіть свій пароль"
-          />
+        {/* <form className="change-password" > */}
+        {/* <div className="input-wrapper profile__input"> */}
+          <div className="input-wrapper profile__input">
+          {hidePassword ? (
+            <>
+              <input
+                // id="password"
+                type="password"
+                className="input-style "
+                placeholder="Введіть старий пароль"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <IoEyeOutline
+                style={{ marginRight: "16px" }}
+                onClick={() => setHidePassword(false)}
+              />
+            </>
+          ) : (
+            <>
+              <input
+                // id="password"
+                type="text"
+                className="input-style"
+                placeholder="Введіть старий пароль"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <IoEyeOffOutline
+                style={{ marginRight: "16px" }}
+                onClick={() => setHidePassword(true)}
+              />
+            </>
+          )}
         </div>
-        <div className="input-wrapper">
+        {/* </div> */}
+        
+        <div className="input-wrapper profile__input">
           <input
             type="email"
             className="input-style"
             value={newEmail}
-            onChange={e => setNewEmail(e.target.value)}
+            onChange={(e) => setNewEmail(e.target.value)}
             placeholder="Введіть новий email"
           />
         </div>
@@ -96,11 +127,11 @@ const token = localStorage.getItem("token");
           // style={{ width: '120px' }}
           //disabled={loading}
         >
-          {loading ? 'Надсилається' : 'Надіслати'}
+          {loading ? "Надсилається" : "Надіслати"}
         </button>
       </form>
 
-      {message && <p style={{ color: 'red' }}>{message}</p>}
+      {message && <p style={{ color: "red" }}>{message}</p>}
     </>
   );
 };

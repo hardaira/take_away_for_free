@@ -2,6 +2,8 @@
 // import React, { useState } from 'react';
 import React, { useState } from 'react';
 import './ChangePassword.scss';
+import { IoEyeOutline } from "react-icons/io5";
+import { IoEyeOffOutline } from "react-icons/io5";
 // type User = {
 //   id: number;
 //   name: string;
@@ -18,7 +20,7 @@ export const ChangePassword: React.FC = () => {
   const [newPassword, setNewPassword] = useState('');
   const [currentPassword, setCurrentPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
-
+const [hidePassword, setHidePassword] = useState(true);
 const token = localStorage.getItem("token");
  //userString = localStorage.getItem("user");
 //constconst user = userString ? JSON.parse(userString) : null;
@@ -68,31 +70,91 @@ const token = localStorage.getItem("token");
   return (
     <>
       <form className="change-password" onSubmit={handleChangePassword}>
-      {/* <form className="change-password"> */}
-        <div className="input-wrapper">
-          <input
-            type="password"
-            className="input-style"
-            value={currentPassword}
-            onChange={e => setCurrentPassword(e.target.value)}
-            placeholder="Введіть старий пароль"
-          />
+        {/* <form className="change-password"> */}
+        <div className="input-wrapper profile__input">
+          {hidePassword ? (
+            <>
+              <input
+                // id="password"
+                type="password"
+                className="input-style "
+                placeholder="Введіть старий пароль"
+                value={currentPassword}
+                onChange={(e) => setCurrentPassword(e.target.value)}
+                required
+              />
+              <IoEyeOutline
+                style={{ marginRight: "16px" }}
+                onClick={() => setHidePassword(false)}
+              />
+            </>
+          ) : (
+            <>
+              <input
+                // id="password"
+                type="text"
+                className="input-style"
+                placeholder="Введіть старий пароль"
+                value={currentPassword}
+                onChange={(e) => setCurrentPassword(e.target.value)}
+                required
+              />
+              <IoEyeOffOutline
+                style={{ marginRight: "16px" }}
+                onClick={() => setHidePassword(true)}
+              />
+            </>
+          )}
         </div>
-        <div className="input-wrapper">
-          <input
-            type="password"
-            className="input-style"
-            value={newPassword}
-            onChange={e => setNewPassword(e.target.value)}
-            placeholder="Введіть новий пароль"
-          />
+
+        <div className="input-group">
+          <div className="input-wrapper profile__input">
+            {hidePassword ? (
+              <>
+                <input
+                  // id="password"
+                  type="password"
+                  className="input-style"
+                  placeholder="Введіть новий пароль"
+                  value={newPassword}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                <IoEyeOutline
+                  style={{ marginRight: "16px" }}
+                  onClick={() => setHidePassword(false)}
+                />
+              </>
+            ) : (
+              <>
+                <input
+                  // id="password"
+                  type="text"
+                  className="input-style"
+                  placeholder="Введіть новий пароль"
+                  value={newPassword}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                <IoEyeOffOutline
+                  style={{ marginRight: "16px" }}
+                  onClick={() => setHidePassword(true)}
+                />
+              </>
+            )}
+          </div>
+          <p className="rule profile__input">
+            Пароль має містити мінімум 8 знаків (хоча б одну велику літеру
+            (A-Z), хоча б одну малу літеру (a-z), хоча б одну цифру, хоча б один
+            спецсимвол ( @$!%*?&.#_-))
+          </p>
         </div>
         <button type="submit" className="profileButton">
           Підтвердити
         </button>
       </form>
 
-      {passwordError && <p style={{ color: 'red' }}>{passwordError}</p>}
+      {passwordError && <p style={{ color: "red" }}>{passwordError}</p>}
     </>
   );
 };

@@ -16,7 +16,7 @@ const navigate = useNavigate();
   };
 
   return (
-    <div className="section">
+    <div className="section section__lower">
       <div className="container menu">
         <TopBackLink />
         <Link

@@ -58,17 +58,25 @@ body {
 }
 
 .section {
-  margin-top: 100px;
+  margin-top: 50px;
   //min-height: 80vh;
   padding-inline: 20px; 
 
-  @media (min-width: 768px) and (max-width: 1023px) {
+  @media (min-width: 768px) and (max-width: 1000px) {
     padding-inline: 40px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1001px) and (max-width: 1200px) {
+    padding-inline: 60px;
+  }
+
+  @media (min-width: 1201px) {
     padding-inline: 100px;
   }
+}
+
+.section__lower {
+ margin-top: 100px; 
 }
 
 h1 {

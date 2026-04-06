@@ -8,6 +8,7 @@
 // );
 import React, { useEffect, useState } from "react";
 import { ProductCard } from "../components/ProductCard/ProductCard";
+import { Loader } from "../components/Loader/Loader";
 //import { ProductCard } from "../ProductCard/ProductCard";
 // import "./ProductList.scss";
 //import { SlMagnifier } from "react-icons/sl";
@@ -65,7 +66,17 @@ export const PostsPage: React.FC = () => {
   }, []);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Loader />
+      </div>
+    );
   }
   // const filteredProducts = products
   //     .filter((product) =>

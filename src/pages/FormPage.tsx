@@ -90,7 +90,7 @@ export const FormPage: React.FC = () => {
 
   const handleAddProduct = async (e) => {
   e.preventDefault();
-
+    setLoading(true);
   if (!user) {
     console.log("Ви повинні увійти в систему");
     return;
@@ -152,10 +152,11 @@ export const FormPage: React.FC = () => {
     setNewDescription("");
     setNewCity("");
     setNewContact("");
-    
+    setLoading(false);
     console.log(products);
   } catch (err) {
     console.error("Error:", err);
+    setLoading(false);
     setError("Сервер не відповідає");
 
   }
@@ -245,7 +246,7 @@ export const FormPage: React.FC = () => {
         )} */}
 
         <button id="add" className="addButton" type="submit" disabled={loading}>
-          {loading ? "Додаємо..." : "Додати товар"}
+          {loading ? "Надсилається" : "Надіслати"}
         </button>
       </form>
 

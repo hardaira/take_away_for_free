@@ -4,7 +4,8 @@ import "./ProductList.scss";
 import { SlMagnifier } from "react-icons/sl";
 import { useOutletContext } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
-import { FiLoader } from "react-icons/fi";
+import { Loader } from "../Loader/Loader";
+//import { FiLoader } from "react-icons/fi";
 
 //import products from "../../features/products";
 type Product = {
@@ -43,7 +44,18 @@ export const ProductList: React.FC = () => {
   }, []);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          //alignItems: "center",
+          marginTop: "50px",
+        }}
+      >
+        <Loader />
+      </div>
+    );
   }
   
   const filteredProducts = products
