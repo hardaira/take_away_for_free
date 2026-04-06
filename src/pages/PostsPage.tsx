@@ -71,7 +71,8 @@ export const PostsPage: React.FC = () => {
         style={{
           display: "flex",
           justifyContent: "center",
-          alignItems: "center",
+          marginTop: "50px",
+          // alignItems: "center",
         }}
       >
         <Loader />

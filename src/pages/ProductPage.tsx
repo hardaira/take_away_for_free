@@ -65,7 +65,7 @@ export const ProductPage: React.FC = () => {
 );
 
   return (
-    <div className="section">
+    <div className="section section__lower">
       <div className="container pp_container">
         <div className="image_and_text">
           <div className="image_and_button">

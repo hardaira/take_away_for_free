@@ -1,6 +1,6 @@
 import "./FormPage.scss";
 import { useState } from "react";
-
+import CitySelect from "../components/CitySelect/CitySelect";
 export const FormPage: React.FC = () => {
   const [newTitle, setNewTitle] = useState("");
   const [newDescription, setNewDescription] = useState("");
@@ -209,6 +209,13 @@ export const FormPage: React.FC = () => {
             onChange={(e) => setNewCity(e.target.value)}
           />
         </div>
+
+        {/* <div className="form-input-wrapper">
+          <CitySelect
+            activeCity={newCity || "Вся Україна"}
+            setActiveCity={setNewCity}
+          />
+        </div> */}
 
         <div className="form-input-wrapper">
           <input
