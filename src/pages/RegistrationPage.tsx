@@ -12,7 +12,7 @@ export const RegistrationPage: React.FC = () => {
   const [registrationError, setRegistrationError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [loading, setLoading] = useState(false);
-const [hidePassword, setHidePassword] = useState(true);
+  const [hidePassword, setHidePassword] = useState(true);
 
   const handleAddUser = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -139,11 +139,12 @@ const [hidePassword, setHidePassword] = useState(true);
               <button type="submit" className="loginButton" disabled={loading}>
                 {loading ? "Надсилається" : "Надіслати"}
               </button>
-              {registrationError && (
-                <p style={{ color: "red" }}>{registrationError}</p>
-              )}
+              
             </form>
           </div>
+          {registrationError && (
+                <p style={{ color: "red" }}>{registrationError}</p>
+              )}
           {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
         </div>
       </div>
