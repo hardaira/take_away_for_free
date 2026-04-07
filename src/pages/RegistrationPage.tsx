@@ -70,7 +70,7 @@ export const RegistrationPage: React.FC = () => {
 
       //setRegistrationError('Registration failed. Please try again later.');
     } catch (error) {
-      setError('Реєстрація не пройшла. Сервер не відповідає.');
+      setError( error || 'Реєстрація не пройшла. Сервер не відповідає.');
 
     } finally {
       setLoading(false);
