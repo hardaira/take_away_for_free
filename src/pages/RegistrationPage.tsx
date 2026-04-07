@@ -8,8 +8,9 @@ export const RegistrationPage: React.FC = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-  const [registrationError, setRegistrationError] = useState('');
+  // const [registrationError, setRegistrationError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [hidePassword, setHidePassword] = useState(true);
@@ -17,10 +18,23 @@ export const RegistrationPage: React.FC = () => {
   const handleAddUser = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    setRegistrationError('');
     setSuccessMessage('');
-
     setLoading(true);
+
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.#_-])[A-Za-z\d@$!%*?&.#_-]{8,}$/;
+
+    if (!name.trim() || !email.trim() || !password.trim()) {
+      setError("Всі поля повинні бути заповнені");
+      setLoading(false);
+      return;
+    }
+
+    if (!passwordRegex.test(password)) {
+      setError("Пароль не відповідає вимогам");
+      setLoading(false);
+      return;
+    }
 
     try {
       const res = await fetch(
@@ -41,6 +55,7 @@ export const RegistrationPage: React.FC = () => {
         setName('');
         setEmail('');
         setPassword('');
+        setLoading(false);
         console.log("Data received!");
         return;
       }
@@ -53,7 +68,7 @@ export const RegistrationPage: React.FC = () => {
 
       //setRegistrationError('Registration failed. Please try again later.');
     } catch (error) {
-      setRegistrationError('Реєстрація не пройшла. Сервер не відповідає.');
+      setError('Реєстрація не пройшла. Сервер не відповідає.');
 
     } finally {
       setLoading(false);
@@ -81,6 +96,7 @@ export const RegistrationPage: React.FC = () => {
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>
+
               {/* <label htmlFor="email">E-mail</label> */}
               <div className="input-wrapper">
                 <input
@@ -139,12 +155,12 @@ export const RegistrationPage: React.FC = () => {
               <button type="submit" className="loginButton" disabled={loading}>
                 {loading ? "Надсилається" : "Надіслати"}
               </button>
-              
             </form>
           </div>
-          {registrationError && (
-                <p style={{ color: "red" }}>{registrationError}</p>
-              )}
+          
+          {error && (
+            <p style={{ color: "red" }}>{error}</p>
+          )}
           {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
         </div>
       </div>

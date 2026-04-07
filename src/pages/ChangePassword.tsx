@@ -19,7 +19,8 @@ export const ChangePassword: React.FC = () => {
 
   const [newPassword, setNewPassword] = useState('');
   const [currentPassword, setCurrentPassword] = useState('');
-  const [passwordError, setPasswordError] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 const [hidePassword, setHidePassword] = useState(true);
 const token = localStorage.getItem("token");
  //userString = localStorage.getItem("user");
@@ -27,17 +28,32 @@ const token = localStorage.getItem("token");
 
   const handleChangePassword = async (e: React.FormEvent) => {
     e.preventDefault();
-    setPasswordError('');
+    setError('');
+    setLoading(true);
 
-    if (!currentPassword.trim()) {
-      setPasswordError('Old password field cannot be empty');
-      return;
-    }
+ const passwordRegex =
+   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.#_-])[A-Za-z\d@$!%*?&.#_-]{8,}$/;
 
-    if (!newPassword.trim()) {
-      setPasswordError('New password field cannot be empty');
-      return;
-    }
+ if (!currentPassword.trim() || !newPassword.trim()) {
+   setError("Всі поля повинні бути заповнені");
+   setLoading(false);
+   return;
+ }
+
+ if (!passwordRegex.test(newPassword)) {
+   setError("Новий пароль не відповідає вимогам");
+   setLoading(false);
+   return;
+ }
+    // if (!currentPassword.trim()) {
+    //   setPasswordError('Old password field cannot be empty');
+    //   return;
+    // }
+
+    // if (!newPassword.trim()) {
+    //   setPasswordError('New password field cannot be empty');
+    //   return;
+    // }
 
     try {
       const res = await fetch(
@@ -55,15 +71,18 @@ const token = localStorage.getItem("token");
       const data = await res.json();
 
       if (!res.ok) {
-        setPasswordError(data.message || 'Failed to change password');
+        setError(data.message);
+        //setError('Ви ввели неправильний пароль');
         return;
       }
 
-      setPasswordError('Password changed successfully');
+      setError('Пароль успішно оновлено');
       setCurrentPassword('');
       setNewPassword('');
     } catch {
-      setPasswordError('Failed to update your password');
+      console.error(err);
+      setLoading(false);
+      setError("Сервер не відповідає");
     }
   };
 
@@ -117,7 +136,7 @@ const token = localStorage.getItem("token");
                   className="input-style"
                   placeholder="Введіть новий пароль"
                   value={newPassword}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => setNewPassword(e.target.value)}
                   required
                 />
                 <IoEyeOutline
@@ -133,7 +152,7 @@ const token = localStorage.getItem("token");
                   className="input-style"
                   placeholder="Введіть новий пароль"
                   value={newPassword}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => setNewPassword(e.target.value)}
                   required
                 />
                 <IoEyeOffOutline
@@ -154,7 +173,7 @@ const token = localStorage.getItem("token");
         </button>
       </form>
 
-      {passwordError && <p style={{ color: "red" }}>{passwordError}</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
     </>
   );
 };

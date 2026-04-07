@@ -19,15 +19,32 @@ type OutletContextType = {
 export const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loginError, setLoginError] = useState("");
+  const [error, setError] = useState("");
   const [hidePassword, setHidePassword] = useState(true);
-const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
   const { setUser } = useOutletContext<OutletContextType>();
   const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoginError("");
+    setError("");
+    setLoading(true); 
+
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.#_-])[A-Za-z\d@$!%*?&.#_-]{8,}$/;
+
+    if (!email.trim() || !password.trim()) {
+      setError("Всі поля повинні бути заповнені");
+      setLoading(false);
+      return;
+    }
+
+    if (!passwordRegex.test(password)) {
+      setError("Пароль не відповідає вимогам");
+      setLoading(false);
+      return;
+    }
 
     try {
       const res = await fetch(
@@ -46,6 +63,7 @@ const [message, setMessage] = useState("");
 
       if (!res.ok) {
         setMessage(data.message);
+        setLoading(false)
         return;
       }
 
@@ -66,7 +84,8 @@ const [message, setMessage] = useState("");
       navigate(`/profile/${data.id}`);
     } catch (err) {
       console.error(err);
-      setLoginError("Сервер не відповідає.");
+      setLoading(false);
+      setError("Сервер не відповідає");
     }
   };
 
@@ -136,12 +155,12 @@ const [message, setMessage] = useState("");
                 </p>
               </div>
 
-              <button type="submit" className="loginButton">
-                Підтвердити
+              <button type="submit" className="loginButton" disabled={loading}>
+                {loading ? "Надсилається" : "Надіслати"}
               </button>
             </form>
 
-            {loginError && <p style={{ color: "red" }}>{loginError}</p>}
+            {/* {error && <p style={{ color: "red" }}>{error}</p>} */}
 
             <p>Немає облікового запису?</p>
 
@@ -161,6 +180,8 @@ const [message, setMessage] = useState("");
               </p>
             </div>
           </div>
+
+          {error && <p style={{ color: "red" }}>{error}</p>}
         </div>
       </div>
     </div>
