@@ -55,6 +55,7 @@ export const RegistrationPage: React.FC = () => {
         setName('');
         setEmail('');
         setPassword('');
+        setError('');
         setLoading(false);
         console.log("Data received!");
         return;
@@ -62,7 +63,8 @@ export const RegistrationPage: React.FC = () => {
 
       if (res.status === 409 || res.status === 400) {
         // setRegistrationError('This email is already registered');
-        setRegistrationError(data.message);
+        
+        setError(data.message);
         return;
       }
 
