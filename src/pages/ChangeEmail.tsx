@@ -21,15 +21,31 @@ export const ChangeEmail: React.FC = () => {
 const [hidePassword, setHidePassword] = useState(true);
   const [password, setPassword] = useState('');
   const [newEmail, setNewEmail] = useState('');
-  const [message, setMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 const token = localStorage.getItem("token");
 
   const handleChangeEmail = async (e) => {
     e.preventDefault();
-    setMessage('');
+    setSuccessMessage('');
     setLoading(true);
     console.log(`start`);
+
+    const passwordRegex =
+   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.#_-])[A-Za-z\d@$!%*?&.#_-]{8,}$/;
+
+ if (!password.trim() || !newEmail.trim()) {
+   setError("Всі поля повинні бути заповнені");
+   setLoading(false);
+   return;
+ }
+
+//  if (!passwordRegex.test(password)) {
+//    setError("Новий пароль не відповідає вимогам");
+//    setLoading(false);
+//    return;
+//  }
 
     // if (!password.trim()) {
     //   setMessage('Password field cannot be empty');
@@ -56,17 +72,25 @@ const token = localStorage.getItem("token");
 
       const data = await res.json();
 
-      if (!res.ok) {
-        setMessage(data.message);
+      if (res.status === 500) {
+        setError(data.Error);
+        setLoading(false);
         return;
       }
 
-      setMessage(data.message);
+      if (!res.ok) {
+        //setMessage(data.message);
+        return;
+      }
+
+      setSuccessMessage(data.message);
       setPassword('');
       setNewEmail('');
+      setLoading(false);
     } catch {
       setLoading(false);
-      setMessage('Зміни не надіслано.Сервер не відповідає');
+      setError('Зміни не надіслано.Сервер не відповідає');
+      setSuccessMessage('');
     }
   };
 
@@ -82,7 +106,7 @@ const token = localStorage.getItem("token");
                 // id="password"
                 type="password"
                 className="input-style "
-                placeholder="Введіть старий пароль"
+                placeholder="Введіть свій пароль"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -98,7 +122,7 @@ const token = localStorage.getItem("token");
                 // id="password"
                 type="text"
                 className="input-style"
-                placeholder="Введіть старий пароль"
+                placeholder="Введіть свій пароль"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -121,17 +145,13 @@ const token = localStorage.getItem("token");
             placeholder="Введіть новий email"
           />
         </div>
-        <button
-          type="submit"
-          className="profileButton"
-          // style={{ width: '120px' }}
-          //disabled={loading}
-        >
-          {loading ? "Надсилається" : "Надіслати"}
-        </button>
+        <button type="submit" className="profileButton" disabled={loading}>
+                {loading ? "Надсилається" : "Надіслати"}
+              </button>
       </form>
 
-      {message && <p style={{ color: "red" }}>{message}</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
+      {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
     </>
   );
 };

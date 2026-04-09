@@ -61,9 +61,15 @@ export const LoginPage: React.FC = () => {
 
       const data = await res.json();
 
+if (res.status === 500 ) {   
+  setError(data.Error);
+  setLoading(false);
+        return;
+      }
+
       if (!res.ok) {
-        setMessage(data.message);
-        setLoading(false)
+        setMessage(data.Error);
+        setLoading(false);
         return;
       }
 

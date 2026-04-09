@@ -20,6 +20,7 @@ export const ChangePassword: React.FC = () => {
   const [newPassword, setNewPassword] = useState('');
   const [currentPassword, setCurrentPassword] = useState('');
   const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
   const [loading, setLoading] = useState(false);
 const [hidePassword, setHidePassword] = useState(true);
 const token = localStorage.getItem("token");
@@ -29,6 +30,7 @@ const token = localStorage.getItem("token");
   const handleChangePassword = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+    setSuccessMessage('');
     setLoading(true);
 
  const passwordRegex =
@@ -70,18 +72,27 @@ const token = localStorage.getItem("token");
 
       const data = await res.json();
 
+      if (res.status === 500) {
+        setSuccessMessage('');
+        setError(data.Error);
+        setLoading(false);
+        return;
+      }
+
       if (!res.ok) {
         setError(data.message);
         //setError('Ви ввели неправильний пароль');
         return;
       }
 
-      setError('Пароль успішно оновлено');
+      setSuccessMessage(data.message);
       setCurrentPassword('');
       setNewPassword('');
-    } catch {
-      console.error(err);
       setLoading(false);
+    } catch {
+      console.error();
+      setLoading(false);
+      setSuccessMessage('');
       setError("Сервер не відповідає");
     }
   };
@@ -97,7 +108,7 @@ const token = localStorage.getItem("token");
                 // id="password"
                 type="password"
                 className="input-style "
-                placeholder="Введіть старий пароль"
+                placeholder="Введіть свій пароль"
                 value={currentPassword}
                 onChange={(e) => setCurrentPassword(e.target.value)}
                 required
@@ -113,7 +124,7 @@ const token = localStorage.getItem("token");
                 // id="password"
                 type="text"
                 className="input-style"
-                placeholder="Введіть старий пароль"
+                placeholder="Введіть свій пароль"
                 value={currentPassword}
                 onChange={(e) => setCurrentPassword(e.target.value)}
                 required
@@ -168,12 +179,13 @@ const token = localStorage.getItem("token");
             спецсимвол ( @$!%*?&.#_-))
           </p>
         </div>
-        <button type="submit" className="profileButton">
-          Підтвердити
+        <button type="submit" className="profileButton" disabled={loading}>
+          {loading ? "Надсилається" : "Надіслати"}
         </button>
       </form>
 
       {error && <p style={{ color: "red" }}>{error}</p>}
+      {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
     </>
   );
 };

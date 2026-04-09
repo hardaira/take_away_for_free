@@ -64,7 +64,7 @@ export const RegistrationPage: React.FC = () => {
       if (res.status === 409 || res.status === 400) {
         // setRegistrationError('This email is already registered');
         
-        setError(data.message);
+        setError(data.Error);
         return;
       }
 
