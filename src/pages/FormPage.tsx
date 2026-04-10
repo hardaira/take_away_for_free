@@ -9,7 +9,7 @@ export const FormPage: React.FC = () => {
   const [newCity, setNewCity] = useState("");
   const [newPhoto, setNewPhoto] = useState<File | null>(null);
 
-  const [success, setSuccess] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   
@@ -91,11 +91,26 @@ export const FormPage: React.FC = () => {
   const handleAddProduct = async (e) => {
   e.preventDefault();
     setLoading(true);
+    setSuccessMessage('');
+    setError('');
+
   if (!user) {
     console.log("Ви повинні увійти в систему");
     return;
   }
 
+    if (
+      !newTitle.trim() ||
+      !newCategory.trim() ||
+      !newDescription.trim() ||
+      !newCity.trim() ||
+      !newContact.trim()
+    ) {
+      setError("Всі поля повинні бути заповнені");
+      setLoading(false);
+      return;
+    }
+    
   try {
     // 1️⃣ Fetch existing users
 
@@ -146,7 +161,8 @@ export const FormPage: React.FC = () => {
     //setProducts([...products, createdProduct]);
 //setProducts((products) => [...products, createdProduct]);
     // 4️⃣ Log in and clear input
-
+    setSuccessMessage(data.message);
+    setError("");
     setNewTitle("");
     setNewCategory("");
     setNewDescription("");
@@ -157,6 +173,7 @@ export const FormPage: React.FC = () => {
   } catch (err) {
     console.error("Error:", err);
     setLoading(false);
+    setSuccessMessage('');
     setError("Сервер не відповідає");
 
   }
@@ -164,70 +181,71 @@ export const FormPage: React.FC = () => {
 
 
   return (
-    <div className="form__box">
-      <p>
-        Важливо! Додавайте лише ті товари, які ви готові віддати безкоштовно.
-      </p>
+    <>
+      <div className="form__box">
+        <p>
+          Важливо! Додавайте лише ті товари, які ви готові віддати безкоштовно.
+        </p>
 
-      <form className="form-fields" onSubmit={handleAddProduct}>
-        <div className="form-input-wrapper">
-          <input
-            type="text"
-            className="form-input-style"
-            placeholder="Назва товару"
-            value={newTitle}
-            onChange={(e) => setNewTitle(e.target.value)}
-          />
-        </div>
+        <form className="form-fields" onSubmit={handleAddProduct}>
+          <div className="form-input-wrapper">
+            <input
+              type="text"
+              className="form-input-style"
+              placeholder="Назва товару"
+              value={newTitle}
+              onChange={(e) => setNewTitle(e.target.value)}
+            />
+          </div>
 
-        <div className="form-input-wrapper">
-          <input
-            type="text"
-            className="form-input-style"
-            placeholder="Категорія"
-            value={newCategory}
-            onChange={(e) => setNewCategory(e.target.value)}
-          />
-        </div>
+          <div className="form-input-wrapper">
+            <input
+              type="text"
+              className="form-input-style"
+              placeholder="Категорія"
+              value={newCategory}
+              onChange={(e) => setNewCategory(e.target.value)}
+            />
+          </div>
 
-        <div className="form-input-wrapper">
-          <input
-            type="text"
-            className="form-input-style"
-            placeholder="Опис товару"
-            value={newDescription}
-            onChange={(e) => setNewDescription(e.target.value)}
-          />
-        </div>
+          <div className="form-input-wrapper">
+            <input
+              type="text"
+              className="form-input-style"
+              placeholder="Опис товару"
+              value={newDescription}
+              onChange={(e) => setNewDescription(e.target.value)}
+            />
+          </div>
 
-        <div className="form-input-wrapper">
-          <input
-            type="text"
-            className="form-input-style"
-            placeholder="Місто"
-            value={newCity}
-            onChange={(e) => setNewCity(e.target.value)}
-          />
-        </div>
+          <div className="form-input-wrapper">
+            <input
+              type="text"
+              className="form-input-style"
+              placeholder="Місто"
+              value={newCity}
+              onChange={(e) => setNewCity(e.target.value)}
+            />
+          </div>
 
-        {/* <div className="form-input-wrapper">
+          {/* <div className="form-input-wrapper">
           <CitySelect
             activeCity={newCity || "Вся Україна"}
             setActiveCity={setNewCity}
           />
         </div> */}
 
-        <div className="form-input-wrapper">
-          <input
-            type="text"
-            className="form-input-style"
-            placeholder="Контактний номер телефону"
-            value={newContact}
-            onChange={(e) => setNewContact(e.target.value)}
-          />
-        </div>
+          <div className="form-input-wrapper">
+            <input
+              type="text"
+              className="form-input-style"
+              placeholder="Контактний номер телефону"
+              value={newContact}
+              onChange={(e) => setNewContact(e.target.value)}
+            />
+          </div>
 
-        {/* <div className="form-input-wrapper">
+          {/* <div className="form-input-wrapper">
           <label className="form-label">
             <span className="here">Додати фото товару</span>
 
@@ -244,7 +262,7 @@ export const FormPage: React.FC = () => {
           </label>
         </div> */}
 
-        {/* {newPhoto && (
+          {/* {newPhoto && (
           <img
             src={URL.createObjectURL(newPhoto)}
             alt="Preview"
@@ -252,14 +270,21 @@ export const FormPage: React.FC = () => {
           />
         )} */}
 
-        <button id="add" className="addButton" type="submit" disabled={loading}>
-          {loading ? "Надсилається" : "Надіслати"}
-        </button>
-      </form>
-
-      {success && <p style={{ color: "green" }}>{success}</p>}
+          <button
+            id="add"
+            className="addButton"
+            type="submit"
+            disabled={loading}
+          >
+            {loading ? "Надсилається" : "Надіслати"}
+          </button>
+        </form>
+      </div>
+      <div className="feedback_message">
       {error && <p style={{ color: "red" }}>{error}</p>}
-    </div>
+        {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
+      </div>
+    </>
   );
 };
 
