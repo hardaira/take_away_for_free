@@ -1,9 +1,114 @@
+// import React, { useEffect, useMemo, useState } from "react";
+// import { ProductCard } from "../ProductCard/ProductCard";
+// import { Pagination } from "../Pagination/Pagination";
+// import "./ProductList.scss";
+// import { useSearchParams } from "react-router-dom";
+// import { Loader } from "../Loader/Loader";
+
+// type Product = {
+//   id: number;
+//   title: string;
+//   city: string;
+//   category: string;
+//   description: string;
+// };
+
+// export const ProductList: React.FC = () => {
+//   const [products, setProducts] = useState<Product[]>([]);
+//   const [visibleProducts, setVisibleProducts] = useState<Product[]>([]);
+//   const [loading, setLoading] = useState(true);
+
+//   const selectedCity = localStorage.getItem("activeCity") || "Вся Україна";
+
+//   const [searchParams] = useSearchParams();
+//   const query = searchParams.get("query") || "";
+//   const activeCategories = searchParams.getAll("category");
+//   //const cardsPerPage = 4;
+//   //const [currentPage, setCurrentPage] = useState(1);
+
+//   // 📦 Load products
+//   useEffect(() => {
+//     const loadProducts = async () => {
+//       try {
+//         const res = await fetch(
+//           "https://team-project-backend-production.up.railway.app/products"
+//         );
+
+//         const data = await res.json();
+//         setProducts(data.content);
+//       } catch (err) {
+//         console.error(err);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     loadProducts();
+//   }, []);
+
+//   const filteredProducts = products;
+//         .filter((product) =>
+//           product.title.toLowerCase().includes(query.toLowerCase())
+//         )
+//         .filter((product) => {
+//           if (!selectedCity || selectedCity === "Вся Україна") return true;
+//           return product.city === selectedCity;
+//         })
+//         .filter((product) => {
+//       if (activeCategories.length === 0) return true;
+//       return activeCategories.includes(product.category);
+//         });
+    
+
+//   // ✅ Reset pagination when filters change
+//   useEffect(() => {
+//     setVisibleProducts(filteredProducts.slice(0, 4));
+//   }, [filteredProducts]);
+
+//   // ⏳ Loader
+//   if (loading) {
+//     return (
+//       <div style={{ display: "flex", justifyContent: "center", marginTop: 50 }}>
+//         <Loader />
+//       </div>
+//     );
+//   }
+
+//   // 🚫 No results
+//   if (filteredProducts.length === 0) {
+//     return <p>За вашим запитом не знайдено жодних пропозицій</p>;
+//   }
+
+//   // ✅ Render
+//   return (
+//     <>
+//       <div className="cards__container">
+//         {visibleProducts.map((product) => (
+//           <div className="one__card" key={product.id}>
+//             <ProductCard {...product} />
+//           </div>
+//         ))}
+//       </div>
+
+//       <Pagination
+//         products={filteredProducts}
+//         cardsPerPage={4}
+//         //onPageChange={setVisibleProducts}
+//       />
+//     </>
+//   );
+// };
+
+// export default ProductList;
+
 import React, { useEffect, useState } from "react";
 import { ProductCard } from "../ProductCard/ProductCard";
+import { Pagination } from "../Pagination/Pagination";
+import { useSearchParams } from "react-router-dom";
 import "./ProductList.scss";
 import { SlMagnifier } from "react-icons/sl";
 import { useOutletContext } from "react-router-dom";
-import { useSearchParams } from "react-router-dom";
+//import { useSearchParams } from "react-router-dom";
 import { Loader } from "../Loader/Loader";
 //import { FiLoader } from "react-icons/fi";
 
@@ -20,11 +125,16 @@ export const ProductList: React.FC = () => {
   //const [query, setQuery] = useState("");
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-
+const [visibleProducts, setVisibleProducts] = useState<Product[]>([]);
   const selectedCity = localStorage.getItem("activeCity") || "Вся Україна";
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("query") || "";
   const activeCategories = searchParams.getAll("category");
+ const currentPage = Number(searchParams.get("page") || "1");
+  const cardsPerPage = 4;
+  const startIndex = (currentPage - 1) * cardsPerPage;
+  const endIndex = startIndex + cardsPerPage;
+  
   useEffect(() => {
     const loadProducts = async () => {
       try {
@@ -57,56 +167,54 @@ export const ProductList: React.FC = () => {
       </div>
     );
   }
-  
+
   const filteredProducts = products
-      .filter((product) =>
-        product.title.toLowerCase().includes(query.toLowerCase())
-      )
-      .filter((product) => {
-        if (!selectedCity || selectedCity === "Вся Україна") return true;
-        return product.city === selectedCity;
-      })
-      .filter((product) => {
-    if (activeCategories.length === 0) return true;
-    return activeCategories.includes(product.category);
-  });
-  
-  
-  
+    .filter((product) =>
+      product.title.toLowerCase().includes(query.toLowerCase())
+    )
+    .filter((product) => {
+      if (!selectedCity || selectedCity === "Вся Україна") return true;
+      return product.city === selectedCity;
+    })
+    .filter((product) => {
+      if (activeCategories.length === 0) return true;
+      return activeCategories.includes(product.category);
+    });
 
-  //   return (
-  //     <div className="cards__container">
-  //       {products.filter((product)=>product.title.toLowerCase().includes(query.toLowerCase()).map((product) => (
-  //         <div className="one__card" key={product.id}>
-  //           <ProductCard {...product} />
-  //         </div>
-  //       ))}
-  //     </div>
-  //   );
-  // };
-  
+  // useEffect(() => {
+  //   setVisibleProducts(filteredProducts.slice(0, 4));
+  // }, [filteredProducts]);
 
-  return (filteredProducts.length !== 0 ? (
-    <div className="cards__container">
-      {/* {products
-          .filter((product) => {
-            if (!selectedCity || selectedCity === "Вся Україна") return true;
-            return product.city === selectedCity;
-          })
-          .filter((product) =>
-            product.title.toLowerCase().includes(query.toLowerCase())
-          ) */}
-      {filteredProducts.map((product) => (
-        <div className="one__card" key={product.id}>
-          <ProductCard {...product} />
-        </div>
-      ))}
-    </div>
+  // useEffect(() => {
+  //   setSearchParams((prev: Number) => {
+  //     const params = new URLSearchParams(prev);
+  //     params.set("page", "1");
+  //     return params;
+  //   });
+  // }, [query, selectedCity, activeCategories.join(",")]);
+
+  return filteredProducts.length !== 0 ? (
+   <>
+      <div className="cards__container">
+        {filteredProducts.slice(startIndex, endIndex).map((product) => (
+          <div className="one__card" key={product.id}>
+            <ProductCard {...product} />
+          </div>
+        ))}
+      </div>
+      
+    <Pagination
+  products={filteredProducts} />
+</>
   ) : (
     <p> За вашим запитом не знайдено жодних пропозицій</p>
   )
-  )  
+  
+
 }
+
+export default ProductList;
+
 // type Product = {
 //   id: number;
 //   title: string;
@@ -262,4 +370,4 @@ export const ProductList: React.FC = () => {
 //   );
 // };
 
- export default ProductList;
+//export default ProductList;

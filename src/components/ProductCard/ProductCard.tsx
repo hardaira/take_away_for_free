@@ -1,6 +1,7 @@
 import './ProductCard.scss';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
+
 // import { LuHeart } from 'react-icons/lu';
 // import { CiWallet } from 'react-icons/ci';
 // import { CiLocationOn } from 'react-icons/ci';

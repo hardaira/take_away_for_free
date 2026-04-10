@@ -29,6 +29,8 @@ const CategorySelect: React.FC = () => {
     params.delete("category");
     updated.forEach((c) => params.append("category", c));
 
+    params.set("page", "1");
+
     setSearchParams(params);
   };
 
