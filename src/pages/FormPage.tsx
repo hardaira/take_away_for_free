@@ -12,172 +12,174 @@ export const FormPage: React.FC = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  
 
   const token = localStorage.getItem("token");
   const userString = localStorage.getItem("user");
   const user = userString ? JSON.parse(userString) : null;
 
-  // const handleAddProduct = async (e: React.FormEvent) => {
-  //   e.preventDefault();
-
-  //   setSuccess("");
-  //   setError("");
-
-  //   if (!user) {
-  //     setError("Ви повинні увійти в систему");
-  //     return;
-  //   }
-
-  //   if (
-  //     !newTitle.trim() ||
-  //     !newDescription.trim() ||
-  //     !newCity.trim() ||
-  //     !newContact.trim()
-  //     //!newPhoto
-  //   ) {
-  //     setError("Потрібно заповнити всі поля");
-  //     return;
-  //   }
-
-  //   try {
-  //     setLoading(true);
-
-  //     const formData = new FormData();
-
-  //     formData.append("title", newTitle);
-  //     formData.append("category", newCategory);
-  //     formData.append("description", newDescription);
-  //     formData.append("city", newCity);
-  //     formData.append("contact", newContact);
-  //   //  formData.append("image", newPhoto);
-
-  //     const res = await fetch(
-  //       "https://team-project-backend-production.up.railway.app/products/createProduct",
-  //       {
-  //         method: "POST",
-  //         headers: {
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //         body: formData,
-  //       }
-  //     );
-
-  //     const data = await res.json();
-
-  //     if (!res.ok) {
-  //       throw new Error(data.message || "Не вдалося додати товар");
-  //     }
-
-  //     setSuccess("Товар успішно додано");
-
-  //     setNewTitle("");
-  //     setNewCategory("");
-  //     setNewDescription("");
-  //     setNewCity("");
-  //     setNewContact("");
-  //     //setNewPhoto(null);
-  //   } catch (err: any) {
-  //     console.error(err);
-  //     setError(err.message || "Сервер не відповідає");
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-  
-
-  
-
   const handleAddProduct = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
     setLoading(true);
     setSuccessMessage('');
-    setError('');
+    setError("");
 
-  if (!user) {
-    console.log("Ви повинні увійти в систему");
-    return;
-  }
+    if (!user) {
+      setError("Ви повинні увійти в систему");
+      return;
+    }
 
     if (
       !newTitle.trim() ||
       !newCategory.trim() ||
       !newDescription.trim() ||
       !newCity.trim() ||
-      !newContact.trim()
+      !newContact.trim() ||
+      !newPhoto
     ) {
       setError("Всі поля повинні бути заповнені");
       setLoading(false);
       return;
     }
-    
-  try {
-    // 1️⃣ Fetch existing users
 
-    const productsRes = await fetch(
-      `https://team-project-backend-production.up.railway.app/products `
-    );
-    if (!productsRes.ok) throw new Error("Failed to fetch products");
+    try {
+      setLoading(true);
 
-    const products = await productsRes.json();
+      const formData = new FormData();
 
-    // 2️⃣ Check if user already exists
-    // const existingMessage = messages.find((m) => m.text === newMessageText && m.author === author);
+      formData.append("title", newTitle);
+      formData.append("category", newCategory);
+      formData.append("description", newDescription);
+      formData.append("city", newCity);
+      formData.append("contact", newContact);
+      formData.append("image", newPhoto);
 
-    // if (existingMessage) {
-    //   // If user exists → login without creating
-    //   // setIsLoggedIn(true);
-    //   setNewMessageText(''); // clear input
-    console.log(products);
-    //   return;
-    // }
+      const res = await fetch(
+        "https://team-project-backend-production.up.railway.app/products/createProduct",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          body: formData,
+        }
+      );
 
-    // 3️⃣ Create new user if not found
-    const createRes = await fetch(
-      "https://team-project-backend-production.up.railway.app/products/createProduct",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          title: newTitle,
-          category: newCategory,
-          description: newDescription,
-          city: newCity,
-          contact: newContact,
-        }),
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || "Не вдалося додати товар");
       }
-    );
 
-    // if (!createRes.ok) {
-    //   throw new Error('Failed to create message');
-    // }
+      setSuccessMessage(data.message);
+           setError("");
+           setNewTitle("");
+           setNewCategory("");
+           setNewDescription("");
+           setNewCity("");
+           setNewContact("");
+           setLoading(false);
+      setNewPhoto(null);
+    } catch (err) {
+          console.error("Error:", err);
+           setLoading(false);
+           setSuccessMessage("");
+           setError("Сервер не відповідає");
+    }
+  };
 
-    const createdProduct = await createRes.json();
-    console.log("Created product:", createdProduct);
-    //products.push(createdProduct);
-    //setProducts([...products, createdProduct]);
-//setProducts((products) => [...products, createdProduct]);
-    // 4️⃣ Log in and clear input
-    setSuccessMessage(data.message);
-    setError("");
-    setNewTitle("");
-    setNewCategory("");
-    setNewDescription("");
-    setNewCity("");
-    setNewContact("");
-    setLoading(false);
-    console.log(products);
-  } catch (err) {
-    console.error("Error:", err);
-    setLoading(false);
-    setSuccessMessage('');
-    setError("Сервер не відповідає");
 
-  }
-};
+
+  // const handleAddProduct = async (e) => {
+  //   e.preventDefault();
+  //   setLoading(true);
+  //   setSuccessMessage("");
+  //   setError("");
+
+  //   if (!user) {
+  //     console.log("Ви повинні увійти в систему");
+  //     return;
+  //   }
+
+  //   if (
+  //     !newTitle.trim() ||
+  //     !newCategory.trim() ||
+  //     !newDescription.trim() ||
+  //     !newCity.trim() ||
+  //     !newContact.trim()
+  //   ) {
+  //     setError("Всі поля повинні бути заповнені");
+  //     setLoading(false);
+  //     return;
+  //   }
+
+  //   try {
+  //     // 1️⃣ Fetch existing users
+
+  //     const productsRes = await fetch(
+  //       `https://team-project-backend-production.up.railway.app/products `
+  //     );
+  //     if (!productsRes.ok) throw new Error("Failed to fetch products");
+
+  //     const products = await productsRes.json();
+
+  //     // 2️⃣ Check if user already exists
+  //     // const existingMessage = messages.find((m) => m.text === newMessageText && m.author === author);
+
+  //     // if (existingMessage) {
+  //     //   // If user exists → login without creating
+  //     //   // setIsLoggedIn(true);
+  //     //   setNewMessageText(''); // clear input
+  //     console.log(products);
+  //     //   return;
+  //     // }
+
+  //     // 3️⃣ Create new user if not found
+  //     const createRes = await fetch(
+  //       "https://team-project-backend-production.up.railway.app/products/createProduct",
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //         body: JSON.stringify({
+  //           title: newTitle,
+  //           category: newCategory,
+  //           description: newDescription,
+  //           city: newCity,
+  //           contact: newContact,
+  //         }),
+  //       }
+  //     );
+
+  //     // if (!createRes.ok) {
+  //     //   throw new Error('Failed to create message');
+  //     // }
+
+  //     const createdProduct = await createRes.json();
+  //     console.log("Created product:", createdProduct);
+  //     //products.push(createdProduct);
+  //     //setProducts([...products, createdProduct]);
+  //     //setProducts((products) => [...products, createdProduct]);
+  //     // 4️⃣ Log in and clear input
+  //     setSuccessMessage(data.message);
+  //     setError("");
+  //     setNewTitle("");
+  //     setNewCategory("");
+  //     setNewDescription("");
+  //     setNewCity("");
+  //     setNewContact("");
+  //     setLoading(false);
+  //     console.log(products);
+  //   } catch (err) {
+  //     console.error("Error:", err);
+  //     setLoading(false);
+  //     setSuccessMessage("");
+  //     setError("Сервер не відповідає");
+  //   }
+  // };
+
+
 
 
   return (
@@ -281,7 +283,7 @@ export const FormPage: React.FC = () => {
         </form>
       </div>
       <div className="feedback_message">
-      {error && <p style={{ color: "red" }}>{error}</p>}
+        {error && <p style={{ color: "red" }}>{error}</p>}
         {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
       </div>
     </>
