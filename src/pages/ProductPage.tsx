@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { HiOutlineHeart } from "react-icons/hi";
 import "./ProductPage.scss";
+import { SliderNew } from "../components/SliderNew/SliderNew";
+
 import { ProductCard } from "../components/ProductCard/ProductCard";
+import TopBackLink from "../components/TopBackLink/TopBackLink";
 
 export const ProductPage: React.FC = () => {
   const { productId } = useParams();
@@ -67,14 +70,15 @@ export const ProductPage: React.FC = () => {
   return (
     <div className="section section__lower">
       <div className="container pp_container">
+        <TopBackLink />
         <div className="image_and_text">
           <div className="image_and_button">
             <img src={`./${product.image}`} alt="photo" />
-            <p>check</p>
+            {/* <p>check</p> */}
 
             {isInFavorites ? (
               <button
-                //className="icon__heart selected"
+                className="icon__heart__pp selected"
                 //className="pp_heart fav"
                 onClick={() => toggleFavorite(product)}
               >
@@ -89,7 +93,7 @@ export const ProductPage: React.FC = () => {
               </button>
             ) : (
               <button
-                //className="icon__heart"
+                className="icon__heart__pp"
                 //className="pp_heart"
                 onClick={() => toggleFavorite(product)}
               >
@@ -110,20 +114,28 @@ export const ProductPage: React.FC = () => {
               <p>{product.title}</p>
               <p>{product.city}</p>
             </div>
-            <p>{product.category}</p>
+            <p className="cat">{product.category}</p>
             <p>{product.description}</p>
           </div>
         </div>
 
-        <div classname="slider">
+        <div className="pp__contact">
+          <p className="giver">Дарувальник</p>
+          <p>{product.contact}</p>
+          <p>Не забудьте сказати "Дякую"! 😊 </p>
+        </div>
+
+        <SliderNew />
+
+        {/*<div classname="slider">
           <h3>Схожі продукти з цього міста</h3>
 
-          <div className="recommended-grid">
+           <div className="recommended-grid">
             {recommended.map((item) => (
               <ProductCard key={item.id} {...item} />
             ))}
-          </div>
-        </div>
+          </div> 
+        </div>*/}
       </div>
     </div>
   );

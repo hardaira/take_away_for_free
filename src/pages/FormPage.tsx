@@ -33,7 +33,7 @@ export const FormPage: React.FC = () => {
       !newCategory.trim() ||
       !newDescription.trim() ||
       !newCity.trim() ||
-      !newContact.trim() ||
+      !newContact.trim() || 
       !newPhoto
     ) {
       setError("Всі поля повинні бути заповнені");
@@ -247,7 +247,7 @@ export const FormPage: React.FC = () => {
             />
           </div>
 
-          {/* <div className="form-input-wrapper">
+          <div className="form-input-wrapper">
           <label className="form-label">
             <span className="here">Додати фото товару</span>
 
@@ -262,15 +262,15 @@ export const FormPage: React.FC = () => {
               }}
             />
           </label>
-        </div> */}
+        </div>
 
-          {/* {newPhoto && (
+          {newPhoto && (
           <img
             src={URL.createObjectURL(newPhoto)}
             alt="Preview"
             className="form-image-preview"
           />
-        )} */}
+        )}
 
           <button
             id="add"
