@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { HiOutlineHeart } from "react-icons/hi";
 import "./ProductPage.scss";
 import { SliderNew } from "../components/SliderNew/SliderNew";
-
+import { HiOutlineLocationMarker } from "react-icons/hi";
 import { ProductCard } from "../components/ProductCard/ProductCard";
 import TopBackLink from "../components/TopBackLink/TopBackLink";
 
@@ -73,7 +73,7 @@ export const ProductPage: React.FC = () => {
         <TopBackLink />
         <div className="image_and_text">
           <div className="image_and_button">
-            <img src={product.image?.url || ""} alt="photo"  />
+            <img src={product.image?.url || ""} alt="photo" />
             {/* <p>check</p> */}
 
             {isInFavorites ? (
@@ -112,7 +112,14 @@ export const ProductPage: React.FC = () => {
           <div className="pp_info">
             <div className="title_and_city">
               <p>{product.title}</p>
-              <p>{product.city}</p>
+              <div className="pp_location">
+                <HiOutlineLocationMarker
+                  style={{
+                    stroke: "#4a6fa5",
+                  }}
+                />
+                <p>{product.city}</p>
+              </div>
             </div>
             <p className="cat">{product.category}</p>
             <p>{product.description}</p>
@@ -125,7 +132,7 @@ export const ProductPage: React.FC = () => {
           <p>Не забудьте сказати "Дякую"! 😊 </p>
         </div>
 
-        <SliderNew />
+        <SliderNew city={product.city} />
 
         {/*<div classname="slider">
           <h3>Схожі продукти з цього міста</h3>

@@ -161,9 +161,9 @@ export const RegistrationPage: React.FC = () => {
           </div>
           
           {error && (
-            <p style={{ color: "red" }}>{error}</p>
+            <p style={{ color: "red"}}>{error}</p>
           )}
-          {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
+          {successMessage && <p style={{ color: "green"}}>{successMessage}</p>}
         </div>
       </div>
     </div>

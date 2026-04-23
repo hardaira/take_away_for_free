@@ -7,8 +7,11 @@ import { ProductCard } from "../ProductCard/ProductCard";
 //import { selectAllProducts, fetchProducts } from "../../features/products";
 //import 'slick-carousel/slick/slick.css';
 //import 'slick-carousel/slick/slick-theme.css';
+type Props = {
+  city: string;
+};
 
-export const SliderNew: React.FC = () => {
+export const SliderNew: React.FC = ({city}) => {
 //   const dispatch = useDispatch<AppDispatch>();
 
 //   const products = useSelector(selectAllProducts);
@@ -23,7 +26,10 @@ export const SliderNew: React.FC = () => {
     console.log(localStorage.getItem("products"));
 
   const sortedNewBrands = useMemo(() => {
-    return [...products].sort((a, b) => b.createdAt - a.createdAt).slice(0, 10);
+    return [...products]
+      .filter((p) => p.city === city)
+      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+      .slice(0, 10);
   }, [products]);
   const cardRef = useRef(null);
 

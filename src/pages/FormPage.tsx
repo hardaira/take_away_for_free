@@ -1,6 +1,7 @@
 import "./FormPage.scss";
 import { useState } from "react";
-import CitySelect from "../components/CitySelect/CitySelect";
+//import CitySelect from "../components/CitySelect/CitySelect";
+import FormCategory from "../components/FormCategory/FormCategory";
 export const FormPage: React.FC = () => {
   const [newTitle, setNewTitle] = useState("");
   const [newDescription, setNewDescription] = useState("");
@@ -66,11 +67,19 @@ export const FormPage: React.FC = () => {
 
       const data = await res.json();
 
-      if (!res.ok) {
-        throw new Error(data.message || "Не вдалося додати товар");
+      // if (!res.ok) {
+      //   throw new Error(data.errors || "Не вдалося додати товар");
+      // }
+
+      if (res.status === 400) {
+        // setRegistrationError('This email is already registered');
+        
+        setError(data.Errors);
+        setLoading(false);
+        return;
       }
 
-      setSuccessMessage(data.message);
+      setSuccessMessage("Товар успішно додано");
            setError("");
            setNewTitle("");
            setNewCategory("");
@@ -201,6 +210,7 @@ export const FormPage: React.FC = () => {
           </div>
 
           <div className="form-input-wrapper">
+            {/* <FormCategory value={newCategory} onChange={(e) => setNewCategory(e.target.value)} /> */}
             <input
               type="text"
               className="form-input-style"
@@ -248,29 +258,29 @@ export const FormPage: React.FC = () => {
           </div>
 
           <div className="form-input-wrapper">
-          <label className="form-label">
-            <span className="here">Додати фото товару</span>
+            <label className="form-label">
+              <span className="here">Додати фото товару</span>
 
-            <input
-              type="file"
-              accept="image/*"
-              hidden
-              onChange={(e) => {
-                if (e.target.files && e.target.files[0]) {
-                  setNewPhoto(e.target.files[0]);
-                }
-              }}
-            />
-          </label>
-        </div>
+              <input
+                type="file"
+                accept="image/*"
+                hidden
+                onChange={(e) => {
+                  if (e.target.files && e.target.files[0]) {
+                    setNewPhoto(e.target.files[0]);
+                  }
+                }}
+              />
+            </label>
+          </div>
 
           {newPhoto && (
-          <img
-            src={URL.createObjectURL(newPhoto)}
-            alt="Preview"
-            className="form-image-preview"
-          />
-        )}
+            <img
+              src={URL.createObjectURL(newPhoto)}
+              alt="Preview"
+              className="form-image-preview"
+            />
+          )}
 
           <button
             id="add"
@@ -283,8 +293,12 @@ export const FormPage: React.FC = () => {
         </form>
       </div>
       <div className="feedback_message">
-        {error && <p style={{ color: "red" }}>{error}</p>}
-        {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
+        {error && <p style={{ color: "red", marginBottom: "20px" }}>{error}</p>}
+        {successMessage && (
+          <p style={{ color: "green", marginBottom: "20px" }}>
+            {successMessage}
+          </p>
+        )}
       </div>
     </>
   );
