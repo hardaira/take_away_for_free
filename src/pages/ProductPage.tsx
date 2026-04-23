@@ -111,7 +111,7 @@ export const ProductPage: React.FC = () => {
 
           <div className="pp_info">
             <div className="title_and_city">
-              <p>{product.title}</p>
+              <p className="pp_title">{product.title}</p>
               <div className="pp_location">
                 <HiOutlineLocationMarker
                   style={{
@@ -121,14 +121,14 @@ export const ProductPage: React.FC = () => {
                 <p>{product.city}</p>
               </div>
             </div>
-            <p className="cat">{product.category}</p>
-            <p>{product.description}</p>
+            <p className="pp_category"># {product.category}</p>
+            <p className="pp_description">{product.description}</p>
           </div>
         </div>
 
-        <div className="pp__contact">
+        <div className="pp__contact__block">
           <p className="giver">Дарувальник</p>
-          <p>{product.contact}</p>
+          <p className="pp_contact">{product.contact}</p>
           <p>Не забудьте сказати "Дякую"! 😊 </p>
         </div>
 

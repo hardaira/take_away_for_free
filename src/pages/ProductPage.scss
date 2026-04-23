@@ -4,6 +4,11 @@ flex-direction: row;
 margin-top: 50px;
 height: 50vh;
 gap: 40px;
+
+@media (min-width: 320px) and (max-width: 770px) {
+  flex-direction: column;
+  
+  }
 }
 
 .title_and_city  {
@@ -12,8 +17,11 @@ justify-content: space-between;
 margin-bottom: 16px;
 }
 
-.cat{
- margin-bottom: 24px;   
+.pp_category{
+ margin-bottom: 24px; 
+ font-size: 14px;
+font-weight: 600;  
+color: #575E66;
 }
 
 .image_and_button {
@@ -61,7 +69,7 @@ margin-bottom: 16px;
   background-color: #f7f7f7;
 }
 
-.pp__contact {
+.pp__contact__block {
 margin-top: 40px;
 margin-bottom: 64px;
 display: flex;
@@ -71,11 +79,29 @@ font-size: 16px;
 
 }
 
-.giver {   
-    font-weight: 600;
+.giver {  
+  margin-top: 40px; 
+  font-weight: 600;
 }
 
 .pp_location {
   display: flex;
   gap: 6px;
+}
+
+.pp_title {
+font-size: 24px;
+font-weight: 600;
+}
+
+.pp_description {
+font-size: 24px;
+font-weight: 500;
+
+}
+
+.pp_contact {
+font-size: 14px;
+font-weight: 500;
+color: #575E66;
 }
