@@ -73,7 +73,7 @@ export const ProductPage: React.FC = () => {
         <TopBackLink />
         <div className="image_and_text">
           <div className="image_and_button">
-            <img src={`./${product.image}`} alt="photo" />
+            <img src={product.image?.url || ""} alt="photo"  />
             {/* <p>check</p> */}
 
             {isInFavorites ? (

@@ -40,6 +40,14 @@ interface ProductCardProps {
   onDelete?: (id: number) => void;
   onSave?: (id: number) => void;
 }
+
+type Image = {
+  url: string;
+  alt?: string;
+  width?: number;
+  height?: number;
+};
+
 export type Product = {
   id: string;
   title: string;
@@ -47,7 +55,7 @@ export type Product = {
   description: string;
   city: string;
   contact: string;
-  image?: string; // 👈 optional
+  image?: Image; // 👈 optional
 };
 
 // interface ProductCardProps {
@@ -160,25 +168,26 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       <div className="card-image">
         <img
           className="product__card__img"
-          src={`./${image}`}
+          // src={`./${image.url}`}
+          // src={image?.url ? `./${image.url}` : ""}
+          src={image?.url || ""}
           alt="Product photo"
         />
         {isInFavorites ? (
           <button
-           className="icon icon__heart selected"
+            className="icon icon__heart selected"
             onClick={() => toggleFavorite(product)}
           >
             <HiOutlineHeart
               style={{
                 width: "20px",
-              height: "20px",
-              fill: "#4a6fa5",
-              stroke: "#4a6fa5",
+                height: "20px",
+                fill: "#4a6fa5",
+                stroke: "#4a6fa5",
               }}
             />
-        </button>
-        
-         ) : (
+          </button>
+        ) : (
           <button
             className="icon icon__heart"
             onClick={() => toggleFavorite(product)}
@@ -192,7 +201,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               }}
             />
           </button>
-        )} 
+        )}
         {/* <button
           className="icon icon__heart"
           onClick={() => toggleFavorite(product)}
