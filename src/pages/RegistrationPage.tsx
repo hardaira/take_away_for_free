@@ -125,7 +125,7 @@ export const RegistrationPage: React.FC = () => {
                         required
                       />
                       <IoEyeOutline
-                        style={{ marginRight: "16px" }}
+                        style={{ marginRight: "16px", cursor: "pointer" }}
                         onClick={() => setHidePassword(false)}
                       />
                     </>
@@ -141,7 +141,7 @@ export const RegistrationPage: React.FC = () => {
                         required
                       />
                       <IoEyeOffOutline
-                        style={{ marginRight: "16px" }}
+                        style={{ marginRight: "16px", cursor: "pointer" }}
                         onClick={() => setHidePassword(true)}
                       />
                     </>
@@ -159,11 +159,9 @@ export const RegistrationPage: React.FC = () => {
               </button>
             </form>
           </div>
-          
-          {error && (
-            <p style={{ color: "red"}}>{error}</p>
-          )}
-          {successMessage && <p style={{ color: "green"}}>{successMessage}</p>}
+
+          {error && <p style={{ color: "red" }}>{error}</p>}
+          {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
         </div>
       </div>
     </div>

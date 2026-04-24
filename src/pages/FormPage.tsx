@@ -1,7 +1,51 @@
 import "./FormPage.scss";
 import { useState } from "react";
+import { IoIosArrowDown } from "react-icons/io";
 //import CitySelect from "../components/CitySelect/CitySelect";
 import FormCategory from "../components/FormCategory/FormCategory";
+type Category = string;
+
+const categories: Category[] = [
+  "Продукти",
+  "Меблі",
+  "Товари для дітей",
+  "Одяг",
+  "Товари для дому",
+  "Техніка",
+];
+
+type City = string;
+
+const cities: City[] = [
+  "Вся Україна",
+  "Біла Церква",
+  "Бровари",
+  "Вінниця",
+  "Дніпро",
+  "Житомир",
+  "Запоріжжя",
+  "Івано-Франківськ",
+  "Кам’янець-Подільський",
+  "Київ",
+  "Краматорськ",
+  "Кривий Ріг",
+  "Луцьк",
+  "Львів",
+  "Миколаїв",
+  "Одеса",
+  "Полтава",
+  "Рівне",
+  "Суми",
+  "Тернопіль",
+  "Ужгород",
+  "Харків",
+  "Херсон",
+  "Хмельницький",
+  "Черкаси",
+  "Чернівці",
+  "Чернігів",
+];
+
 export const FormPage: React.FC = () => {
   const [newTitle, setNewTitle] = useState("");
   const [newDescription, setNewDescription] = useState("");
@@ -14,9 +58,24 @@ export const FormPage: React.FC = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  // const [selectedCategory, setSelectedCategory] = useState("");
+  const [showCategories, setShowCategories] = useState(false);
+
+  const [showCities, setShowCities] = useState(false);
+
   const token = localStorage.getItem("token");
   const userString = localStorage.getItem("user");
   const user = userString ? JSON.parse(userString) : null;
+
+  const handleCategorySelect = (category) => {
+    setNewCategory(category);
+    setShowCategories(false);
+  }
+
+  const handleCitySelect = (city) => {
+    setNewCity(city);
+    setShowCities(false);
+  };
 
   const handleAddProduct = async (e) => {
     e.preventDefault();
@@ -216,9 +275,24 @@ export const FormPage: React.FC = () => {
               className="form-input-style"
               placeholder="Категорія"
               value={newCategory}
-              onChange={(e) => setNewCategory(e.target.value)}
+              // onChange={(e) => setNewCategory(e.target.value)}
+              onChange={(e) => setShowCategories(!showCategories)}
+            />
+            <IoIosArrowDown
+              style={{ marginRight: "16px", cursor: "pointer" }}
+              onClick={() => setShowCategories(!showCategories)}
             />
           </div>
+
+          {showCategories && (
+            <ul className="categories_box">
+              {categories.map((cat) => (
+                <li key={cat} onClick={() => handleCategorySelect(cat)}>
+                  {cat}
+                </li>
+              ))}
+            </ul>
+          )}
 
           <div className="form-input-wrapper">
             <input
@@ -238,14 +312,21 @@ export const FormPage: React.FC = () => {
               value={newCity}
               onChange={(e) => setNewCity(e.target.value)}
             />
+            <IoIosArrowDown
+              style={{ marginRight: "16px", cursor: "pointer" }}
+              onClick={() => setShowCities(!showCities)}
+            />
           </div>
 
-          {/* <div className="form-input-wrapper">
-          <CitySelect
-            activeCity={newCity || "Вся Україна"}
-            setActiveCity={setNewCity}
-          />
-        </div> */}
+          {showCities && (
+            <ul className="cities_box">
+              {cities.map((cit) => (
+                <li key={cit} onClick={() => handleCitySelect(cit)}>
+                  {cit}
+                </li>
+              ))}
+            </ul>
+          )}
 
           <div className="form-input-wrapper">
             <input

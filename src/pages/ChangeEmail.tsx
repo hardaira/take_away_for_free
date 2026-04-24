@@ -99,7 +99,7 @@ const token = localStorage.getItem("token");
       <form className="change-password" onSubmit={handleChangeEmail}>
         {/* <form className="change-password" > */}
         {/* <div className="input-wrapper profile__input"> */}
-          <div className="input-wrapper profile__input">
+        <div className="input-wrapper profile__input">
           {hidePassword ? (
             <>
               <input
@@ -112,7 +112,7 @@ const token = localStorage.getItem("token");
                 required
               />
               <IoEyeOutline
-                style={{ marginRight: "16px" }}
+                style={{ marginRight: "16px", cursor: "pointer" }}
                 onClick={() => setHidePassword(false)}
               />
             </>
@@ -128,14 +128,14 @@ const token = localStorage.getItem("token");
                 required
               />
               <IoEyeOffOutline
-                style={{ marginRight: "16px" }}
+                style={{ marginRight: "16px", cursor: "pointer" }}
                 onClick={() => setHidePassword(true)}
               />
             </>
           )}
         </div>
         {/* </div> */}
-        
+
         <div className="input-wrapper profile__input">
           <input
             type="email"
@@ -146,8 +146,8 @@ const token = localStorage.getItem("token");
           />
         </div>
         <button type="submit" className="profileButton" disabled={loading}>
-                {loading ? "Надсилається" : "Надіслати"}
-              </button>
+          {loading ? "Надсилається" : "Надіслати"}
+        </button>
       </form>
 
       {error && <p style={{ color: "red" }}>{error}</p>}

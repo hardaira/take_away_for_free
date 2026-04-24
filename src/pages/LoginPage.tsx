@@ -132,7 +132,7 @@ if (res.status === 500 ) {
                         required
                       />
                       <IoEyeOutline
-                        style={{ marginRight: "16px" }}
+                        style={{ marginRight: "16px", cursor: "pointer" }}
                         onClick={() => setHidePassword(false)}
                       />
                     </>
@@ -148,7 +148,7 @@ if (res.status === 500 ) {
                         required
                       />
                       <IoEyeOffOutline
-                        style={{ marginRight: "16px" }}
+                        style={{ marginRight: "16px", cursor: "pointer" }}
                         onClick={() => setHidePassword(true)}
                       />
                     </>

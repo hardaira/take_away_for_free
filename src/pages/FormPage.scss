@@ -112,3 +112,19 @@ justify-content: space-between;
   justify-content: center;
   
 }
+
+.categories_box,
+.cities_box {
+background: #ffffff;
+list-style: none;
+border: 2px solid #4a6fa5;
+padding: 8px 16px;
+text-align: left;
+border-radius: 24px;
+color: #4a6fa5;
+
+}
+
+li {
+cursor: pointer;
+}

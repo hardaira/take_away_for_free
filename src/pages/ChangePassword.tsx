@@ -151,7 +151,7 @@ const token = localStorage.getItem("token");
                   required
                 />
                 <IoEyeOutline
-                  style={{ marginRight: "16px" }}
+                  style={{ marginRight: "16px", cursor: "pointer" }}
                   onClick={() => setHidePassword(false)}
                 />
               </>
@@ -167,7 +167,7 @@ const token = localStorage.getItem("token");
                   required
                 />
                 <IoEyeOffOutline
-                  style={{ marginRight: "16px" }}
+                  style={{ marginRight: "16px", cursor: "pointer" }}
                   onClick={() => setHidePassword(true)}
                 />
               </>
