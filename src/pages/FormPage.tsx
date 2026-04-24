@@ -310,7 +310,7 @@ export const FormPage: React.FC = () => {
               className="form-input-style"
               placeholder="Місто"
               value={newCity}
-              onChange={(e) => setNewCity(e.target.value)}
+              onChange={(e) => setShowCities(!showCities)}
             />
             <IoIosArrowDown
               style={{ marginRight: "16px", cursor: "pointer" }}
