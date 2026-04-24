@@ -20,6 +20,7 @@ gap: 40px;
 .title_and_city  {
 display: flex;
 justify-content: space-between;
+align-items: center;
 margin-bottom: 16px;
 }
 
@@ -53,7 +54,12 @@ color: #575E66;
 //  }
 
 .pp_info {
- width: 50%;   
+ width: 50%; 
+
+ @media (min-width: 320px) and (max-width: 770px) {
+  width: 100%;
+
+  }  
 }
 
 .icon__heart__pp {
