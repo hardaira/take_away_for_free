@@ -68,7 +68,7 @@ export const ProductPage: React.FC = () => {
 );
 
   return (
-    <div className="section section__lower">
+    <div className="section">
       <div className="container pp_container">
         <TopBackLink />
         <div className="image_and_text">

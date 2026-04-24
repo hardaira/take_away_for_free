@@ -8,14 +8,22 @@
 
   .arrow,
   .single_page {
-    border: none;
-    background: #f3f3f3;
+    
+    background: white;
     padding: 8px 12px;
     border-radius: 8px;
     cursor: pointer;
     font-size: 14px;
     transition: 0.2s ease;
   }
+
+  .arrow {
+    border: none;
+  }
+
+.single_page {
+    border: 1px solid  #4a6fa5;
+}
 
   .arrow:disabled {
     opacity: 0.4;
