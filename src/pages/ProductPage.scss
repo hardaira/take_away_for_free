@@ -1,7 +1,7 @@
 .pp_container {
  display: flex;
  flex-direction: column; 
- gap: 50px;
+ gap: 60px;
 }
 
 .image_and_text {
@@ -12,8 +12,9 @@ gap: 40px;
 
 @media (min-width: 320px) and (max-width: 770px) {
   flex-direction: column;
-  height: 100vh;
+  height: auto;
   gap: 60px;
+  
   }
 }
 
@@ -87,7 +88,7 @@ color: #575E66;
 
 .pp__contact__block {
 //margin-top: 40px;
-margin-bottom: 64px;
+//margin-bottom: 64px;
 display: flex;
 flex-direction: column;
 gap: 8px;
@@ -96,7 +97,6 @@ font-size: 16px;
 }
 
 .giver {  
-  //margin-top: 40px; 
   font-weight: 600;
 }
 
