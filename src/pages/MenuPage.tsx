@@ -17,8 +17,9 @@ const navigate = useNavigate();
 
   return (
     <div className="section section__lower">
+       <TopBackLink />
       <div className="container menu">
-        <TopBackLink />
+       
         <Link
           to={user ? `/profile/${user.id}/add-post` : "/form"}
           className="in_menu"

@@ -16,7 +16,7 @@ export const InformationPage: React.FC = () => {
             <h2>Увага</h2>
             <p>
               Щоб додати оголошення потрібно зареєструватись і увійти на
-              сторінку профілю .
+              сторінку профілю.
             </p>
             <p className="login_link" onClick={() => navigate("/login")}>
               Увійти

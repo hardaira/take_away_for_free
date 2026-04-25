@@ -6,9 +6,8 @@
   height:30px;
   margin-bottom: 20px;
 
-  .arrow,
+  .slider_arrow,
   .single_page {
-    
     background: white;
     padding: 8px 12px;
     border-radius: 8px;
@@ -17,21 +16,21 @@
     transition: 0.2s ease;
   }
 
-  .arrow {
+  .slider_arrow {
     border: none;
   }
 
-.single_page {
+  .single_page {
     border: 1px solid  #4a6fa5;
 }
 
-  .arrow:disabled {
+  .slider_arrow:disabled {
     opacity: 0.4;
     cursor: not-allowed;
   }
 
   .single_page:hover,
-  .arrow:hover:not(:disabled) {
+  .slider_arrow:hover:not(:disabled) {
     background: #e0e0e0;
   }
 
