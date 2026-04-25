@@ -115,7 +115,7 @@ export const ProductPage: React.FC = () => {
               <div className="pp_location">
                 <HiOutlineLocationMarker
                   style={{
-                    stroke: "#4a6fa5",
+                    stroke: "#575E66",
                   }}
                 />
                 <p>{product.city}</p>
