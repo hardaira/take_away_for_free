@@ -301,7 +301,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               className="addButton"
               onClick={() => {
                 //navigate(`/product/${id}`);
-                navigate(user ? `/product/${id}` : "/details");
+                navigate (user ? `/product/${id}` : "/details");
+                window.scrollToTop(0, 0);
                 //setShowDetails(true);
               }}
             >
