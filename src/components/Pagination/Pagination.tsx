@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./Pagination.scss";
 import { useSearchParams } from "react-router-dom";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import {HiOutlineArrowNarrowLeft, HiOutlineArrowNarrowRight} from "react-icons/hi";
+//import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 export const Pagination = ({ products = [], cardsPerPage = 4, onPageChange }) => {
   const totalPages = Math.ceil(products.length / cardsPerPage);
 
@@ -135,8 +136,14 @@ export const Pagination = ({ products = [], cardsPerPage = 4, onPageChange }) =>
 
   return (
     <div className="pagination">
-      <button className="slider_arrow" onClick={goBack} disabled={currentPage === 1}>
-        ←
+      <button
+        className="slider_arrow"
+        onClick={goBack}
+        disabled={currentPage === 1}
+      >
+        {/* ← */}
+        {/* Prev */}
+        <HiOutlineArrowNarrowLeft />
       </button>
 
       {getVisiblePages().map((page) => (
@@ -154,7 +161,9 @@ export const Pagination = ({ products = [], cardsPerPage = 4, onPageChange }) =>
         onClick={goNext}
         disabled={currentPage === totalPages}
       >
-        →
+        {/* → */}
+        {/* Next */}
+        <HiOutlineArrowNarrowRight />
       </button>
     </div>
   );
