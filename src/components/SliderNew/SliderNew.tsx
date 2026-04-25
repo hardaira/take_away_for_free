@@ -25,6 +25,27 @@ export const SliderNew: React.FC = ({city}) => {
     const products = JSON.parse(localStorage.getItem("products")) || [];
     console.log(localStorage.getItem("products"));
 
+    const [visibleCount, setVisibleCount] = useState(4);
+
+    useEffect(() => {
+      const updateVisible = () => {
+        if (window.innerWidth < 480) {
+          setVisibleCount(1);
+        } else if (window.innerWidth < 768) {
+          setVisibleCount(2);
+        } else if (window.innerWidth < 1024) {
+          setVisibleCount(3);
+        } else {
+          setVisibleCount(4);
+        }
+      };
+
+      updateVisible();
+      window.addEventListener("resize", updateVisible);
+
+      return () => window.removeEventListener("resize", updateVisible);
+    }, []);
+
   const sortedNewBrands = useMemo(() => {
     return [...products]
       .filter((p) => p.city === city)
@@ -44,7 +65,7 @@ export const SliderNew: React.FC = ({city}) => {
     ));
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const visibleCount = 4;
+  //const visibleCount = 4;
 
   const previousOne = () => {
     if (currentIndex > 0) {
