@@ -3,7 +3,7 @@ import "./Pagination.scss";
 import { useSearchParams } from "react-router-dom";
 import {HiOutlineArrowNarrowLeft, HiOutlineArrowNarrowRight} from "react-icons/hi";
 //import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-export const Pagination = ({ products = [], cardsPerPage = 4, onPageChange }) => {
+export const Pagination = ({ products = [], cardsPerPage = 8, onPageChange }) => {
   const totalPages = Math.ceil(products.length / cardsPerPage);
 
   // const [currentPage, setCurrentPage] = useState(1);

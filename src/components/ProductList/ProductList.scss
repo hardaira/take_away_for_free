@@ -1,5 +1,16 @@
 // add styles here
 .cards__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 300px);
+  gap: 20px;
+
+  justify-content: center; /* THIS centers the grid */
+  
+  margin-top: 40px;
+  margin-bottom: 40px;
+  width: 100%;
+}
+.cards__container {
 //   display: grid;
 //   grid-template-columns: repeat(auto-fill, minmax(229px, 272px));
 //   gap: 20px;
@@ -7,7 +18,10 @@
 // margin-top: 40px;
 
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+  //grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+  grid-template-columns: repeat(auto-fit, 300px);
   //grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   //grid-template-columns: repeat(4, 1fr);
   gap: 20px;

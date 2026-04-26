@@ -14,6 +14,7 @@ export const ProductPage: React.FC = () => {
   const [products, setProducts] = useState<any[]>([]);
 
   useEffect(() => {
+   
     const stored = localStorage.getItem("products");
     console.log("RAW localStorage:", stored);
 

@@ -38,7 +38,7 @@ import { ProfileBlockedPage } from "./pages/ProfileBlockedPage";
 import DetailsBlockedPage from "./pages/DetailsBlockedPage";
 import FavoritesBlockedPage from "./pages/FavoritesBlockedPage";
 // import { ProductInformationPage } from './pages/ProductInformationPage';
-// import ScrollToTop from './components/ScrollToTop';
+//import ScrollToTop from './components/ScrollToTop';
 
 createRoot(document.getElementById("root") as HTMLDivElement).render(
   <Provider store={store}>
