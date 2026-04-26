@@ -302,7 +302,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               onClick={() => {
                 //navigate(`/product/${id}`);
                 navigate (user ? `/product/${id}` : "/details");
-                window.scrollToTop(0, 0);
+                window.scrollTo(0, 0);
                 //setShowDetails(true);
               }}
             >
