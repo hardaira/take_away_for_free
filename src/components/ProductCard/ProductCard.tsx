@@ -301,7 +301,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               className="addButton"
               onClick={() => {
                 navigate(user ? `/product/${id}` : "/details");
-                window.scrollTo(0, 0);
+                // window.scrollTo(0, 0);
               }}
             >
               Повний опис

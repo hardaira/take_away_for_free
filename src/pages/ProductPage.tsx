@@ -6,6 +6,7 @@ import { SliderNew } from "../components/SliderNew/SliderNew";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { ProductCard } from "../components/ProductCard/ProductCard";
 import TopBackLink from "../components/TopBackLink/TopBackLink";
+//import { useRef } from "react";
 
 export const ProductPage: React.FC = () => {
   const { productId } = useParams();
@@ -13,8 +14,16 @@ export const ProductPage: React.FC = () => {
   const [favorites, setFavorites] = useState([]);
   const [products, setProducts] = useState<any[]>([]);
 
+  //const containerRef = useRef(null);
+
+
   useEffect(() => {
-   
+   window.scrollTo(0, 0);
+// containerRef.current?.scrollTo({
+//   top: 0,
+//   behavior: "auto", // or "smooth"
+// });
+
     const stored = localStorage.getItem("products");
     console.log("RAW localStorage:", stored);
 
@@ -70,7 +79,11 @@ export const ProductPage: React.FC = () => {
 
   return (
     <div className="section">
-      <div className="container pp_container">
+      <div
+        className="container pp_container"
+        // ref={containerRef}
+        // style={{ height: "400px", overflow: "auto" }}
+      >
         <TopBackLink />
         <div className="image_and_text">
           <div className="image_and_button">
