@@ -131,7 +131,7 @@ const [visibleProducts, setVisibleProducts] = useState<Product[]>([]);
   const query = searchParams.get("query") || "";
   const activeCategories = searchParams.getAll("category");
  const currentPage = Number(searchParams.get("page") || "1");
-  const cardsPerPage = 8;
+  const cardsPerPage = 12;
   const startIndex = (currentPage - 1) * cardsPerPage;
   const endIndex = startIndex + cardsPerPage;
   
