@@ -234,7 +234,9 @@ console.log(data);
     }
   };
 
-  return (
+  return myProducts.length === 0 ? (
+    <p style={{ marginTop: "40px" }}>Поки що немає власних оголошень.</p>
+  ) : (
     <div className="cards__container">
       {myProducts.map((product) => (
         <div className="one__card" key={product.id}>

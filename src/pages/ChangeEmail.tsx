@@ -84,6 +84,7 @@ const token = localStorage.getItem("token");
       }
 
       setSuccessMessage(data.message);
+      setError('');
       setPassword('');
       setNewEmail('');
       setLoading(false);

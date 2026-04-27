@@ -115,17 +115,14 @@ export const FavoritesPage: React.FC = () => {
   
   return (
     <div className="section">
-      {/* <div className="favorites"> */}
       <div>
         <TopBackLink />
 
         <h1 className="heading-favorites">Вибране</h1>
-        <p className="under__heading1">
-          Вибрано товарів: {favorites.length}
-        </p>
+        <p className="under__heading1">Вибрано товарів: {favorites.length}</p>
 
         {favorites.length === 0 ? (
-          <p>Поки що немає обраних товарів.</p>
+          <p style={{ marginTop: "40px" }}>Поки що немає обраних товарів.</p>
         ) : (
           <div className="cards__container">
             {favorites.map((product) => (
