@@ -16,7 +16,7 @@ export const FavoritesBlockedPage: React.FC = () => {
             <h2>Увага</h2>
             <p>
               Щоб побачити інформацію про вибрані продукти, потрібно
-              зареєструватись і увійти на сторінку профілю.
+              увійти.
             </p>
             <p className="login_link" onClick={() => navigate("/login")}>
               Увійти
