@@ -15,7 +15,7 @@ export const DetailsBlockedPage: React.FC = () => {
           <div className="form__box__login">
             <h2>Увага</h2>
             <p>
-              Щоб побачити повну інформацію про продукт  потрібно увійти.
+              Щоб побачити повну інформацію про продукт, потрібно увійти.
             </p>
             <p className="login_link" onClick={() => navigate("/login")}>
               Увійти
