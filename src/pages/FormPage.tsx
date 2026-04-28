@@ -350,7 +350,7 @@ useEffect(() => {
           </div>
 
           <div className="form-input-wrapper">
-            <label className="form-label" onClick={() => setPhotoLoading(true); setTimeout(() => {
+            <label className="form-label" onClick={() => setTimeout(() => {
     setPhotoLoading(false);
   }, 2000);}>
               {photoLoading ? (
