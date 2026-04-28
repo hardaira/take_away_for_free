@@ -116,7 +116,9 @@ export const Navbar = ({setUser}) => {
               },
             }}
           >
-            <LuHeart className="heart-favorite" />
+            <LuHeart
+              className="heart-favorite"
+            />
           </Badge>
         </NavLink>
 

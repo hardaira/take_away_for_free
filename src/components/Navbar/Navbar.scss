@@ -130,7 +130,7 @@ input::placeholder {
   height: 20px;
   fill: white;
   stroke: #4a6fa5;
-  // filter: inset 2px 2px 4px rgba(16, 91, 16, 0.5);
+  fill: #4a6fa5;
 
   @media (min-width: 640px) and (max-width: 1199px) {
  width: 24px;

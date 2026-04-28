@@ -52,7 +52,7 @@ export const RegistrationPage: React.FC = () => {
 
       if (res.ok) {
 
-        setSuccessMessage(data.message);
+        //setSuccessMessage(data.message);
         setName('');
         setEmail('');
         setPassword('');
