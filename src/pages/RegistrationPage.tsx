@@ -3,7 +3,7 @@ import './RegistrationPage.scss';
 import { IoEyeOutline } from "react-icons/io5";
 import { IoEyeOffOutline } from "react-icons/io5";
 import TopBackLink from "../components/TopBackLink/TopBackLink";
-
+import { useNavigate, useOutletContext } from "react-router-dom";
 export const RegistrationPage: React.FC = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -14,6 +14,7 @@ export const RegistrationPage: React.FC = () => {
   const [successMessage, setSuccessMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [hidePassword, setHidePassword] = useState(true);
+  const navigate = useNavigate();
 
   const handleAddUser = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -58,6 +59,9 @@ export const RegistrationPage: React.FC = () => {
         setError('');
         setLoading(false);
         console.log("Data received!");
+localStorage.setItem("token", data.token);
+localStorage.setItem("user", JSON.stringify(data));
+        navigate(`/profile/${data.id}`);
         return;
       }
 
