@@ -1,5 +1,5 @@
 import "./FormPage.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 //import CitySelect from "../components/CitySelect/CitySelect";
 import FormCategory from "../components/FormCategory/FormCategory";
@@ -57,6 +57,7 @@ export const FormPage: React.FC = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [photoLoading, setPhotoLoading] = useState(false);
 
   // const [selectedCategory, setSelectedCategory] = useState("");
   const [showCategories, setShowCategories] = useState(false);
@@ -247,7 +248,17 @@ export const FormPage: React.FC = () => {
   //   }
   // };
 
+useEffect(() => {
+  const handleFocus = () => {
+    setPhotoLoading(false);
+  };
 
+  window.addEventListener("focus", handleFocus);
+
+  return () => {
+    window.removeEventListener("focus", handleFocus);
+  };
+}, []);
 
 
   return (
@@ -339,14 +350,20 @@ export const FormPage: React.FC = () => {
           </div>
 
           <div className="form-input-wrapper">
-            <label className="form-label">
-              <span className="here">Додати фото товару</span>
+            <label className="form-label" onClick={() => setPhotoLoading(true)}>
+              {photoLoading ? (
+                <span className="here">Почекайте...</span>
+              ) : (
+                <span className="here">Додати фото товару</span>
+              )}
 
               <input
                 type="file"
                 accept="image/*"
                 hidden
+                //onBlur={() => setPhotoLoading(false)}
                 onChange={(e) => {
+                  setPhotoLoading(false);
                   if (e.target.files && e.target.files[0]) {
                     setNewPhoto(e.target.files[0]);
                   }
