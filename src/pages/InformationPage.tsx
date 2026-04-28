@@ -15,8 +15,7 @@ export const InformationPage: React.FC = () => {
           <div className="form__box__login">
             <h2>Увага</h2>
             <p>
-              Щоб додати оголошення потрібно зареєструватись і увійти на
-              сторінку профілю.
+              Щоб додати оголошення потрібно увійти на сторінку профілю.
             </p>
             <p className="login_link" onClick={() => navigate("/login")}>
               Увійти

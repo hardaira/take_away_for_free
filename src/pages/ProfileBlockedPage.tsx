@@ -15,7 +15,7 @@ export const ProfileBlockedPage: React.FC = () => {
           <div className="form__box__login">
             <h2>Увага</h2>
             <p>
-              Спочатку потрібно зареєструватись і увійти на сторінку профілю .
+              Щоб відкрити сторінку профілю потрібно увійти.
             </p>
             <p className="login_link" onClick={() => navigate("/login")}>
               Увійти
