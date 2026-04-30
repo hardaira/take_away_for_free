@@ -72,8 +72,8 @@ const token = localStorage.getItem("token");
 
       const data = await res.json();
 
-      if (res.status === 500) {
-        setSuccessMessage('');
+      if (res.status === 500 || res.status === 400) {
+        setSuccessMessage("");
         setError(data.Error);
         setLoading(false);
         return;
