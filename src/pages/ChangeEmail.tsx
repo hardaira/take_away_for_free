@@ -151,8 +151,8 @@ const token = localStorage.getItem("token");
         </button>
       </form>
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
+      {error && <p style={{ color: "red" marginBottom: "20px"}}>{error}</p>}
+      {successMessage && <p style={{ color: "green" marginBottom: "20px"}}>{successMessage}</p>}
     </>
   );
 };
