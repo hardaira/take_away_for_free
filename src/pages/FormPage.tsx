@@ -298,7 +298,13 @@ useEffect(() => {
           {showCategories && (
             <ul className="categories_box">
               {categories.map((cat) => (
-                <li key={cat} onClick={() => handleCategorySelect(cat)}>
+                <li
+                  key={cat}
+                  className={`form__option ${
+                    newCategory === cat ? "selected__option" : ""
+                  }`}
+                  onClick={() => handleCategorySelect(cat)}
+                >
                   {cat}
                 </li>
               ))}
@@ -307,7 +313,7 @@ useEffect(() => {
 
           <div className="textarea-input-wrapper">
             <textarea
-            row={3}
+              row={3}
               type="text"
               className="textarea-input-style"
               placeholder="Опис товару"
@@ -333,7 +339,13 @@ useEffect(() => {
           {showCities && (
             <ul className="cities_box">
               {cities.map((cit) => (
-                <li key={cit} onClick={() => handleCitySelect(cit)}>
+                <li
+                  key={cit}
+                  className={`form__option ${
+                    newCity === cit ? "selected__option" : ""
+                  }`}
+                  onClick={() => handleCitySelect(cit)}
+                >
                   {cit}
                 </li>
               ))}

@@ -117,6 +117,10 @@ li {
 cursor: pointer;
 }
 
+li:hover {
+color:darkgrey;  
+}
+
 .textarea-input-wrapper {
   display: flex;
   align-items: flex-start;
