@@ -1,0 +1,14 @@
+import "./BackLink.scss";
+import { Link } from "react-router-dom";
+import { LuHouse } from "react-icons/lu";
+import { HiOutlineArrowNarrowLeft } from "react-icons/hi";
+export const TopBackLink: React.FC = () => (
+  <div className="top__back__link">
+    <Link to="/login" className="top__back__link">
+      {/* <LuHouse className="house" color="#4a6fa5" /> */}
+      <HiOutlineArrowNarrowLeft className="house" color="#4a6fa5" />
+      <p>Повернутись назад</p>
+    </Link>
+  </div>
+);
+export default TopBackLink;

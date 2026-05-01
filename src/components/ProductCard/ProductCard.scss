@@ -181,10 +181,12 @@ box-shadow: inset 0 0 20px rgb(136, 139, 137);
   background-color: #4a6fa5;
   cursor: pointer;
 }
+
 .in_profile {
   display: flex;
   justify-content: space-between;
 }
+
 .selected {
   box-shadow: inset 0 0 20px rgb(136, 139, 137);
   border: 2px solid darkgrey;
@@ -207,4 +209,16 @@ flex-direction: row;
 justify-content: space-between;
 align-items: center;
 gap: 2px;
+}
+
+.edit__input {
+  border: 1px solid gray;
+  border-radius: 4px;
+  outline: none;
+  padding: 4px;
+}
+
+.edit__input:focus {
+  border-color: #2b4061;
+  box-shadow: none;
 }

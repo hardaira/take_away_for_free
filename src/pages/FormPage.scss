@@ -1,14 +1,11 @@
-
 .form__box {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   text-align: center;
   gap: 8px;
-  // background-color: rgb(246, 246, 117);
    background-color: #ffffff;
   border: 1px solid #4a6fa5;
-  // box-shadow: inset 0 0 20px rgb(136, 139, 137);
   border-radius: 24px;
   color: #313237;
   padding: 50px;
@@ -44,18 +41,14 @@
   outline: none;
   font-size: 16px;
   font-weight: 500;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #313237;
   background: transparent;
-  
-
 }
 
 .form-input-wrapper {
   display: flex;
   align-items: center;
-
-  // width: 500px;
   height: 40px;
   width: 100%;
   border: 2px solid #4a6fa5;
@@ -66,7 +59,6 @@
   margin: 0 auto;
 
   @media (min-width: 320px) and (max-width: 346px) {
- 
     padding-left: 6px;
   }
 
@@ -83,7 +75,6 @@
 .form__buttons {
   display: flex;
   justify-content: space-evenly;
-
 }
 
 .form-label{
@@ -98,7 +89,6 @@ justify-content: space-between;
 }
 
 .here {
-  // color: orange;
   cursor: pointer;
 }
 
@@ -109,8 +99,7 @@ justify-content: space-between;
 
 .feedback_message {
   display:flex;
-  justify-content: center;
-  
+  justify-content: center;  
 }
 
 .categories_box,
@@ -122,9 +111,69 @@ padding: 8px 16px;
 text-align: left;
 border-radius: 24px;
 color: #4a6fa5;
-
 }
 
 li {
 cursor: pointer;
+}
+
+.textarea-input-wrapper {
+  display: flex;
+  align-items: flex-start;
+  //min-height: 100px; 
+  width: 100%;
+  border: 2px solid #4a6fa5;
+  border-radius: 24px;
+  box-sizing: border-box;
+  padding: 8px 16px;
+ 
+  color: #4a6fa5;
+  
+
+  @media (min-width: 320px) and (max-width: 346px) {
+    padding-left: 6px;
+  }
+
+  @media (min-width: 347px) and (max-width: 360px) {
+   padding-left: 8px; 
+  }
+}
+
+.textarea-input-style {
+  flex: 1;
+  height: 100%;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  color: #313237;
+  background: transparent; 
+  resize: none; 
+  min-height: calc(1.4em * 3);
+  padding: 0;
+  margin: 0;
+  line-height: 1.4;
+}
+
+textarea::placeholder {
+  color: #4a6fa5;
+  font-size: 16px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  resize: none;
+}
+
+textarea::-webkit-scrollbar {
+  display: none;
+}
+
+.add_photo {
+ font-size: 16px; 
+ color: #4a6fa5;
+ padding-block: 10px;
+ padding-left: 16px;
+ text-decoration: underline;
+ text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
 }

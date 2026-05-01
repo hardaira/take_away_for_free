@@ -1,6 +1,6 @@
  import React, { useState } from 'react';
 import './ResetPassword.scss';
-import TopBackLink from "../components/TopBackLink/TopBackLink";
+import BackLink from "../components/BackLink/BackLink";
 // import { useNavigate } from 'react-router-dom';
 // import { useAuth } from '../context/AuthContext';
 // import { useOutletContext } from 'react-router-dom';
@@ -15,12 +15,14 @@ export const ResetPassword: React.FC = () => {
   return (
     <div className="section">
       <div className="container">
-        <TopBackLink />
+        <BackLink />
         <div className="centered">
           <div className="form__box__login">
             {/* <form onSubmit={handleResetPassword}> */}
+            <h2>Забули пароль?</h2>
+            <p>Введіть ваш email і ми відправимо вам посилання для оновлення паролю.</p>
             <form className="reset-form">
-               {/* <label htmlFor="reset">
+              {/* <label htmlFor="reset">
               Забули пароль? Введіть email для зміни паролю.
             </label>  */}
               <div className="input-wrapper">
@@ -31,7 +33,7 @@ export const ResetPassword: React.FC = () => {
                   type="resetEmail"
                   placeholder="Введіть свій email"
                   value={resetEmail}
-                  onChange={e => setResetEmail(e.target.value)}
+                  onChange={(e) => setResetEmail(e.target.value)}
                   // style={{ width: '300px' }}
                 />
               </div>
@@ -41,13 +43,13 @@ export const ResetPassword: React.FC = () => {
                 // style={{ width: '120px' }}
                 disabled={loading}
               >
-                {loading ? 'Надсилається' : 'Надіслати'}
+                {loading ? "Надсилається" : "Надіслати"}
               </button>
               {/* {resetMessage && <p>{resetMessage}</p>} */}
             </form>
           </div>
         </div>
       </div>
-     </div>
+    </div>
   );
   }

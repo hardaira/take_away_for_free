@@ -233,6 +233,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       <div className="card-content">
         {isEditing ? (
           <input
+            className="edit__input"
             value={editedTitle}
             onChange={(e) => setEditedTitle(e.target.value)}
           />
@@ -246,6 +247,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           />
           {isEditing ? (
             <input
+              className="edit__input"
               value={editedCategory}
               onChange={(e) => setEditedCategory(e.target.value)}
             />
@@ -260,6 +262,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           />
           {isEditing ? (
             <input
+              className="edit__input"
               value={editedCity}
               onChange={(e) => setEditedCity(e.target.value)}
             />
@@ -277,6 +280,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               />
               {isEditing ? (
                 <input
+                  className="edit__input"
                   value={editedContact}
                   onChange={(e) => setEditedContact(e.target.value)}
                 />
@@ -287,6 +291,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             </p>
             {isEditing ? (
               <input
+                className="edit__input"
                 value={editedDescription}
                 onChange={(e) => setEditedDescription(e.target.value)}
               />

@@ -305,10 +305,11 @@ useEffect(() => {
             </ul>
           )}
 
-          <div className="form-input-wrapper">
-            <input
+          <div className="textarea-input-wrapper">
+            <textarea
+            row={3}
               type="text"
-              className="form-input-style"
+              className="textarea-input-style"
               placeholder="Опис товару"
               value={newDescription}
               onChange={(e) => setNewDescription(e.target.value)}
@@ -349,7 +350,8 @@ useEffect(() => {
             />
           </div>
 
-          <div className="form-input-wrapper">
+          {/* <div className="form-input-wrapper"> */}
+          <div className="add_photo">
             <label
               className="form-label"
               onClick={() => {
@@ -358,7 +360,7 @@ useEffect(() => {
                 // fallback in case user cancels
                 setTimeout(() => {
                   setPhotoLoading(false);
-                }, 2000); // 1.5–3s is typical
+                }, 4000); // 1.5–3s is typical
               }}
             >
               {photoLoading ? (

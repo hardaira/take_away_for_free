@@ -1,0 +1,13 @@
+.top__back__link {
+  display: flex;
+  gap:10px;
+  align-items: center;
+  margin-top: 20px;
+  color: #4a6fa5;
+}
+
+.top__back__link:hover {
+  color: gray;
+  text-decoration: none;
+}
+
