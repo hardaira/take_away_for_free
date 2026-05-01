@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="128"
+     height="128"
+     viewBox="0 0 128 128">
+
+  <!-- Background -->
+  <rect
+    x="4"
+    y="4"
+    width="120"
+    height="120"
+    rx="14"
+    fill="#4a6fa5"
+    stroke="white"
+    stroke-width="3"
+  />
+
+  <!-- Top text -->
+  <text
+    x="64"
+    y="52"
+    text-anchor="middle"
+    fill="white"
+    font-size="24"
+    font-weight="600"
+    font-family="Arial, sans-serif"
+    transform="rotate(-10 64 52)">
+    ЗаБиРай
+  </text>
+
+  <!-- Bottom text -->
+  <text
+    x="64"
+    y="86"
+    text-anchor="middle"
+    fill="white"
+    font-size="20"
+    font-weight="600"
+    font-family="Arial, sans-serif"
+    transform="rotate(-10 64 86)">
+    За ДяКую
+  </text>
+
+</svg>
