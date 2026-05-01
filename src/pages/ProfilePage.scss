@@ -54,7 +54,7 @@
 
   //  @media (min-width: 380px) and (max-width: 419px) {
     @media (min-width: 320px) and (max-width: 419px) {
-    width: 180px;
+    width: 100%;
     margin-bottom: 8px;
   }
    
@@ -120,4 +120,6 @@ gap: 20px;
 .profile_greeting {
   margin-top: 40px;
   margin-bottom: 40px;
+  font-size: 32px;
+  color: 333333;
 }

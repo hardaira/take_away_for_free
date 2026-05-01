@@ -38,7 +38,7 @@ const user = userString ? JSON.parse(userString) : null;
       <div className="container">
         {/* <h1>Hello, {user.name}</h1> */}
         <TopBackLink />
-        <h1 className="profile_greeting">{user.name}, вітаємо на сторінці профілю!</h1>
+        <p className="profile_greeting">{user.name}, вітаємо на сторінці профілю!</p>
         {/* <button>Вийти</button> */}
 
         <div className="profile_buttons">
