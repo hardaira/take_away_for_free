@@ -370,10 +370,10 @@ useEffect(() => {
                 setPhotoLoading(true);
 
                 // fallback in case user cancels
-                setTimeout(() => {
-                  setPhotoLoading(false);
-                }, 4000); // 1.5–3s is typical
-              }}
+              //   setTimeout(() => {
+              //     setPhotoLoading(false);
+              //   }, 1000); // 1.5–3s is typical
+               }}
             >
               {photoLoading ? (
                 <span className="here">Почекайте...</span>
