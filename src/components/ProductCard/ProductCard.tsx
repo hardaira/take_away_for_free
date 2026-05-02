@@ -16,6 +16,7 @@ import { HiOutlineArchiveBoxXMark } from 'react-icons/hi2';
 import { HiOutlineBookmark } from 'react-icons/hi';
 import { HiOutlineSave } from "react-icons/hi";
 import { useDispatch } from 'react-redux';
+// import { TextareaAutosize } from '../../../node_modules/@mui/material/index';
 //import { Product} from '../../types/product';
 //import { addToFavorites, removeFromFavorites } from '../../features/favorites';
 //import { useSelector } from 'react-redux';
@@ -291,6 +292,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             </p>
             {isEditing ? (
               <input
+                // row={3}
                 className="edit__input"
                 value={editedDescription}
                 onChange={(e) => setEditedDescription(e.target.value)}
