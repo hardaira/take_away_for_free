@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './RegistrationPage.scss';
 import { IoEyeOutline } from "react-icons/io5";
 import { IoEyeOffOutline } from "react-icons/io5";
-import TopBackLink from "../components/TopBackLink/TopBackLink";
+import BackLink from "../components/BackLink/BackLink";
 import { useNavigate, useOutletContext } from "react-router-dom";
 export const RegistrationPage: React.FC = () => {
   const [name, setName] = useState('');
@@ -84,7 +84,7 @@ localStorage.setItem("user", JSON.stringify(data));
   return (
     <div className="section">
       <div className="container">
-        <TopBackLink />
+        <BackLink />
         <div className="centered">
           <div className="form__box__login">
             <h2>Реєстрація</h2>

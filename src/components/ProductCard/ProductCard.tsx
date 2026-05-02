@@ -1,32 +1,15 @@
 import './ProductCard.scss';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-
-// import { LuHeart } from 'react-icons/lu';
-// import { CiWallet } from 'react-icons/ci';
-// import { CiLocationOn } from 'react-icons/ci';
-// import { CiCalendar } from 'react-icons/ci';
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { HiOutlineUserCircle } from 'react-icons/hi';
-// import { HiOutlineCalendar } from 'react-icons/hi2';
-// import { HiOutlineWallet } from "react-icons/hi2";
 import { HiOutlineHeart } from 'react-icons/hi';
 import { HiOutlinePencil } from "react-icons/hi";
 import { HiOutlineArchiveBoxXMark } from 'react-icons/hi2';
 import { HiOutlineBookmark } from 'react-icons/hi';
 import { HiOutlineSave } from "react-icons/hi";
 import { useDispatch } from 'react-redux';
-// import { TextareaAutosize } from '../../../node_modules/@mui/material/index';
-//import { Product} from '../../types/product';
-//import { addToFavorites, removeFromFavorites } from '../../features/favorites';
-//import { useSelector } from 'react-redux';
-//import type { RootState } from '../../app/store';
-// import { removeFromCart } from '../../features/cart';
-//import { NavLink } from 'react-router-dom';
-//import { withEmotionCache } from '../../../node_modules/@emotion/react/dist/emotion-react.cjs';
-//import { withTheme } from '../../../node_modules/@emotion/react/dist/declarations/src/theming';
-//import { useOutletContext } from "react-router-dom";
-//import { useOutletContext } from "react-router-dom";
+
 interface ProductCardProps {
   id: number;
   title: string;
@@ -56,12 +39,8 @@ export type Product = {
   description: string;
   city: string;
   contact: string;
-  image?: Image; // 👈 optional
+  image?: Image; 
 };
-
-// interface ProductCardProps {
-//   product: Product;
-// }
 
 export const ProductCard: React.FC<ProductCardProps> = ({
   id,
@@ -86,41 +65,24 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     city,
     contact,
     image,
-    // showFullDetails: false,
   };
 
-  //const { favorites, toggleFavorite } = useOutletContext();
   const userString = localStorage.getItem("user");
   const user = userString ? JSON.parse(userString) : null;
-  
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  //const [myProducts, setMyProducts] = useState([]);
   const [favorites, setFavorites] = useState([]);
-  
   const token = localStorage.getItem("token");
-
   const [isEditing, setIsEditing] = useState(false);
-
   const [editedTitle, setEditedTitle] = useState(title);
   const [editedCategory, setEditedCategory] = useState(category);
   const [editedDescription, setEditedDescription] = useState(description);
   const [editedCity, setEditedCity] = useState(city);
   const [editedContact, setEditedContact] = useState(contact || "");
-  
   const [showDetails, setShowDetails] = useState(showFullDetails);
-
   const [myFavoriteProducts, setMyFavoriteProducts] = useState([]);
-// const isInFavorites = useSelector((state: RootState) =>
-//   state.favorites.favoriteItems.some((item) => item.title === product.title)
-// );
-  // const handleAddToFavorites = () => {
-  //   dispatch(addToFavorites(product));
-  // };
 
-  // const handleRemoveFromFavorites = () => {
-  //   dispatch(removeFromFavorites(product));
-  // };
+
   useEffect(() => {
     const userString = localStorage.getItem("user");
     const user = userString ? JSON.parse(userString) : null;
@@ -156,16 +118,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
     localStorage.setItem(key, JSON.stringify(updated));
     setFavorites(updated);
-    //  notify FavoritesPage to refresh
     window.dispatchEvent(new Event("favoritesUpdated"));
   };
 
-  //const isInFavorites = favorites.some((item) => item.id === productId);
   const isInFavorites = favorites.some((p) => p.id === product.id);
 
   return (
     <div className="product__card">
-      {/* <NavLink to={`/${category}/${id}`} className="card-image"> */}
       <div className="card-image">
         <img
           className="product__card__img"
@@ -203,32 +162,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             />
           </button>
         )}
-        {/* <button
-          className="icon icon__heart"
-          onClick={() => toggleFavorite(product)}
-        >
-          {isFavorite ? (
-            <HiOutlineHeart
-              //className="selected"
-              style={{
-                width: "20px",
-                height: "20px",
-                fill: "#4a6fa5",
-                stroke: "#4a6fa5",
-              }}
-            />
-          ) : (
-            <HiOutlineHeart
-              //className="icon icon__heart"
-              style={{
-                width: "20px",
-                height: "20px",
-                fill: "white",
-                stroke: "white",
-              }}
-            />
-          )}
-        </button> */}
       </div>
 
       <div className="card-content">
@@ -241,7 +174,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         ) : (
           <h2 className="product__title ">{title}</h2>
         )}
-        {/* <h2 className="product__title ">{title}</h2> */}
         <p className="info">
           <HiOutlineBookmark
             style={{ width: "14px", height: "14px", color: "#A2A5A6" }}
@@ -255,7 +187,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           ) : (
             <span className="product__location">{category}</span>
           )}
-          {/* <span className="product__location">{category}</span> */}
         </p>
         <p className="info">
           <HiOutlineLocationMarker
@@ -291,9 +222,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               {/* <span className="places__left">{contact}</span> */}
             </p>
             {isEditing ? (
-              <input
-                // row={3}
-                className="edit__input"
+              <textarea
+                row={3}
+                className="edit__textarea"
                 value={editedDescription}
                 onChange={(e) => setEditedDescription(e.target.value)}
               />
@@ -308,7 +239,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               className="addButton"
               onClick={() => {
                 navigate(user ? `/product/${id}` : "/details");
-                // window.scrollTo(0, 0);
               }}
             >
               Повний опис
@@ -320,22 +250,25 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           {inProfile && (
             <div className="in_profile">
               <button
-                className="icon icon__edit selected"
-                title="Редагувати"
+                // className="icon icon__edit selected"
+                className="edit"
+                // title="Редагувати"
                 onClick={() => setIsEditing(true)}
               >
-                <HiOutlinePencil
+                {/* <HiOutlinePencil
                   style={{
                     width: "20px",
                     height: "20px",
                     stroke: "#4a6fa5",
                   }}
-                />
+                /> */}
+                Редагувати
               </button>
 
               <button
-                className="icon icon__save selected"
-                title="Зберегти зміни"
+                // className="icon icon__save selected"
+                className="save"
+                // title="Зберегти зміни"
                 disabled={!isEditing}
                 onClick={() => {
                   onSave?.(
@@ -349,27 +282,30 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                   setIsEditing(false);
                 }}
               >
-                <HiOutlineSave
+                {/* <HiOutlineSave
                   style={{
                     width: "20px",
                     height: "20px",
                     stroke: "#4a6fa5",
                   }}
-                />
+                /> */}
+                Зберегти зміни
               </button>
 
               <button
-                className="icon icon__delete selected"
-                title="Видалити оголошення"
+                // className="icon icon__delete selected"
+                // title="Видалити оголошення"
+                className="delete"
                 onClick={() => onDelete?.(id)}
               >
-                <HiOutlineArchiveBoxXMark
+                {/* <HiOutlineArchiveBoxXMark
                   style={{
                     width: "20px",
                     height: "20px",
                     stroke: "#4a6fa5",
                   }}
-                />
+                /> */}
+                Видалити
               </button>
             </div>
           )}
