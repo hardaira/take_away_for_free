@@ -58,13 +58,13 @@
   color: #4a6fa5;
   margin: 0 auto;
 
-  @media (min-width: 320px) and (max-width: 346px) {
-    padding-left: 16px;
+  @media (min-width: 320px) and (max-width: 340px) {
+    padding-left: 10px;
   }
 
-  @media (min-width: 347px) and (max-width: 360px) {
-   padding-left: 16px; 
-  }
+  // @media (min-width: 347px) and (max-width: 360px) {
+  //  padding-left: 16px; 
+  // }
 }
 
 #add, #back {
@@ -134,13 +134,13 @@ color:darkgrey;
   color: #4a6fa5;
   
 
-  @media (min-width: 320px) and (max-width: 346px) {
-    padding-left: 16px;
+  @media (min-width: 320px) and (max-width: 340px) {
+    padding-left: 10px;
   }
 
-  @media (min-width: 347px) and (max-width: 360px) {
-   padding-left: 16px; 
-  }
+  // @media (min-width: 347px) and (max-width: 360px) {
+  //  padding-left: 16px; 
+  // }
 }
 
 .textarea-input-style {
